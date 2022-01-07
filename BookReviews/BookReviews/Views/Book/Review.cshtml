@@ -6,10 +6,11 @@
 <strong>Enter your Review</strong>
 <br />
 <form method="post" class="container">
-    <div asp-validation-summary="All"></div>
+    <div asp-validation-summary="All" class="text-danger"></div>
     <div class="row p-2">
         <label asp-for="BookTitle" class="control-label col-md-1">Title</label>
         <input asp-for="BookTitle" class="form-control col-md-6" />
+        <span asp-validation-for="BookTitle" class="text-danger"></span>
     </div>
     <div class="row p-2">
         <label asp-for="AuthorName" class="control-label  col-md-1">Author</label><br />
@@ -17,12 +18,15 @@
     </div>
     <div class="row p-2">
         <label asp-for="Reviewer.Name" class="control-label  col-md-1">Reviewer</label><br />
-        <input asp-for="Reviewer.Name" class="form-control col-md-6" /><br />
+        <input asp-for="Reviewer.Name" class="form-control col-md-6" />
+        <span asp-validation-for="Reviewer.Name" class="text-danger"></span><br />
     </div>
     <div class="row p-2">
         <label asp-for="ReviewText" class="control-label  col-md-1">Review</label><br />
         <textarea asp-for="ReviewText" placeholder="Write your review here" class="form-control col-md-6">
 </textarea>
+        <span asp-validation-for="ReviewText" class="text-danger"></span>
+
     </div>
     <div class="row p-2">
         <button type="submit" class="form-control btn btn-success col-2">Submit</button>
@@ -47,4 +51,8 @@
         <strong class="m-3">Review:</strong>
         @Model.ReviewText<br />
     </p>
+}
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
