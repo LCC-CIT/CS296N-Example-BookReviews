@@ -10,6 +10,7 @@ namespace BookReviews.Models
         public string BookTitle { get; set; }
         public string AuthorName { get; set; }
         public User Reviewer { get; set; }
+        [MinLength(12)]
         [Required]
         public string ReviewText { get; set; }
         public DateTime ReviewDate { get; set; }

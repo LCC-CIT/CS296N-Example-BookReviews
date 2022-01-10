@@ -35,7 +35,7 @@ namespace BookReviews.Controllers
         public IActionResult Review(Review model)
         {
             model.ReviewDate = DateTime.Now;
-            // Store the model in the database
+            // Store the model in the database if it is valid
             if(ModelState.IsValid)
             { 
                 repo.AddReview(model);
