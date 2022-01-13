@@ -35,7 +35,7 @@
 
 <br />
 <hr />
-
+@*
 @if (Model != null)
 {
     <h2>Your Review</h2>
@@ -52,6 +52,7 @@
         @Model.ReviewText<br />
     </p>
 }
+*@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
