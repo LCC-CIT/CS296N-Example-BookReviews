@@ -18,11 +18,23 @@ namespace BookReviews.Controllers
             repo = r;
         }
 
-
+        /// <summary>
+        /// List all books (without duplicates)
+        /// </summary>
         public IActionResult Index()
         {
-            
-            return View();
+            List<string> titles = repo.Reviews
+                .Select(review => review.BookTitle)
+                .Distinct()
+                .ToList();
+
+            return View(titles);
+            /* Note: .GroupBy is not supported by EF Core 3.1 so this doesn't work:
+                List<Review> reviews = repo.Reviews
+                    .GroupBy(review => review.BookTitle)
+                    .Select(group => group.FirstOrDefault())
+                    .ToList();
+            */
         }
 
         // Show the view that has a form for entering a review

@@ -1,9 +1,16 @@
-﻿@{
+﻿@model List<string>
+@{
     ViewData["Title"] = "Authors";
 }
 
 <div class="text-center">
     <h1 class="display-4">List of Authors</h1>
-    <p>Coming soon: a list of all the authors who have written books reviewed on this site.</p>
-    <a asp-action="Quiz">Take a quiz</a>
 </div>
+<p><a asp-action="Quiz">Take a quiz about authors</a></p>
+<p>These are all the authors whose books reviewed on this site:</p>
+
+@foreach (string name in Model)
+{
+    <span class="m-3">@name</span>
+    <br />
+}
