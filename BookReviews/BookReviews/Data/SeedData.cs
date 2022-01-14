@@ -36,7 +36,7 @@ namespace BookReviews.Data
                 new 
                 {
                     ReviewID = 1,
-                    UserID = 2,
+                    ReviewerUserID = 2,
                     BookTitle = "Prince of Foxes",
                     AuthorName = "Samuel Shellabarger",
                     ReviewText = "Great book, a must read!",
@@ -46,7 +46,7 @@ namespace BookReviews.Data
                 new
                 {
                     ReviewID = 2,
-                    UserID = 3,
+                    ReviewerUserID = 3,
                     BookTitle = "Prince of Foxes",
                     AuthorName = "Samuel Shellabarger",
                     ReviewText = "I love the clever, witty dialog",
@@ -60,7 +60,7 @@ namespace BookReviews.Data
                 new
                 {
                     ReviewID = 3,
-                    UserID = 1,
+                    ReviewerUserID = 1,
                     BookTitle = "Virgil Wander",
                     AuthorName = "Lief Enger",
                     ReviewText = "Wonderful book, written by a distant cousin of mine.",
@@ -70,7 +70,7 @@ namespace BookReviews.Data
                 new
                 {
                     ReviewID = 4,
-                    UserID = 1,
+                    ReviewerUserID = 1,
                     BookTitle = "Ivanho",
                     AuthorName = "Sir Walter Scott",
                     ReviewText = "It was a little hard going at first, but then I loved it!",
