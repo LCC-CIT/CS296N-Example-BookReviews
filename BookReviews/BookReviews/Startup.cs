@@ -1,4 +1,5 @@
 using System.Runtime.InteropServices;
+using BookReviews.Data;
 using BookReviews.Models;
 using BookReviews.Repos;
 using Microsoft.AspNetCore.Builder;
@@ -68,7 +69,8 @@ namespace BookReviews
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
 
-            SeedData.Seed(context);
+          // TODO: Remove this when we're done with the new seed data
+          //  OldSeedData.Seed(context);
         }
     }
 }
