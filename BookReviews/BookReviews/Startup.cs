@@ -1,9 +1,8 @@
 using System.Runtime.InteropServices;
-using BookReviews.Models;
+using BookReviews.Data;
 using BookReviews.Repos;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -23,10 +22,6 @@ namespace BookReviews
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // This service allows me to edit .cshtml views and see the result without restarting
-            // This service requires the Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation NuGet package
-            services.AddRazorPages().AddRazorRuntimeCompilation();
-
             services.AddControllersWithViews();
 
             // Inject our repositories into our controllers
@@ -34,26 +29,22 @@ namespace BookReviews
             
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
-                // Assuming that SQL Server is used on Windows and Azure
+                // Assuming that SQL Server is installed on Windows
                 services.AddDbContext<BookReviewContext>(options =>
                    options.UseSqlServer(Configuration["ConnectionStrings:SQLServerConnection"]));
             }
             else
             {
-                // Assuming SQLite is installed on all other operating systems (like Mac OS)
+                // Assuming SQLite is installed on all other operating systems
                 services.AddDbContext<BookReviewContext>(options =>
                     options.UseSqlite(Configuration["ConnectionStrings:SQLiteConnection"]));
             }
-
-            services.AddIdentity<AppUser, IdentityRole>()
-                .AddEntityFrameworkStores<BookReviewContext>()
-                .AddDefaultTokenProviders();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, BookReviewContext context)
         {
-            if (env.IsDevelopment() || env.IsStaging())
+            if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
@@ -65,11 +56,10 @@ namespace BookReviews
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+
             app.UseRouting();
 
-            app.UseAuthentication();  // UseAuthentication must come first
             app.UseAuthorization();
-
 
             app.UseEndpoints(endpoints =>
             {
@@ -77,10 +67,7 @@ namespace BookReviews
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
-            var serviceProvider = app.ApplicationServices;
-            var userManager = serviceProvider.GetRequiredService<UserManager<AppUser>>();
-            var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
-            SeedData.Seed(context, userManager, roleManager);
+
         }
     }
 }

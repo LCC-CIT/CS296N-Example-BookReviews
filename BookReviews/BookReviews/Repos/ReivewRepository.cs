@@ -1,4 +1,5 @@
-﻿using BookReviews.Models;
+﻿using BookReviews.Data;
+using BookReviews.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 

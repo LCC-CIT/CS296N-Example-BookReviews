@@ -4,14 +4,16 @@ using BookReviews.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BookReviews.Migrations
 {
     [DbContext(typeof(BookReviewContext))]
-    partial class BookReviewContextModelSnapshot : ModelSnapshot
+    [Migration("20220114022009_SeedData")]
+    partial class SeedData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -33,16 +35,12 @@ namespace BookReviews.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Rating")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("ReviewDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("ReviewText")
                         .IsRequired()
-                        .HasColumnType("nvarchar(500)")
-                        .HasMaxLength(500);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("ReviewerUserID")
                         .HasColumnType("int");
@@ -59,7 +57,6 @@ namespace BookReviews.Migrations
                             ReviewID = 1,
                             AuthorName = "Samuel Shellabarger",
                             BookTitle = "Prince of Foxes",
-                            Rating = 5,
                             ReviewDate = new DateTime(2020, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ReviewText = "Great book, a must read!",
                             ReviewerUserID = 2
@@ -69,7 +66,6 @@ namespace BookReviews.Migrations
                             ReviewID = 2,
                             AuthorName = "Samuel Shellabarger",
                             BookTitle = "Prince of Foxes",
-                            Rating = 5,
                             ReviewDate = new DateTime(2020, 11, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ReviewText = "I love the clever, witty dialog",
                             ReviewerUserID = 3
@@ -79,7 +75,6 @@ namespace BookReviews.Migrations
                             ReviewID = 3,
                             AuthorName = "Lief Enger",
                             BookTitle = "Virgil Wander",
-                            Rating = 5,
                             ReviewDate = new DateTime(2020, 11, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ReviewText = "Wonderful book, written by a distant cousin of mine.",
                             ReviewerUserID = 1
@@ -89,7 +84,6 @@ namespace BookReviews.Migrations
                             ReviewID = 4,
                             AuthorName = "Sir Walter Scott",
                             BookTitle = "Ivanho",
-                            Rating = 4,
                             ReviewDate = new DateTime(2020, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ReviewText = "It was a little hard going at first, but then I loved it!",
                             ReviewerUserID = 1

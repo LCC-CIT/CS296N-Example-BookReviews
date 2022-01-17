@@ -5,8 +5,8 @@
 <h1>Book Review</h1>
 <strong>Enter your Review</strong>
 <br />
-<div asp-validation-summary="All" class="text-danger"></div>
 <form method="post" class="container">
+    <div asp-validation-summary="All" class="text-danger"></div>
     <div class="row p-2">
         <label asp-for="BookTitle" class="control-label col-md-1">Title</label>
         <input asp-for="BookTitle" class="form-control col-md-6" />
@@ -15,19 +15,22 @@
     <div class="row p-2">
         <label asp-for="AuthorName" class="control-label  col-md-1">Author</label><br />
         <input asp-for="AuthorName" class="form-control col-md-6" /><br />
-        <span asp-validation-for="AuthorName" class="text-danger"></span>
     </div>
-    @*
-        <div class="row p-2">
-            <label asp-for="Reviewer.Name" class="control-label  col-md-1">Reviewer</label><br />
-            <input asp-for="Reviewer.Name" class="form-control col-md-6" /><br />
-        </div>
-    *@
+    <div class="row p-2">
+        <label asp-for="Reviewer.Name" class="control-label  col-md-1">Reviewer</label><br />
+        <input asp-for="Reviewer.Name" class="form-control col-md-6" />
+        <span asp-validation-for="Reviewer.Name" class="text-danger"></span><br />
+    </div>
     <div class="row p-2">
         <label asp-for="ReviewText" class="control-label  col-md-1">Review</label><br />
-        <textarea asp-for="ReviewText" placeholder="Write your review here" class="form-control col-md-6">
+        <textarea asp-for="ReviewText" placeholder="Write your review here" class="form-control col-md-6"><br />
 </textarea>
-        <span asp-validation-for="ReviewText" class="text-danger"></span>
+        <span asp-validation-for="ReviewText" class="text-danger"></span><br />
+    </div>
+    <div class="row p-2">
+        <label asp-for="Rating" class="control-label  col-md-1">Rating</label><br />
+        <input asp-for="Rating" class="form-control col-md-6" />
+        <span asp-validation-for="Rating" class="text-danger"></span><br />
     </div>
     <div class="row p-2">
         <button type="submit" class="form-control btn btn-success col-2">Submit</button>
@@ -37,19 +40,6 @@
 <br />
 <hr />
 
-@if (Model != null)
-{
-    <h2>Your Review</h2>
-    <p>
-        <strong class="m-3">Title:</strong>
-        @Model.BookTitle<br />
-        <strong class="m-3">Author:</strong>
-        @Model.AuthorName<br />
-        <strong class="m-3">Reviewer:</strong>
-        @Model.Reviewer.Name<br />
-        <strong class="m-3">Review Date:</strong>
-        @Model.ReviewDate<br />
-        <strong class="m-3">Review:</strong>
-        @Model.ReviewText<br />
-    </p>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

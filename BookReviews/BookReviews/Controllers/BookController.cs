@@ -1,34 +1,43 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using BookReviews.Models;
 using BookReviews.Repos;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace BookReviews.Controllers
 {
     public class BookController : Controller
     {
         IReviewRepository repo;
-        UserManager<AppUser> userManager;
 
-        public BookController(IReviewRepository r, UserManager<AppUser> u)
+        public BookController(IReviewRepository r)
         {
             repo = r;
-            userManager = u;
         }
 
-
+        /// <summary>
+        /// List all books (without duplicates)
+        /// </summary>
         public IActionResult Index()
         {
-            
-            return View();
+            List<string> titles = repo.Reviews
+                .Select(review => review.BookTitle)
+                .Distinct()
+                .ToList();
+
+            return View(titles);
+            /* Note: .GroupBy is not supported by EF Core 3.1 so this doesn't work:
+                List<Review> reviews = repo.Reviews
+                    .GroupBy(review => review.BookTitle)
+                    .Select(group => group.FirstOrDefault())
+                    .ToList();
+            */
         }
 
-        // Show the view that contains a form for entering a review
-        [Authorize]
+        // Show the view that has a form for entering a review
         public IActionResult Review()
         {
             return View();
@@ -37,14 +46,15 @@ namespace BookReviews.Controllers
         [HttpPost]
         public IActionResult Review(Review model)
         {
-            model.Reviewer = userManager.GetUserAsync(User).Result;
-            // TODO: get the user's real name in registration
-            model.Reviewer.Name = model.Reviewer.UserName;  // temporary hack
             model.ReviewDate = DateTime.Now;
-            // Store the model in the database
-            repo.AddReview(model);
-
-            return View(model);
+            // Store the model in the database if it is valid
+            if(ModelState.IsValid)
+            { 
+                repo.AddReview(model);
+            }
+            return RedirectToAction("Reviews");
+            // TODO: figure out how to send bookTitle and reviewerName to the Reviews method
+            // return RedirectToAction("Reviews", new {bookTitle = model.BookTitle, reviewerName = model.Reviewer.Name});
         }
 
         public IActionResult Reviews()
@@ -75,34 +85,5 @@ namespace BookReviews.Controllers
 
             return View(reviews);
         }
-
-        // Open the form for entering a comment
-        [Authorize]
-        public IActionResult Comment(int reviewId)
-        {
-            var commentVM = new CommentVM { ReviewID = reviewId };
-            return View(commentVM);
-        }
-
-        [HttpPost]
-        public RedirectToActionResult Comment(CommentVM commentVM)
-        {
-            // Comment is the domain model
-            var comment = new Comment { CommentText = commentVM.CommentText };
-            comment.Commenter = userManager.GetUserAsync(User).Result;
-            comment.CommentDate = DateTime.Now;
-
-            // Retrieve the review that this comment is for
-            var review = (from r in repo.Reviews
-                          where r.ReviewID == commentVM.ReviewID
-                          select r).First<Review>();
-
-            // Store the review with the comment in the database
-            review.Comments.Add(comment);
-            repo.UpdateReview(review);
-
-            return RedirectToAction("Reviews");
-        }
-
     }
 };
