@@ -37,7 +37,8 @@ namespace BookReviews
             {
                 // Assuming SQLite is installed on all other operating systems
                 services.AddDbContext<BookReviewContext>(options =>
-                    options.UseSqlite(Configuration["ConnectionStrings:SQLiteConnection"]));
+                    options.UseSqlite(Configuration["ConnectionStrings:SQLiteConnection"],
+                    x => x.MigrationsAssembly("SQLiteMigrations")));
             }
         }
 
