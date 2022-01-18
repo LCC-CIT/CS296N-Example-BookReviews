@@ -29,7 +29,7 @@
     </div>
     <div class="row p-2">
         <label asp-for="Rating" class="control-label  col-md-1">Rating</label><br />
-        <input asp-for="Rating" class="form-control col-md-6" />
+        <input asp-for="Rating" min="1" max="5" class="form-control col-md-6" />
         <span asp-validation-for="Rating" class="text-danger"></span><br />
     </div>
     <div class="row p-2">

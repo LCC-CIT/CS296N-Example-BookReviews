@@ -54,6 +54,7 @@ namespace BookReviews.Controllers
             }
             return RedirectToAction("Reviews");
             // TODO: figure out how to send bookTitle and reviewerName to the Reviews method
+            // So that only the review just entered is filtered and shown. 
             // return RedirectToAction("Reviews", new {bookTitle = model.BookTitle, reviewerName = model.Reviewer.Name});
         }
 
