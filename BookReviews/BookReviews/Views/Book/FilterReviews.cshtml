@@ -6,24 +6,25 @@
 
 <h1 class="display-4">Filter Reviews</h1>
 Enter a book title:
-<form method="post" class="container">
+<form method="get" action="FilterReviews" class="container">
     <div class="row p-2">
         <label for="BookTitle" class="control-label col-md-1">Title</label>
-        <input name="BookTitle" class="form-control col-md-6" />
+        <input name="bookTitle" class="form-control col-md-6" />
     </div>
     <div class="row p-2">
         <button type="submit" class="form-control btn btn-success col-2">Submit</button>
-        <a asp-action="Reviews" class="btn btn-secondary col-3">Reset</a>
     </div>
 </form>
 
-<form method="post" class="container">
+<form method="get" action="FilterReviews" class="container">
     <div class="row p-2">
         <label for="ReviewerName" class="control-label col-md-1">Reviewer Name</label>
-        <input name="ReviewerName" class="form-control col-md-6" />
+        <input name="reviewerName" class="form-control col-md-6" />
     </div>
     <div class="row p-2">
         <button type="submit" class="form-control btn btn-success col-2">Submit</button>
+        <a asp-action="Reviews" class="btn btn-secondary col-3 pl-2">Reset</a>
+        <!-- TODO: Make the Reset button the same width as the submit button -->
     </div>
 </form>
 
@@ -39,7 +40,7 @@ Enter a book title:
             <strong class="m-3">Reviewer:</strong>
             @review.Reviewer.Name<br />
             <strong class="m-3">Review Date:</strong>
-            @review.ReviewDate.Date<br />
+            @review.ReviewDate<br />
             <strong class="m-3">Review:</strong>
             @review.ReviewText<br />
             <strong class="m-3">Rating:</strong>

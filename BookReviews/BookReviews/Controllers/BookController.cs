@@ -27,6 +27,8 @@ namespace BookReviews.Controllers
                 .ToList();
 
             return View(titles);
+            // TODO: Upgrade to .netcore 6.0 so that the query below can be used.
+            //       I think the query below will operate more efficiently in the database
             /* Note: .GroupBy is not supported by EF Core 3.1 so this doesn't work:
                 List<Review> reviews = repo.Reviews
                     .GroupBy(review => review.BookTitle)
@@ -44,27 +46,24 @@ namespace BookReviews.Controllers
         [HttpPost]
         public IActionResult Review(Review model)
         {
-            model.ReviewDate = DateTime.Now;
+            model.ReviewDate = DateTime.Today;
             // Store the model in the database if it is valid
             if(ModelState.IsValid)
             { 
                 repo.AddReview(model);
             }
-            return RedirectToAction("Reviews");
-            // TODO: figure out how to send bookTitle and reviewerName to the Reviews method
-            // So that only the review just entered is filtered and shown. 
-            // return RedirectToAction("Reviews", new {bookTitle = model.BookTitle, reviewerName = model.Reviewer.Name});
+            return RedirectToAction("FilterReviews", new {bookTitle = model.BookTitle, reviewerName = model.Reviewer.Name});
         }
 
+        // TODO: Eliminate this method. We don't need both Reviews and FilterReviews
         public IActionResult Reviews()
         {
             // Get all reviews in the database
             List<Review> reviews = repo.Reviews.ToList<Review>(); // Use ToList to convert the IQueryable to a list
-            return View(reviews);
+            return View("FilterReviews", reviews);
         }
 
-        [HttpPost]
-        public IActionResult Reviews(string bookTitle, string reviewerName)
+        public IActionResult FilterReviews(string bookTitle, string reviewerName)
         {
             List<Review> reviews = null;
 
