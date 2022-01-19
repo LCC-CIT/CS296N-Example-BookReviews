@@ -5,7 +5,7 @@
     },
     "mssql2": {
       "type": "mssql",
-      "connectionId": "ConnectionStrings:AzureSQLConnection"
+      "connectionId": "ConnectionStrings:SQLServerConnection"
     }
   }
 }
