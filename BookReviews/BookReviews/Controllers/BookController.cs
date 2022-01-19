@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using BookReviews.Models;
 using BookReviews.Repos;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace BookReviews.Controllers
 {
@@ -54,6 +52,7 @@ namespace BookReviews.Controllers
             }
             return RedirectToAction("Reviews");
             // TODO: figure out how to send bookTitle and reviewerName to the Reviews method
+            // So that only the review just entered is filtered and shown. 
             // return RedirectToAction("Reviews", new {bookTitle = model.BookTitle, reviewerName = model.Reviewer.Name});
         }
 
@@ -61,7 +60,6 @@ namespace BookReviews.Controllers
         {
             // Get all reviews in the database
             List<Review> reviews = repo.Reviews.ToList<Review>(); // Use ToList to convert the IQueryable to a list
-            // var reviews = context.Reviews.Include(book => book.Reviewer).ToList<Review>();
             return View(reviews);
         }
 
@@ -82,7 +80,6 @@ namespace BookReviews.Controllers
                            where r.Reviewer.Name == reviewerName
                            select r).ToList();
             }
-
             return View(reviews);
         }
     }

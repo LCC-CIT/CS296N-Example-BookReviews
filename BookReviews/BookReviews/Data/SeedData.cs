@@ -40,7 +40,8 @@ namespace BookReviews.Data
                     BookTitle = "Prince of Foxes",
                     AuthorName = "Samuel Shellabarger",
                     ReviewText = "Great book, a must read!",
-                    ReviewDate = DateTime.Parse("11/1/2020")
+                    ReviewDate = DateTime.Parse("11/1/2020"),
+                    Rating = 5
                 },
                 // Another review of the same book
                 new
@@ -50,7 +51,8 @@ namespace BookReviews.Data
                     BookTitle = "Prince of Foxes",
                     AuthorName = "Samuel Shellabarger",
                     ReviewText = "I love the clever, witty dialog",
-                    ReviewDate = DateTime.Parse("11/15/2020")
+                    ReviewDate = DateTime.Parse("11/15/2020"),
+                    Rating = 5
                 }
             );
 
@@ -64,7 +66,8 @@ namespace BookReviews.Data
                     BookTitle = "Virgil Wander",
                     AuthorName = "Lief Enger",
                     ReviewText = "Wonderful book, written by a distant cousin of mine.",
-                    ReviewDate = DateTime.Parse("11/30/2020")
+                    ReviewDate = DateTime.Parse("11/30/2020"),
+                    Rating = 5  
                 },
 
                 new
@@ -74,7 +77,8 @@ namespace BookReviews.Data
                     BookTitle = "Ivanho",
                     AuthorName = "Sir Walter Scott",
                     ReviewText = "It was a little hard going at first, but then I loved it!",
-                    ReviewDate = DateTime.Parse("11/1/2020")
+                    ReviewDate = DateTime.Parse("11/1/2020"),
+                    Rating = 4
                 }
             );
         }
