@@ -69,7 +69,6 @@ namespace BookReviews.Migrations
                     LockoutEnabled = table.Column<bool>(nullable: false),
                     AccessFailedCount = table.Column<int>(nullable: false),
                     Discriminator = table.Column<string>(nullable: false),
-                    UserID = table.Column<int>(nullable: true),
                     Name = table.Column<string>(maxLength: 60, nullable: true)
                 },
                 constraints: table =>
