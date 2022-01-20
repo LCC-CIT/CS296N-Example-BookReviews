@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BookReviews.Migrations
 {
     [DbContext(typeof(BookReviewContext))]
-    [Migration("20220119204945_SqlServerInitial")]
-    partial class SqlServerInitial
+    [Migration("20220120001747_SQLiteInitial")]
+    partial class SQLiteInitial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

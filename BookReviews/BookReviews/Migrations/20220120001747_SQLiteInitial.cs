@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BookReviews.Migrations
 {
-    public partial class SqlServerInitial : Migration
+    public partial class SQLiteInitial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
