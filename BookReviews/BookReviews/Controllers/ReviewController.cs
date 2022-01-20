@@ -27,10 +27,7 @@ namespace BookReviews.Controllers
         {
             model.ReviewDate = DateTime.Today;
             // Store the model in the database if it is valid
-            if(ModelState.IsValid)
-            { 
                 repo.AddReview(model);
-            }
             return RedirectToAction("FilterReviews", new {bookTitle = model.BookTitle, reviewerName = model.Reviewer.Name});
         }
 

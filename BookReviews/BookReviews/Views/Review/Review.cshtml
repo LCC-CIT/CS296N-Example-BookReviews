@@ -6,11 +6,9 @@
 <strong>Enter your Review</strong>
 <br />
 <form method="post" class="container">
-    <div asp-validation-summary="All" class="text-danger"></div>
     <div class="row p-2">
         <label asp-for="BookTitle" class="control-label col-md-1">Title</label>
         <input asp-for="BookTitle" class="form-control col-md-6" />
-        <span asp-validation-for="BookTitle" class="text-danger"></span>
     </div>
     <div class="row p-2">
         <label asp-for="AuthorName" class="control-label  col-md-1">Author</label><br />
@@ -19,7 +17,6 @@
     <div class="row p-2">
         <label asp-for="Reviewer.Name" class="control-label  col-md-1">Reviewer</label><br />
         <input asp-for="Reviewer.Name" class="form-control col-md-6" />
-        <span asp-validation-for="Reviewer.Name" class="text-danger"></span><br />
     </div>
     <div class="row p-2">
         <label asp-for="ReviewText" class="control-label  col-md-1">Review</label><br />
@@ -30,16 +27,8 @@
     <div class="row p-2">
         <label asp-for="Rating" class="control-label  col-md-1">Rating</label><br />
         <input asp-for="Rating" min="1" max="5" class="form-control col-md-6" />
-        <span asp-validation-for="Rating" class="text-danger"></span><br />
     </div>
     <div class="row p-2">
         <button type="submit" class="form-control btn btn-success col-2">Submit</button>
     </div>
 </form>
-
-<br />
-<hr />
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
