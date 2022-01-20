@@ -2,7 +2,6 @@ using BookReviews.Controllers;
 using BookReviews.Models;
 using BookReviews.Repos;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
 using Xunit;
 
@@ -53,7 +52,7 @@ namespace Tests
         [Fact]
         public void IndexTest()
         {
-            /* Test to see if all reviews are returned */
+            /* Test to see if names of all authors are returned without duplicates */
 
             // Arrange
             var fakeRepo = new FakeReviewRepository();
