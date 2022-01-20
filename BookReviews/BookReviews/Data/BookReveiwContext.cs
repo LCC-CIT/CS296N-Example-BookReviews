@@ -1,15 +1,15 @@
 ﻿using BookReviews.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace BookReviews.Data
 {
-    public class BookReviewContext : DbContext
+    public class BookReviewContext : IdentityDbContext
     {
         public BookReviewContext(
             DbContextOptions<BookReviewContext> options) : base(options) { }
 
         public DbSet<Review> Reviews { get; set; }
-        public DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

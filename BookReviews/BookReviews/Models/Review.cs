@@ -12,7 +12,7 @@ namespace BookReviews.Models
 
         public string AuthorName { get; set; }
 
-        public User Reviewer { get; set; }
+        public AppUser Reviewer { get; set; }
 
         [StringLength(500, MinimumLength = 10)]
         [Required]

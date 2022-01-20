@@ -13,19 +13,20 @@ namespace BookReviews.Data
         /// <param name="modelBuilder"></param>
         public static void Seed(this ModelBuilder modelBuilder)
         {
+            /*
             // Add three Users who will be the reviewer
-            modelBuilder.Entity<User>().HasData(
-                new User
+            modelBuilder.Entity<AppUser>().HasData(
+                new AppUser
                 {
                     UserID = 1,
                     Name = "Brian Bird"
                 },
-                new User
+                new AppUser
                 {
                     UserID = 2,
                     Name = "Emma Watson"
                 },
-                new User
+                new AppUser
                 {
                     UserID = 3,
                     Name = "Daniel Radliiffe"
@@ -81,6 +82,7 @@ namespace BookReviews.Data
                     Rating = 4
                 }
             );
+            */
         }
     }
 }
