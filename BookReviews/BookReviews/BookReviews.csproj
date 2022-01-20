@@ -6,6 +6,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20220119201157_SQLite.cs" />
+    <Compile Remove="Migrations\20220119201157_SQLite.Designer.cs" />
+    <Compile Remove="Migrations\20220119203817_SQLServer.cs" />
+    <Compile Remove="Migrations\20220119203817_SQLServer.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.22" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.22" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.22">
@@ -22,6 +29,7 @@
 
   <ItemGroup>
     <None Remove="Data\" />
+    <None Remove="Data\BookReviews.db" />
     <None Remove="System.Data.SQLite.Core" />
   </ItemGroup>
   <ItemGroup>

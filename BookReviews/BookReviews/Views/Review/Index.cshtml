@@ -4,9 +4,12 @@
     ViewData["Title"] = "Book Reviews";
 }
 
-<h1 class="display-4">Filter Reviews</h1>
+<h3 class="display-4">Write a Review</h3>
+<a asp-controller="Review" asp-action="Review">Enter your review</a>
+<br /><br />
+<h3 class="display-4">Filter Reviews</h3>
 Enter a book title:
-<form method="get" action="FilterReviews" class="container">
+<form method="get" asp-controller="Review" asp-action="FilterReviews" class="container">
     <div class="row p-2">
         <label for="BookTitle" class="control-label col-md-1">Title</label>
         <input name="bookTitle" class="form-control col-md-6" />
@@ -15,20 +18,21 @@ Enter a book title:
         <button type="submit" class="form-control btn btn-success col-2">Submit</button>
     </div>
 </form>
-
-<form method="get" action="FilterReviews" class="container">
+<br />
+Enter the name of a reviewer:
+<form method="get" asp-controller="Review" asp-action="FilterReviews" class="container">
     <div class="row p-2">
-        <label for="ReviewerName" class="control-label col-md-1">Reviewer Name</label>
+        <label for="ReviewerName" class="control-label col-md-1">Name</label>
         <input name="reviewerName" class="form-control col-md-6" />
     </div>
     <div class="row p-2">
         <button type="submit" class="form-control btn btn-success col-2">Submit</button>
-        <a asp-action="Reviews" class="btn btn-secondary col-3 pl-2">Reset</a>
+        <a asp-controller="Review" asp-action="Index" class="btn btn-secondary col-3 pl-2">Clear filters</a>
         <!-- TODO: Make the Reset button the same width as the submit button -->
     </div>
 </form>
 
-<h1 class="display-4">Book Reviews</h1>
+<h3 class="display-4">Book Reviews</h3>
 
     @foreach (Review review in Model)
     {
@@ -40,7 +44,8 @@ Enter a book title:
             <strong class="m-3">Reviewer:</strong>
             @review.Reviewer.Name<br />
             <strong class="m-3">Review Date:</strong>
-            @review.ReviewDate<br />
+            @review.ReviewDate.ToString("dddd, MMMM dd, yyyy")<br />
+            @*TODO: Figure out why the data annotations on the model don't forma the date*@
             <strong class="m-3">Review:</strong>
             @review.ReviewText<br />
             <strong class="m-3">Rating:</strong>
