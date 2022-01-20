@@ -29,11 +29,15 @@
 
   <ItemGroup>
     <None Remove="Data\" />
-    <None Remove="Data\BookReviews.db" />
+    <None Remove="Properties\PublishProfiles\BookReviews-W22 - Web Deploy.pubxml" />
     <None Remove="System.Data.SQLite.Core" />
   </ItemGroup>
+
   <ItemGroup>
-    <Folder Include="Data\" />
+    <_WebToolingArtifacts Remove="Properties\PublishProfiles\BookReview-W22-SQLite-Web Deploy.pubxml" />
+    <_WebToolingArtifacts Remove="Properties\PublishProfiles\BookReviews-W22-SQLServer-Web Deploy.pubxml" />
+  </ItemGroup>
+  <ItemGroup>
     <Folder Include="Migrations\" />
   </ItemGroup>
 </Project>
