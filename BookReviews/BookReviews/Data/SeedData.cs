@@ -13,22 +13,21 @@ namespace BookReviews.Data
         /// <param name="modelBuilder"></param>
         public static void Seed(this ModelBuilder modelBuilder)
         {
-            /*
             // Add three Users who will be the reviewer
             modelBuilder.Entity<AppUser>().HasData(
                 new AppUser
                 {
-                    UserID = 1,
+                    Id = "1",
                     Name = "Brian Bird"
                 },
                 new AppUser
                 {
-                    UserID = 2,
+                    Id = "2",
                     Name = "Emma Watson"
                 },
                 new AppUser
                 {
-                    UserID = 3,
+                    Id = "3",
                     Name = "Daniel Radliiffe"
                 }
             );
@@ -37,7 +36,7 @@ namespace BookReviews.Data
                 new 
                 {
                     ReviewID = 1,
-                    ReviewerUserID = 2,
+                    ReviewerAppUserID = 2,
                     BookTitle = "Prince of Foxes",
                     AuthorName = "Samuel Shellabarger",
                     ReviewText = "Great book, a must read!",
@@ -48,7 +47,7 @@ namespace BookReviews.Data
                 new
                 {
                     ReviewID = 2,
-                    ReviewerUserID = 3,
+                    ReviewerAppUserID = 2,
                     BookTitle = "Prince of Foxes",
                     AuthorName = "Samuel Shellabarger",
                     ReviewText = "I love the clever, witty dialog",
@@ -82,7 +81,6 @@ namespace BookReviews.Data
                     Rating = 4
                 }
             );
-            */
         }
     }
 }

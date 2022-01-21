@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BookReviews.Data
 {
-    public class BookReviewContext : IdentityDbContext
+    public class BookReviewContext : IdentityDbContext<AppUser>
     {
         public BookReviewContext(
             DbContextOptions<BookReviewContext> options) : base(options) { }
@@ -13,6 +13,8 @@ namespace BookReviews.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            // We must call the base class method because it builds the Identity tables
+            base.OnModelCreating(modelBuilder);
             modelBuilder.Seed();  // This extension method will seed the database
         }
     }
