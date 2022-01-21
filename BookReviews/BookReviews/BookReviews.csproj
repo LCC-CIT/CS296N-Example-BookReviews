@@ -37,9 +37,4 @@
     <Folder Include="Data\" />
     <Folder Include="Migrations\" />
   </ItemGroup>
-  <ItemGroup>
-    <None Update="Data\BookReviews.db">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
 </Project>
