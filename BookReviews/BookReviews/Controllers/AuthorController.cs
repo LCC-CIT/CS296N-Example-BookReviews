@@ -35,8 +35,12 @@ namespace BookReviews.Controllers
         [HttpPost]
         public IActionResult Quiz(QuizVM quiz)
         {
-            quiz.CheckAnswers();
-            return View(quiz);
+            if (ModelState.IsValid)
+            {
+                quiz.CheckAnswers();
+                return View(quiz);
+            }
+            return RedirectToAction("Quiz");
         }
 
     }
