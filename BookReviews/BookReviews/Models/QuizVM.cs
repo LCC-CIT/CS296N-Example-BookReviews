@@ -9,11 +9,11 @@ namespace BookReviews.Models
         // Result of checking the answer
         public String RightOrWrong1 { get; set; }
 
-        // Second question results
+        // Second question and result of check
         public String UserAnswer2 { get; set; }
         public String RightOrWrong2 { get; set; }
 
-        // Thirds question results
+        // Third question and result of check
         public String UserAnswer3 { get; set; }
         public String RightOrWrong3 { get; set; }
 

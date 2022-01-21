@@ -12,17 +12,23 @@
         <p>@Model?.RightOrWrong1</p>
         <br />
         <label asp-for="UserAnswer2">What year was Charles Dickens born?</label>
-        <input asp-for="UserAnswer2" type="number" class="form-control pb-1" />
+        <select asp-for="UserAnswer2" class="form-control pb-1">
+            <option value="">Select a year...</option>
+            <option value="1945">1945</option>
+            <option value="1812">1812</option>
+            <option value="1783">1783</option>
+            <option value="1902">1902</option>
+        </select>
         <p>@Model?.RightOrWrong2</p>
         <br />
         <p class="row">The book 1984 was written in 1984</p>
-        <div class="row">
-            <label for="true" class="col-1">True</label>
-            <input asp-for="UserAnswer3"  id="true" type="radio" value="true" class="form-control col-1" />
+        <div class="row form-check">
+            <label for="true" class="col-1 form-check-label">True</label>
+            <input asp-for="UserAnswer3"  id="true" type="radio" value="true" class="form-form-check-input col-1" />
         </div>
-        <div class="row">
-            <label for="false" class="col-1">False</label>
-            <input asp-for="UserAnswer3" id="false" type="radio" value="false" class="form-control col-1" />
+        <div class="row form-check">
+            <label for="false" class="col-1 form-check-label">False</label>
+            <input asp-for="UserAnswer3" id="false" type="radio" value="false" class="form-form-check-input col-1" />
         </div>
         <p>@Model?.RightOrWrong3</p>
 
