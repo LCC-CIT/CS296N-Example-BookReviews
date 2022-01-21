@@ -52,7 +52,7 @@ namespace BookReviews.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("Sqlite:Autoincrement", true),
                     RoleId = table.Column<string>(nullable: false),
                     ClaimType = table.Column<string>(nullable: true),
                     ClaimValue = table.Column<string>(nullable: true)
@@ -73,7 +73,7 @@ namespace BookReviews.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("Sqlite:Autoincrement", true),
                     UserId = table.Column<string>(nullable: false),
                     ClaimType = table.Column<string>(nullable: true),
                     ClaimValue = table.Column<string>(nullable: true)
@@ -158,7 +158,7 @@ namespace BookReviews.Migrations
                 columns: table => new
                 {
                     ReviewID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("Sqlite:Autoincrement", true),
                     BookTitle = table.Column<string>(nullable: false),
                     AuthorName = table.Column<string>(nullable: true),
                     ReviewerId = table.Column<string>(nullable: true),
@@ -180,28 +180,37 @@ namespace BookReviews.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "Name", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "9096418f-e871-4c24-9cb3-620b38dca72c", 0, "405f0c32-7779-4a63-8064-b7ed23a51df7", null, false, false, null, "Brian Bird", null, null, null, null, false, "7a1536ac-8018-4eea-a415-7d898da16385", false, null });
+                values: new object[] { "1c424772-ea07-475c-a636-7fe45c532125", 0, "501fe750-773e-4d0f-b97e-b1670a73a491", null, false, false, null, "Brian Bird", null, null, null, null, false, "cd147833-5841-49ed-b6b8-198d40d01408", false, null });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "Name", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "9e4986c3-615e-4a9a-ab5c-7f3c0d044e66", 0, "112b0b6f-b2c4-40da-ba57-6c08140406e7", null, false, false, null, "Emma Watson", null, null, null, null, false, "9f1af86e-624f-46bb-ae41-e825493217e8", false, null });
+                values: new object[] { "65fc926e-68c0-4d98-ba91-4d5137540e1d", 0, "eadc3756-880d-4afd-b0f4-44a68c5e0fc7", null, false, false, null, "Emma Watson", null, null, null, null, false, "4d5cab6d-8bf4-4822-80ab-2f5acd0d5cf4", false, null });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "Name", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "5e8f870c-ba2d-4a67-a65c-3a33d413da69", 0, "14ba290b-ac29-4504-8595-08f43106fd24", null, false, false, null, "Daniel Radliiffe", null, null, null, null, false, "40e0a6c3-1e26-40b5-aae1-24820703d6c7", false, null });
+                values: new object[] { "224a3bc9-45cb-49d4-9656-57aa9defcb38", 0, "8a2310d2-bddd-4999-bc74-e155689e89ed", null, false, false, null, "Daniel Radliiffe", null, null, null, null, false, "291e3f28-9939-4b06-ab3d-0575c5ef581e", false, null });
 
             migrationBuilder.InsertData(
                 table: "Reviews",
                 columns: new[] { "ReviewID", "AuthorName", "BookTitle", "Rating", "ReviewDate", "ReviewText", "ReviewerId" },
-                values: new object[,]
-                {
-                    { 3, "Lief Enger", "Virgil Wander", 5, new DateTime(2020, 11, 30, 0, 0, 0, 0, DateTimeKind.Unspecified), "Wonderful book, written by a distant cousin of mine.", "9096418f-e871-4c24-9cb3-620b38dca72c" },
-                    { 4, "Sir Walter Scott", "Ivanho", 4, new DateTime(2020, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "It was a little hard going at first, but then I loved it!", "9096418f-e871-4c24-9cb3-620b38dca72c" },
-                    { 1, "Samuel Shellabarger", "Prince of Foxes", 5, new DateTime(2020, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Great book, a must read!", "9e4986c3-615e-4a9a-ab5c-7f3c0d044e66" },
-                    { 2, "Samuel Shellabarger", "Prince of Foxes", 5, new DateTime(2020, 11, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), "I love the clever, witty dialog", "5e8f870c-ba2d-4a67-a65c-3a33d413da69" }
-                });
+                values: new object[] { 3, "Lief Enger", "Virgil Wander", 5, new DateTime(2020, 11, 30, 0, 0, 0, 0, DateTimeKind.Unspecified), "Wonderful book, written by a distant cousin of mine.", "1c424772-ea07-475c-a636-7fe45c532125" });
+
+            migrationBuilder.InsertData(
+                table: "Reviews",
+                columns: new[] { "ReviewID", "AuthorName", "BookTitle", "Rating", "ReviewDate", "ReviewText", "ReviewerId" },
+                values: new object[] { 4, "Sir Walter Scott", "Ivanho", 4, new DateTime(2020, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "It was a little hard going at first, but then I loved it!", "1c424772-ea07-475c-a636-7fe45c532125" });
+
+            migrationBuilder.InsertData(
+                table: "Reviews",
+                columns: new[] { "ReviewID", "AuthorName", "BookTitle", "Rating", "ReviewDate", "ReviewText", "ReviewerId" },
+                values: new object[] { 1, "Samuel Shellabarger", "Prince of Foxes", 5, new DateTime(2020, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Great book, a must read!", "65fc926e-68c0-4d98-ba91-4d5137540e1d" });
+
+            migrationBuilder.InsertData(
+                table: "Reviews",
+                columns: new[] { "ReviewID", "AuthorName", "BookTitle", "Rating", "ReviewDate", "ReviewText", "ReviewerId" },
+                values: new object[] { 2, "Samuel Shellabarger", "Prince of Foxes", 5, new DateTime(2020, 11, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), "I love the clever, witty dialog", "224a3bc9-45cb-49d4-9656-57aa9defcb38" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -212,8 +221,7 @@ namespace BookReviews.Migrations
                 name: "RoleNameIndex",
                 table: "AspNetRoles",
                 column: "NormalizedName",
-                unique: true,
-                filter: "[NormalizedName] IS NOT NULL");
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetUserClaims_UserId",
@@ -239,8 +247,7 @@ namespace BookReviews.Migrations
                 name: "UserNameIndex",
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
-                unique: true,
-                filter: "[NormalizedUserName] IS NOT NULL");
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Reviews_ReviewerId",
