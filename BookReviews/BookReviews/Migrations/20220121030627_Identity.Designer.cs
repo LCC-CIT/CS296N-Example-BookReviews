@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BookReviews.Migrations
 {
     [DbContext(typeof(BookReviewContext))]
-    [Migration("20220121002458_Identity")]
+    [Migration("20220121030627_Identity")]
     partial class Identity
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -89,6 +89,44 @@ namespace BookReviews.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "9096418f-e871-4c24-9cb3-620b38dca72c",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "405f0c32-7779-4a63-8064-b7ed23a51df7",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            Name = "Brian Bird",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "7a1536ac-8018-4eea-a415-7d898da16385",
+                            TwoFactorEnabled = false
+                        },
+                        new
+                        {
+                            Id = "9e4986c3-615e-4a9a-ab5c-7f3c0d044e66",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "112b0b6f-b2c4-40da-ba57-6c08140406e7",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            Name = "Emma Watson",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "9f1af86e-624f-46bb-ae41-e825493217e8",
+                            TwoFactorEnabled = false
+                        },
+                        new
+                        {
+                            Id = "5e8f870c-ba2d-4a67-a65c-3a33d413da69",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "14ba290b-ac29-4504-8595-08f43106fd24",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            Name = "Daniel Radliiffe",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "40e0a6c3-1e26-40b5-aae1-24820703d6c7",
+                            TwoFactorEnabled = false
+                        });
                 });
 
             modelBuilder.Entity("BookReviews.Models.Review", b =>
@@ -124,6 +162,48 @@ namespace BookReviews.Migrations
                     b.HasIndex("ReviewerId");
 
                     b.ToTable("Reviews");
+
+                    b.HasData(
+                        new
+                        {
+                            ReviewID = 1,
+                            AuthorName = "Samuel Shellabarger",
+                            BookTitle = "Prince of Foxes",
+                            Rating = 5,
+                            ReviewDate = new DateTime(2020, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ReviewText = "Great book, a must read!",
+                            ReviewerId = "9e4986c3-615e-4a9a-ab5c-7f3c0d044e66"
+                        },
+                        new
+                        {
+                            ReviewID = 2,
+                            AuthorName = "Samuel Shellabarger",
+                            BookTitle = "Prince of Foxes",
+                            Rating = 5,
+                            ReviewDate = new DateTime(2020, 11, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ReviewText = "I love the clever, witty dialog",
+                            ReviewerId = "5e8f870c-ba2d-4a67-a65c-3a33d413da69"
+                        },
+                        new
+                        {
+                            ReviewID = 3,
+                            AuthorName = "Lief Enger",
+                            BookTitle = "Virgil Wander",
+                            Rating = 5,
+                            ReviewDate = new DateTime(2020, 11, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ReviewText = "Wonderful book, written by a distant cousin of mine.",
+                            ReviewerId = "9096418f-e871-4c24-9cb3-620b38dca72c"
+                        },
+                        new
+                        {
+                            ReviewID = 4,
+                            AuthorName = "Sir Walter Scott",
+                            BookTitle = "Ivanho",
+                            Rating = 4,
+                            ReviewDate = new DateTime(2020, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ReviewText = "It was a little hard going at first, but then I loved it!",
+                            ReviewerId = "9096418f-e871-4c24-9cb3-620b38dca72c"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
