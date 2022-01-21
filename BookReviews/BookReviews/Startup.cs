@@ -35,14 +35,12 @@ namespace BookReviews
                 services.AddDbContext<BookReviewContext>(options =>
                    options.UseSqlServer(Configuration["ConnectionStrings:SQLServerConnection"]));
             }
-            /*
             else
             {
                 // Assuming SQLite is installed on all other operating systems
                 services.AddDbContext<BookReviewContext>(options =>
                     options.UseSqlite(Configuration["ConnectionStrings:SQLiteConnection"]));
             }
-            */
             services.AddIdentity<AppUser, IdentityRole>()
                 .AddEntityFrameworkStores<BookReviewContext>()
                 .AddDefaultTokenProviders();
