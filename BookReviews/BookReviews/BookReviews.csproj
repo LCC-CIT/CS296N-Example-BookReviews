@@ -10,6 +10,8 @@
     <Compile Remove="Migrations\20220119201157_SQLite.Designer.cs" />
     <Compile Remove="Migrations\20220119203817_SQLServer.cs" />
     <Compile Remove="Migrations\20220119203817_SQLServer.Designer.cs" />
+    <Compile Remove="Migrations\20220119204945_SqlServerInitial.cs" />
+    <Compile Remove="Migrations\20220119204945_SqlServerInitial.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

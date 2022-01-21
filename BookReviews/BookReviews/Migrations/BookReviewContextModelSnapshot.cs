@@ -3,6 +3,7 @@ using System;
 using BookReviews.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BookReviews.Migrations
@@ -14,34 +15,34 @@ namespace BookReviews.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.22");
+                .HasAnnotation("ProductVersion", "3.1.22")
+                .HasAnnotation("Relational:MaxIdentifierLength", 128)
+                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("BookReviews.Models.Review", b =>
                 {
                     b.Property<int>("ReviewID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("AuthorName")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("BookTitle")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Rating")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("ReviewDate")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("ReviewText")
-                        .IsRequired()
-                        .HasColumnType("TEXT")
-                        .HasMaxLength(500);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("ReviewerUserID")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
                     b.HasKey("ReviewID");
 
@@ -96,12 +97,11 @@ namespace BookReviews.Migrations
                 {
                     b.Property<int>("UserID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("TEXT")
-                        .HasMaxLength(60);
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("UserID");
 
