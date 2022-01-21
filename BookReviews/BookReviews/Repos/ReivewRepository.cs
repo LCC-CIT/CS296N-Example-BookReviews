@@ -30,6 +30,17 @@ namespace BookReviews.Repos
 
         public void AddReview(Review review)
         {
+            // See if this user is already in the database
+            var user = context.Users
+                .Where(u => u.Name == review.Reviewer.Name)
+                .FirstOrDefault();
+
+            // If they are, then use the existing record,
+            // otherwise a new one will be created
+            if (user != null)
+            {
+                review.Reviewer = user;
+            }
             context.Reviews.Add(review);
             context.SaveChanges();
         }

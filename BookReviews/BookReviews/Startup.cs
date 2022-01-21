@@ -1,8 +1,10 @@
 using System.Runtime.InteropServices;
 using BookReviews.Data;
+using BookReviews.Models;
 using BookReviews.Repos;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -33,12 +35,17 @@ namespace BookReviews
                 services.AddDbContext<BookReviewContext>(options =>
                    options.UseSqlServer(Configuration["ConnectionStrings:SQLServerConnection"]));
             }
+            /*
             else
             {
                 // Assuming SQLite is installed on all other operating systems
                 services.AddDbContext<BookReviewContext>(options =>
                     options.UseSqlite(Configuration["ConnectionStrings:SQLiteConnection"]));
             }
+            */
+            services.AddIdentity<AppUser, IdentityRole>()
+                .AddEntityFrameworkStores<BookReviewContext>()
+                .AddDefaultTokenProviders();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -59,7 +66,7 @@ namespace BookReviews
 
             app.UseRouting();
 
-            app.UseAuthorization();
+            app.UseAuthentication();
 
             app.UseEndpoints(endpoints =>
             {

@@ -10,9 +10,12 @@
     <Compile Remove="Migrations\20220119201157_SQLite.Designer.cs" />
     <Compile Remove="Migrations\20220119203817_SQLServer.cs" />
     <Compile Remove="Migrations\20220119203817_SQLServer.Designer.cs" />
+    <Compile Remove="Migrations\20220121002458_Identity.cs" />
+    <Compile Remove="Migrations\20220121002458_Identity.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.22" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.22" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.22" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.22">

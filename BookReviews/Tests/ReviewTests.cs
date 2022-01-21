@@ -23,7 +23,7 @@ namespace Tests
             var review = new Review()
             {
                 BookTitle = "A Book",
-                Reviewer = new User() { Name = "A Reviewer" }
+                Reviewer = new AppUser() { Name = "A Reviewer" }
             };
             // We only need these properties so the RedirectToAction doesn't complain
             // We aren't testing any model proeprties
@@ -76,13 +76,13 @@ namespace Tests
             var fakeRepo = new FakeReviewRepository();
             var controller = new ReviewController(fakeRepo);
             // We don't need need to add all the properties to the models since we aren't testing that.
-            var review1 = new Review() { Reviewer = new User() { Name = "Reviewer 1" } };
+            var review1 = new Review() { Reviewer = new AppUser() { Name = "Reviewer 1" } };
             fakeRepo.AddReview(review1);
             fakeRepo.AddReview(review1);
-            var review2 = new Review() { Reviewer = new User() { Name = "Reviewer 2" } };
+            var review2 = new Review() { Reviewer = new AppUser() { Name = "Reviewer 2" } };
             fakeRepo.AddReview(review2);
             fakeRepo.AddReview(review2);
-            var review3 = new Review() { Reviewer = new User() { Name = "Reviewer 3" } };
+            var review3 = new Review() { Reviewer = new AppUser() { Name = "Reviewer 3" } };
             fakeRepo.AddReview(review3);
             fakeRepo.AddReview(review3);
             // Act
