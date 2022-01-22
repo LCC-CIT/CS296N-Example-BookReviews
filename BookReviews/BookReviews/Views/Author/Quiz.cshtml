@@ -23,14 +23,14 @@
         <span asp-validation-for="UserAnswer2" class="text-danger"></span>
         <p>@Model?.RightOrWrong2</p>
         <br />
-        <p class="row">The book &nbsp; <em>1984</em> &nbsp; was written in 1984</p>
+        <p class="row">The book <em style="padding-inline:0.25em">1984</em> was written in 1984</p>
         <div class="row form-check">
-            <input asp-for="UserAnswer3" id="true" type="radio" value="true" class="form-check-input col-1" />
-            <label for="true" class="col-2 form-check-label">&nbsp; True</label>
+            <input asp-for="UserAnswer3" id="true" type="radio" value="true" class="form-check-input" />
+            <label for="true" class="form-check-label">True</label>
         </div>
         <div class="row form-check">
-            <input asp-for="UserAnswer3" id="false" type="radio" value="false" class="form-check-input col-1" />
-            <label for="false" class="col-2 form-check-label">&nbsp; False</label>
+            <input asp-for="UserAnswer3" id="false" type="radio" value="false" class="form-check-input" />
+            <label for="false" class="form-check-label">False</label>
             <span asp-validation-for="UserAnswer3" class="text-danger"></span>
         </div>
         <p>@Model?.RightOrWrong3</p>
