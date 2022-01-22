@@ -39,7 +39,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Update="Data\BookReviews.db">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 </Project>
