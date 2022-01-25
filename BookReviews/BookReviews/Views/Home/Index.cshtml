@@ -1,10 +1,19 @@
-﻿@{
+﻿@model Review
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center jumbotron">
     <h1 class="display-4">Book Reviews</h1>
-    <p>Welcome to Eugene's most awesome book review site!</p>
-    <a asp-controller="Review" asp-action="Index">View all reviews</a><br />
+    <p>Welcome to Eugene's new book review site!</p>
+    <h3 class="display-4">Today's most popular book</h3>
+    <p>
+        <em>@Model.BookTitle.</em><br />
+
+    </p>
+</div>
+<div class="text-center">
+    <a asp-controller="Review" asp-action="Index">View all reviews</a>
+    <br />
     <a asp-controller="Review" asp-action="Review">Write a review</a>
 </div>
