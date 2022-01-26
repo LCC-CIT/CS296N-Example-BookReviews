@@ -39,3 +39,7 @@
 		</div>
 	</div> <div class="row"> <div class="offset-2 col-sm-4"> Already registered? <a asp-action="LogIn">Log In</a> </div> </div>
 </form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
