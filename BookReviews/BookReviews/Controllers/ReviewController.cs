@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using BookReviews.Models;
 using BookReviews.Repos;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookReviews.Controllers
@@ -10,10 +11,12 @@ namespace BookReviews.Controllers
     public class ReviewController : Controller
     {
         IReviewRepository repo;
+        UserManager<AppUser> userManager;
 
-        public ReviewController(IReviewRepository r)
+        public ReviewController(IReviewRepository r, UserManager<AppUser> u)
         {
             repo = r;
+            this.userManager = u;
         }
 
         // Show the view that has a form for entering a review
@@ -25,10 +28,14 @@ namespace BookReviews.Controllers
         [HttpPost]
         public IActionResult Review(Review model)
         {
-            model.ReviewDate = DateTime.Today;
             // Store the model in the database if it is valid
             if(ModelState.IsValid)
-            { 
+            {
+                model.ReviewDate = DateTime.Today;
+                // Get the AppUser object for the current user
+                model.Reviewer = userManager.GetUserAsync(User).Result;
+                // TODO: modify the register code to get the user's name
+                model.Reviewer.Name = model.Reviewer.UserName;  // Temporary hack
                 repo.AddReview(model);
             }
             return RedirectToAction("FilterReviews", new {bookTitle = model.BookTitle, reviewerName = model.Reviewer.Name});

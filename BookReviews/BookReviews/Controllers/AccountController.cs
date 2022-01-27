@@ -45,7 +45,6 @@ namespace BookReviews.Controllers
             return View(model);
         }
 
-        /*
         [HttpGet]
         public IActionResult LogIn(string returnURL = "")
         {
@@ -83,6 +82,5 @@ namespace BookReviews.Controllers
             await signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
         }
-        */
     }
 }
