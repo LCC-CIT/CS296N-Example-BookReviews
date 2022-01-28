@@ -16,7 +16,7 @@ namespace BookReviews.Controllers
         public ReviewController(IReviewRepository r, UserManager<AppUser> u)
         {
             repo = r;
-            this.userManager = u;
+            userManager = u;
         }
 
         // Show the view that has a form for entering a review
@@ -34,8 +34,6 @@ namespace BookReviews.Controllers
                 model.ReviewDate = DateTime.Today;
                 // Get the AppUser object for the current user
                 model.Reviewer = userManager.GetUserAsync(User).Result;
-                // TODO: modify the register code to get the user's name
-                model.Reviewer.Name = model.Reviewer.UserName;  // Temporary hack
                 repo.AddReview(model);
             }
             return RedirectToAction("FilterReviews", new {bookTitle = model.BookTitle, reviewerName = model.Reviewer.Name});

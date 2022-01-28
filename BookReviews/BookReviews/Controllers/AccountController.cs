@@ -27,7 +27,7 @@ namespace BookReviews.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new AppUser { UserName = model.Username, Name = model.Username};
+                var user = new AppUser { UserName = model.Username, Name = model.Name};
                 var result = await userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

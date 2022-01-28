@@ -11,6 +11,6 @@ namespace BookReviews.Models
         [StringLength(255)]
         public string Password { get; set; }
         public string ReturnUrl { get; set; }
-        public bool RememberMe { get; set; }
+        public bool RememberMe { get; set; }   // When true, a persistent cookie will be used
     }
 }

@@ -1,7 +1,8 @@
-﻿@model LoginVM 
+﻿@model LoginVM
 @{ 
-    ViewBag.Title = "Login"; 
- } 
+    ViewData["Title"] = "Login"; 
+ }
+
 <h1>Login</h1>
 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 <form method="post" asp-action="LogIn" asp-route-returnUrl="@Model.ReturnUrl">
