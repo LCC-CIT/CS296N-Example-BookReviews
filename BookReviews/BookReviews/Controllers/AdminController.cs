@@ -26,6 +26,11 @@ namespace BookReviews.Controllers
             reviewRepo = repo;
         }
 
+        /// <summary>
+        /// Get a list of all users. Each user will have a list of their
+        /// roles in the AppUser.RoleNames property
+        /// </summary>
+        /// <returns>ViewResult</returns>
         public async Task<IActionResult> Index()
         {
             List<AppUser> users = new List<AppUser>();
