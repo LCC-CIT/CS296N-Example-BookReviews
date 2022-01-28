@@ -12,6 +12,10 @@
     <Compile Remove="Migrations\20220119203817_SQLServer.Designer.cs" />
     <Compile Remove="Migrations\20220121002458_Identity.cs" />
     <Compile Remove="Migrations\20220121002458_Identity.Designer.cs" />
+    <Compile Remove="Migrations\20220121030627_Identity.cs" />
+    <Compile Remove="Migrations\20220121030627_Identity.Designer.cs" />
+    <Compile Remove="Migrations\20220128032649_NewInitial.cs" />
+    <Compile Remove="Migrations\20220128032649_NewInitial.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
