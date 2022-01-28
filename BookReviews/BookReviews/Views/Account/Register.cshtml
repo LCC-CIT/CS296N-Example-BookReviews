@@ -1,9 +1,22 @@
 ﻿@model RegisterVM
 @{
-	ViewBag.Title = "Register";
-}<h1>Register</h1>
+	ViewData["Title"] = "Register";
+}
+
+<h1>Register</h1>
 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 <form method="post" asp-action="Register">
+		<div class="form-group row">
+		<div class="col-sm-2">
+			<label>Screen Name:</label>
+		</div>
+		<div class="col-sm-4">
+			<input asp-for="Name" class="form-control" />
+		</div>
+		<div class="col">
+			<span asp-validation-for="Name" class="text-danger"></span>
+		</div>
+	</div> 
 	<div class="form-group row">
 		<div class="col-sm-2">
 			<label>Username:</label>
@@ -14,7 +27,8 @@
 		<div class="col">
 			<span asp-validation-for="Username" class="text-danger"></span>
 		</div>
-	</div> <div class="form-group row">
+	</div> 
+	<div class="form-group row">
 		<div class="col-sm-2">
 			<label>Password:</label>
 		</div>
@@ -26,12 +40,12 @@
 		</div>
 	</div>
 	<div class="form-group row">
-	<div class="col-sm-2">
-		<label>Confirm Password:</label>
-	</div>
-	<div class="col-sm-4">
-		<input type="password" asp-for="ConfirmPassword" class="form-control" />
-	</div>
+		<div class="col-sm-2">
+			<label>Confirm Password:</label>
+		</div>
+		<div class="col-sm-4">
+			<input type="password" asp-for="ConfirmPassword" class="form-control" />
+		</div>
 	</div>
 	<div class="row">
 		<div class="offset-2 col-sm-4">
@@ -41,5 +55,7 @@
 </form>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+	await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
 }

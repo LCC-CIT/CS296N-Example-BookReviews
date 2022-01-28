@@ -2,6 +2,7 @@
 @{
     ViewData["Title"] = "Review";
 }
+
 <h1>Book Review</h1>
 <strong>Enter your Review</strong>
 <br />
@@ -15,11 +16,6 @@
     <div class="row p-2">
         <label asp-for="AuthorName" class="control-label  col-md-1">Author</label><br />
         <input asp-for="AuthorName" class="form-control col-md-6" /><br />
-    </div>
-    <div class="row p-2">
-        <label asp-for="Reviewer.Name" class="control-label  col-md-1">Reviewer</label><br />
-        <input asp-for="Reviewer.Name" class="form-control col-md-6" />
-        <span asp-validation-for="Reviewer.Name" class="text-danger"></span><br />
     </div>
     <div class="row p-2">
         <label asp-for="ReviewText" class="control-label  col-md-1">Review</label><br />

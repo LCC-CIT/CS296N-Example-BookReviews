@@ -27,7 +27,7 @@ namespace BookReviews.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new AppUser { UserName = model.Username, Name = model.Username};
+                var user = new AppUser { UserName = model.Username, Name = model.Name};
                 var result = await userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -45,7 +45,6 @@ namespace BookReviews.Controllers
             return View(model);
         }
 
-        /*
         [HttpGet]
         public IActionResult LogIn(string returnURL = "")
         {
@@ -83,6 +82,5 @@ namespace BookReviews.Controllers
             await signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
         }
-        */
     }
 }
