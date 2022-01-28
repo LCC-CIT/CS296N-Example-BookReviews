@@ -22,11 +22,16 @@ namespace BookReviews.Controllers
 
         public IActionResult Index()
         {
-            // Get a random review to display on the home page
-            var maxId = repo.Reviews.Max(r => r.ReviewID);
+            // Get a random book to display on the home page
+            int reviewCount = repo.Reviews.Count();
             var random = new Random();
-            var id = random.Next(maxId + 1);
-            var review = repo.Reviews.Where(r => r.ReviewID == maxId).FirstOrDefault();
+            var skipCount = random.Next(reviewCount);
+            var review = repo.Reviews.Skip(skipCount).FirstOrDefault();
+
+            // Get the number of reviews for the book and average rating
+            var reviews = repo.Reviews.Where(r => r.BookTitle == review.BookTitle).ToList();
+            ViewBag.reviewCount = reviews.Count();
+            ViewBag.averageRating = reviews.Average(r => r.Rating);
 
             return View(review);
         }
@@ -43,7 +48,7 @@ namespace BookReviews.Controllers
                 .OrderbyDescending(x => x.AvgRating)
                 .FirstOrDefault();
                 // This isn't working
-            */
+        */
 
         public IActionResult Recommended()
         {

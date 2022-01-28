@@ -4,12 +4,13 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">List of Books</h1>
-</div>
-<p>These are all the books reviewed on this site:</p>
+    <h1 class="display-4">Books</h1>
 
-@foreach (string title in Model)
-{
-    <span class="m-3">@title</span>
-    <br />
-}
+    <h3>Books reviewed on this site</h3>
+
+    @foreach (string title in Model)
+    {
+        <span class="m-3">@title</span>
+        <br />
+    }
+</div>
