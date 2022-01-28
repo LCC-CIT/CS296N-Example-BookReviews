@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BookReviews.Migrations
 {
-    public partial class Identity : Migration
+    public partial class NewInitial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -180,27 +180,25 @@ namespace BookReviews.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "Name", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "9096418f-e871-4c24-9cb3-620b38dca72c", 0, "405f0c32-7779-4a63-8064-b7ed23a51df7", null, false, false, null, "Brian Bird", null, null, null, null, false, "7a1536ac-8018-4eea-a415-7d898da16385", false, null });
-
-            migrationBuilder.InsertData(
-                table: "AspNetUsers",
-                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "Name", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "9e4986c3-615e-4a9a-ab5c-7f3c0d044e66", 0, "112b0b6f-b2c4-40da-ba57-6c08140406e7", null, false, false, null, "Emma Watson", null, null, null, null, false, "9f1af86e-624f-46bb-ae41-e825493217e8", false, null });
-
-            migrationBuilder.InsertData(
-                table: "AspNetUsers",
-                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "Name", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "5e8f870c-ba2d-4a67-a65c-3a33d413da69", 0, "14ba290b-ac29-4504-8595-08f43106fd24", null, false, false, null, "Daniel Radliiffe", null, null, null, null, false, "40e0a6c3-1e26-40b5-aae1-24820703d6c7", false, null });
+                values: new object[,]
+                {
+                    { "139e810d-9996-4103-a5e8-6ff5c49eb427", 0, "f9bf560e-0673-4f22-8ebd-b31a58a8caf0", null, false, false, null, "Brian Bird", null, null, null, null, false, "724570c3-600a-4159-80ba-9af71c9ce145", false, "BrianB" },
+                    { "1ab2d91e-5565-44c8-b5e5-d8ed8d3c635a", 0, "abdd3f5b-87fa-4533-89e8-72b7e0543775", null, false, false, null, "Emma Watson", null, null, null, null, false, "2a8956ea-cd06-4737-ba0f-9a0fd7dd121a", false, "EmmaW" },
+                    { "c0ebeb64-6148-44f2-bc32-cbbaa291c833", 0, "fadede41-b75e-4300-bf2d-56a2b6fdf3ce", null, false, false, null, "Daniel Radcliffe", null, null, null, null, false, "f8026567-7000-4c0c-b101-c931038be957", false, "DanielR" },
+                    { "c779cc03-a04d-4ac6-8a1d-41f277e84718", 0, "f81557f7-71a6-4821-ad79-2b66bfc124db", null, false, false, null, "Scarlett Johansson", null, null, null, null, false, "4565677e-22c1-4e6f-9a2f-3dd62062a181", false, "ScarlettJ" }
+                });
 
             migrationBuilder.InsertData(
                 table: "Reviews",
                 columns: new[] { "ReviewID", "AuthorName", "BookTitle", "Rating", "ReviewDate", "ReviewText", "ReviewerId" },
                 values: new object[,]
                 {
-                    { 3, "Lief Enger", "Virgil Wander", 5, new DateTime(2020, 11, 30, 0, 0, 0, 0, DateTimeKind.Unspecified), "Wonderful book, written by a distant cousin of mine.", "9096418f-e871-4c24-9cb3-620b38dca72c" },
-                    { 4, "Sir Walter Scott", "Ivanho", 4, new DateTime(2020, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "It was a little hard going at first, but then I loved it!", "9096418f-e871-4c24-9cb3-620b38dca72c" },
-                    { 1, "Samuel Shellabarger", "Prince of Foxes", 5, new DateTime(2020, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Great book, a must read!", "9e4986c3-615e-4a9a-ab5c-7f3c0d044e66" },
-                    { 2, "Samuel Shellabarger", "Prince of Foxes", 5, new DateTime(2020, 11, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), "I love the clever, witty dialog", "5e8f870c-ba2d-4a67-a65c-3a33d413da69" }
+                    { 3, "Lief Enger", "Virgil Wander", 5, new DateTime(2020, 11, 30, 0, 0, 0, 0, DateTimeKind.Unspecified), "Wonderful book, written by a distant cousin of mine.", "139e810d-9996-4103-a5e8-6ff5c49eb427" },
+                    { 5, "Sir Walter Scott", "Ivanho", 4, new DateTime(2020, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "It was a little hard going at first, but then I loved it!", "139e810d-9996-4103-a5e8-6ff5c49eb427" },
+                    { 1, "Samuel Shellabarger", "Prince of Foxes", 5, new DateTime(2020, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Great book, a must read!", "1ab2d91e-5565-44c8-b5e5-d8ed8d3c635a" },
+                    { 6, "C. S. Lewis", "The Lion, the Witch and the Wardrobe", 4, new DateTime(2020, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "I loved this book as a kid and I still love it!", "1ab2d91e-5565-44c8-b5e5-d8ed8d3c635a" },
+                    { 2, "Samuel Shellabarger", "Prince of Foxes", 5, new DateTime(2020, 11, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), "I love the clever, witty dialog", "c0ebeb64-6148-44f2-bc32-cbbaa291c833" },
+                    { 4, "Lief Enger", "Virgil Wander", 4, new DateTime(2019, 10, 3, 0, 0, 0, 0, DateTimeKind.Unspecified), "This book is a bit surreal, but it kept me engaged and reading right to the end.", "c779cc03-a04d-4ac6-8a1d-41f277e84718" }
                 });
 
             migrationBuilder.CreateIndex(

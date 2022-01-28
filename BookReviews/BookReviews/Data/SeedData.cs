@@ -10,6 +10,7 @@ namespace BookReviews.Data
         private static readonly string id1 = Guid.NewGuid().ToString();
         private static readonly string id2 = Guid.NewGuid().ToString();
         private static readonly string id3 = Guid.NewGuid().ToString();
+        private static readonly string id4 = Guid.NewGuid().ToString();
         /// <summary>
         /// This is an extension method for the ModelBuilder class
         /// It is called from BookReviewContext.OnModelCreating
@@ -17,26 +18,35 @@ namespace BookReviews.Data
         /// <param name="modelBuilder"></param>
         public static void Seed(this ModelBuilder modelBuilder)
         {
-            // Create three AppUsers who will be reviewers
+            // Create four AppUsers who will be reviewers
             var user1 = new AppUser()
             {
                 Id = id1,
-                Name = "Brian Bird"
+                Name = "Brian Bird",
+                UserName = "BrianB"
             };
             var user2 = new AppUser()
             {
                 Id = id2,
-                Name = "Emma Watson"
+                Name = "Emma Watson",
+                UserName = "EmmaW"
             };
             var user3 = new AppUser
             {
                 Id = id3,
-                Name = "Daniel Radliiffe"
+                Name = "Daniel Radcliffe",
+                UserName = "DanielR"
+            };
+            var user4 = new AppUser
+            {
+                Id = id4,
+                Name = "Scarlett Johansson",
+                UserName = "ScarlettJ"
             };
 
             // Add the three AppUsers to the database
             modelBuilder.Entity<AppUser>().HasData(
-                user1, user2, user3
+                user1, user2, user3, user4
             );
 
             // Create and add three reviews to the database
@@ -77,16 +87,38 @@ namespace BookReviews.Data
                     Rating = 5
                 },
 
+                 new
+                 {
+                     ReviewID = 4,
+                     ReviewerId = id4,
+                     BookTitle = "Virgil Wander",
+                     AuthorName = "Lief Enger",
+                     ReviewText = "This book is a bit surreal, but it kept me engaged and reading right to the end.",
+                     ReviewDate = DateTime.Parse("10/3/2019"),
+                     Rating = 4
+                 },
+
                 new
                 {
-                    ReviewID = 4,
+                    ReviewID = 5,
                     ReviewerId = id1,
                     BookTitle = "Ivanho",
                     AuthorName = "Sir Walter Scott",
                     ReviewText = "It was a little hard going at first, but then I loved it!",
                     ReviewDate = DateTime.Parse("11/1/2020"),
                     Rating = 4
-                }
+                },
+
+                 new
+                 {
+                     ReviewID = 6,
+                     ReviewerId = id2,
+                     BookTitle = "The Lion, the Witch and the Wardrobe",
+                     AuthorName = "C. S. Lewis",
+                     ReviewText = "I loved this book as a kid and I still love it!",
+                     ReviewDate = DateTime.Parse("11/1/2020"),
+                     Rating = 4
+                 }
             );
         }
     }

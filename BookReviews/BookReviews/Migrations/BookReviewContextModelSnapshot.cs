@@ -91,39 +91,55 @@ namespace BookReviews.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "9096418f-e871-4c24-9cb3-620b38dca72c",
+                            Id = "139e810d-9996-4103-a5e8-6ff5c49eb427",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "405f0c32-7779-4a63-8064-b7ed23a51df7",
+                            ConcurrencyStamp = "f9bf560e-0673-4f22-8ebd-b31a58a8caf0",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             Name = "Brian Bird",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "7a1536ac-8018-4eea-a415-7d898da16385",
-                            TwoFactorEnabled = false
+                            SecurityStamp = "724570c3-600a-4159-80ba-9af71c9ce145",
+                            TwoFactorEnabled = false,
+                            UserName = "BrianB"
                         },
                         new
                         {
-                            Id = "9e4986c3-615e-4a9a-ab5c-7f3c0d044e66",
+                            Id = "1ab2d91e-5565-44c8-b5e5-d8ed8d3c635a",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "112b0b6f-b2c4-40da-ba57-6c08140406e7",
+                            ConcurrencyStamp = "abdd3f5b-87fa-4533-89e8-72b7e0543775",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             Name = "Emma Watson",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "9f1af86e-624f-46bb-ae41-e825493217e8",
-                            TwoFactorEnabled = false
+                            SecurityStamp = "2a8956ea-cd06-4737-ba0f-9a0fd7dd121a",
+                            TwoFactorEnabled = false,
+                            UserName = "EmmaW"
                         },
                         new
                         {
-                            Id = "5e8f870c-ba2d-4a67-a65c-3a33d413da69",
+                            Id = "c0ebeb64-6148-44f2-bc32-cbbaa291c833",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "14ba290b-ac29-4504-8595-08f43106fd24",
+                            ConcurrencyStamp = "fadede41-b75e-4300-bf2d-56a2b6fdf3ce",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            Name = "Daniel Radliiffe",
+                            Name = "Daniel Radcliffe",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "40e0a6c3-1e26-40b5-aae1-24820703d6c7",
-                            TwoFactorEnabled = false
+                            SecurityStamp = "f8026567-7000-4c0c-b101-c931038be957",
+                            TwoFactorEnabled = false,
+                            UserName = "DanielR"
+                        },
+                        new
+                        {
+                            Id = "c779cc03-a04d-4ac6-8a1d-41f277e84718",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "f81557f7-71a6-4821-ad79-2b66bfc124db",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            Name = "Scarlett Johansson",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "4565677e-22c1-4e6f-9a2f-3dd62062a181",
+                            TwoFactorEnabled = false,
+                            UserName = "ScarlettJ"
                         });
                 });
 
@@ -170,7 +186,7 @@ namespace BookReviews.Migrations
                             Rating = 5,
                             ReviewDate = new DateTime(2020, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ReviewText = "Great book, a must read!",
-                            ReviewerId = "9e4986c3-615e-4a9a-ab5c-7f3c0d044e66"
+                            ReviewerId = "1ab2d91e-5565-44c8-b5e5-d8ed8d3c635a"
                         },
                         new
                         {
@@ -180,7 +196,7 @@ namespace BookReviews.Migrations
                             Rating = 5,
                             ReviewDate = new DateTime(2020, 11, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ReviewText = "I love the clever, witty dialog",
-                            ReviewerId = "5e8f870c-ba2d-4a67-a65c-3a33d413da69"
+                            ReviewerId = "c0ebeb64-6148-44f2-bc32-cbbaa291c833"
                         },
                         new
                         {
@@ -190,17 +206,37 @@ namespace BookReviews.Migrations
                             Rating = 5,
                             ReviewDate = new DateTime(2020, 11, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ReviewText = "Wonderful book, written by a distant cousin of mine.",
-                            ReviewerId = "9096418f-e871-4c24-9cb3-620b38dca72c"
+                            ReviewerId = "139e810d-9996-4103-a5e8-6ff5c49eb427"
                         },
                         new
                         {
                             ReviewID = 4,
+                            AuthorName = "Lief Enger",
+                            BookTitle = "Virgil Wander",
+                            Rating = 4,
+                            ReviewDate = new DateTime(2019, 10, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ReviewText = "This book is a bit surreal, but it kept me engaged and reading right to the end.",
+                            ReviewerId = "c779cc03-a04d-4ac6-8a1d-41f277e84718"
+                        },
+                        new
+                        {
+                            ReviewID = 5,
                             AuthorName = "Sir Walter Scott",
                             BookTitle = "Ivanho",
                             Rating = 4,
                             ReviewDate = new DateTime(2020, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ReviewText = "It was a little hard going at first, but then I loved it!",
-                            ReviewerId = "9096418f-e871-4c24-9cb3-620b38dca72c"
+                            ReviewerId = "139e810d-9996-4103-a5e8-6ff5c49eb427"
+                        },
+                        new
+                        {
+                            ReviewID = 6,
+                            AuthorName = "C. S. Lewis",
+                            BookTitle = "The Lion, the Witch and the Wardrobe",
+                            Rating = 4,
+                            ReviewDate = new DateTime(2020, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ReviewText = "I loved this book as a kid and I still love it!",
+                            ReviewerId = "1ab2d91e-5565-44c8-b5e5-d8ed8d3c635a"
                         });
                 });
 
