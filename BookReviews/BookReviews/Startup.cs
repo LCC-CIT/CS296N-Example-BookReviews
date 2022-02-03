@@ -74,6 +74,7 @@ namespace BookReviews
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
 
+            SeedData.SeedAdminUser(app.ApplicationServices).Wait();
         }
     }
 }
