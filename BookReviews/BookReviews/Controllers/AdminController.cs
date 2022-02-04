@@ -33,11 +33,11 @@ namespace BookReviews.Controllers
         /// <returns>ViewResult</returns>
         public async Task<IActionResult> Index()
         {
-            List<AppUser> users = new List<AppUser>();
-            foreach (AppUser user in userManager.Users)
+            // Modified this loop from the version in Murach to prevent "data reader already open" errors
+            List<AppUser> users = userManager.Users.ToList();
+            foreach (AppUser user in users)
             {
                 user.RoleNames = await userManager.GetRolesAsync(user);
-                users.Add(user);
             }
 
             AdminVM model = new AdminVM
@@ -47,7 +47,7 @@ namespace BookReviews.Controllers
             };
 
             return View(model);
-        } // the other action methods } 
+        } 
 
         [HttpPost]
         public async Task<IActionResult> Delete(string id)
