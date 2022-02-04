@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BookReviews.Controllers
 {
-    // [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
 

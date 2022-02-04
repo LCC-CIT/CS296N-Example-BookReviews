@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using BookReviews.Models;
 using BookReviews.Repos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -20,12 +21,14 @@ namespace BookReviews.Controllers
         }
 
         // Show the view that has a form for entering a review
+        [Authorize]
         public IActionResult Review()
         {
             return View();
         }
 
         [HttpPost]
+        [Authorize]
         public IActionResult Review(Review model)
         {
             // Store the model in the database if it is valid

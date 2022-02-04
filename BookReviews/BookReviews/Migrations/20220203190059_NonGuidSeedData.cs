@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BookReviews.Migrations
 {
-    public partial class NewInitial : Migration
+    public partial class NonGuidSeedData : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -182,10 +182,10 @@ namespace BookReviews.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "Name", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "139e810d-9996-4103-a5e8-6ff5c49eb427", 0, "f9bf560e-0673-4f22-8ebd-b31a58a8caf0", null, false, false, null, "Brian Bird", null, null, null, null, false, "724570c3-600a-4159-80ba-9af71c9ce145", false, "BrianB" },
-                    { "1ab2d91e-5565-44c8-b5e5-d8ed8d3c635a", 0, "abdd3f5b-87fa-4533-89e8-72b7e0543775", null, false, false, null, "Emma Watson", null, null, null, null, false, "2a8956ea-cd06-4737-ba0f-9a0fd7dd121a", false, "EmmaW" },
-                    { "c0ebeb64-6148-44f2-bc32-cbbaa291c833", 0, "fadede41-b75e-4300-bf2d-56a2b6fdf3ce", null, false, false, null, "Daniel Radcliffe", null, null, null, null, false, "f8026567-7000-4c0c-b101-c931038be957", false, "DanielR" },
-                    { "c779cc03-a04d-4ac6-8a1d-41f277e84718", 0, "f81557f7-71a6-4821-ad79-2b66bfc124db", null, false, false, null, "Scarlett Johansson", null, null, null, null, false, "4565677e-22c1-4e6f-9a2f-3dd62062a181", false, "ScarlettJ" }
+                    { "A", 0, "71d45ef7-9956-4f5e-a052-20dd4a16e4ec", null, false, false, null, "Brian Bird", null, null, null, null, false, "6ce577d3-9fa2-4f1b-8412-07730d734c7a", false, "BrianB" },
+                    { "B", 0, "4342932a-9292-450c-be72-498d72c778ee", null, false, false, null, "Emma Watson", null, null, null, null, false, "981d2d4d-341f-458c-b62d-f7209c48ecb1", false, "EmmaW" },
+                    { "C", 0, "f22d57f1-c230-4d8d-8289-f4bd7235ef04", null, false, false, null, "Daniel Radcliffe", null, null, null, null, false, "85cbc349-86ff-4091-a31f-db3e1bdddb40", false, "DanielR" },
+                    { "D", 0, "618b5d67-7228-4317-9cfd-37c4ae8bdb02", null, false, false, null, "Scarlett Johansson", null, null, null, null, false, "883dba97-8b4a-4849-803a-0645731f1eef", false, "ScarlettJ" }
                 });
 
             migrationBuilder.InsertData(
@@ -193,12 +193,12 @@ namespace BookReviews.Migrations
                 columns: new[] { "ReviewID", "AuthorName", "BookTitle", "Rating", "ReviewDate", "ReviewText", "ReviewerId" },
                 values: new object[,]
                 {
-                    { 3, "Lief Enger", "Virgil Wander", 5, new DateTime(2020, 11, 30, 0, 0, 0, 0, DateTimeKind.Unspecified), "Wonderful book, written by a distant cousin of mine.", "139e810d-9996-4103-a5e8-6ff5c49eb427" },
-                    { 5, "Sir Walter Scott", "Ivanho", 4, new DateTime(2020, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "It was a little hard going at first, but then I loved it!", "139e810d-9996-4103-a5e8-6ff5c49eb427" },
-                    { 1, "Samuel Shellabarger", "Prince of Foxes", 5, new DateTime(2020, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Great book, a must read!", "1ab2d91e-5565-44c8-b5e5-d8ed8d3c635a" },
-                    { 6, "C. S. Lewis", "The Lion, the Witch and the Wardrobe", 4, new DateTime(2020, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "I loved this book as a kid and I still love it!", "1ab2d91e-5565-44c8-b5e5-d8ed8d3c635a" },
-                    { 2, "Samuel Shellabarger", "Prince of Foxes", 5, new DateTime(2020, 11, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), "I love the clever, witty dialog", "c0ebeb64-6148-44f2-bc32-cbbaa291c833" },
-                    { 4, "Lief Enger", "Virgil Wander", 4, new DateTime(2019, 10, 3, 0, 0, 0, 0, DateTimeKind.Unspecified), "This book is a bit surreal, but it kept me engaged and reading right to the end.", "c779cc03-a04d-4ac6-8a1d-41f277e84718" }
+                    { 3, "Lief Enger", "Virgil Wander", 5, new DateTime(2020, 11, 30, 0, 0, 0, 0, DateTimeKind.Unspecified), "Wonderful book, written by a distant cousin of mine.", "A" },
+                    { 5, "Sir Walter Scott", "Ivanho", 4, new DateTime(2020, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "It was a little hard going at first, but then I loved it!", "A" },
+                    { 1, "Samuel Shellabarger", "Prince of Foxes", 5, new DateTime(2020, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Great book, a must read!", "B" },
+                    { 6, "C. S. Lewis", "The Lion, the Witch and the Wardrobe", 4, new DateTime(2020, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "I loved this book as a kid and I still love it!", "B" },
+                    { 2, "Samuel Shellabarger", "Prince of Foxes", 5, new DateTime(2020, 11, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), "I love the clever, witty dialog", "C" },
+                    { 4, "Lief Enger", "Virgil Wander", 4, new DateTime(2019, 10, 3, 0, 0, 0, 0, DateTimeKind.Unspecified), "This book is a bit surreal, but it kept me engaged and reading right to the end.", "D" }
                 });
 
             migrationBuilder.CreateIndex(

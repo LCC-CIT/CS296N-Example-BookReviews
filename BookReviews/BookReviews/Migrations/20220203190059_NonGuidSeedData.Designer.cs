@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BookReviews.Migrations
 {
     [DbContext(typeof(BookReviewContext))]
-    [Migration("20220128033528_NewInitial")]
-    partial class NewInitial
+    [Migration("20220203190059_NonGuidSeedData")]
+    partial class NonGuidSeedData
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -93,53 +93,53 @@ namespace BookReviews.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "139e810d-9996-4103-a5e8-6ff5c49eb427",
+                            Id = "A",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f9bf560e-0673-4f22-8ebd-b31a58a8caf0",
+                            ConcurrencyStamp = "71d45ef7-9956-4f5e-a052-20dd4a16e4ec",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             Name = "Brian Bird",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "724570c3-600a-4159-80ba-9af71c9ce145",
+                            SecurityStamp = "6ce577d3-9fa2-4f1b-8412-07730d734c7a",
                             TwoFactorEnabled = false,
                             UserName = "BrianB"
                         },
                         new
                         {
-                            Id = "1ab2d91e-5565-44c8-b5e5-d8ed8d3c635a",
+                            Id = "B",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "abdd3f5b-87fa-4533-89e8-72b7e0543775",
+                            ConcurrencyStamp = "4342932a-9292-450c-be72-498d72c778ee",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             Name = "Emma Watson",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "2a8956ea-cd06-4737-ba0f-9a0fd7dd121a",
+                            SecurityStamp = "981d2d4d-341f-458c-b62d-f7209c48ecb1",
                             TwoFactorEnabled = false,
                             UserName = "EmmaW"
                         },
                         new
                         {
-                            Id = "c0ebeb64-6148-44f2-bc32-cbbaa291c833",
+                            Id = "C",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "fadede41-b75e-4300-bf2d-56a2b6fdf3ce",
+                            ConcurrencyStamp = "f22d57f1-c230-4d8d-8289-f4bd7235ef04",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             Name = "Daniel Radcliffe",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "f8026567-7000-4c0c-b101-c931038be957",
+                            SecurityStamp = "85cbc349-86ff-4091-a31f-db3e1bdddb40",
                             TwoFactorEnabled = false,
                             UserName = "DanielR"
                         },
                         new
                         {
-                            Id = "c779cc03-a04d-4ac6-8a1d-41f277e84718",
+                            Id = "D",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f81557f7-71a6-4821-ad79-2b66bfc124db",
+                            ConcurrencyStamp = "618b5d67-7228-4317-9cfd-37c4ae8bdb02",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             Name = "Scarlett Johansson",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "4565677e-22c1-4e6f-9a2f-3dd62062a181",
+                            SecurityStamp = "883dba97-8b4a-4849-803a-0645731f1eef",
                             TwoFactorEnabled = false,
                             UserName = "ScarlettJ"
                         });
@@ -188,7 +188,7 @@ namespace BookReviews.Migrations
                             Rating = 5,
                             ReviewDate = new DateTime(2020, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ReviewText = "Great book, a must read!",
-                            ReviewerId = "1ab2d91e-5565-44c8-b5e5-d8ed8d3c635a"
+                            ReviewerId = "B"
                         },
                         new
                         {
@@ -198,7 +198,7 @@ namespace BookReviews.Migrations
                             Rating = 5,
                             ReviewDate = new DateTime(2020, 11, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ReviewText = "I love the clever, witty dialog",
-                            ReviewerId = "c0ebeb64-6148-44f2-bc32-cbbaa291c833"
+                            ReviewerId = "C"
                         },
                         new
                         {
@@ -208,7 +208,7 @@ namespace BookReviews.Migrations
                             Rating = 5,
                             ReviewDate = new DateTime(2020, 11, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ReviewText = "Wonderful book, written by a distant cousin of mine.",
-                            ReviewerId = "139e810d-9996-4103-a5e8-6ff5c49eb427"
+                            ReviewerId = "A"
                         },
                         new
                         {
@@ -218,7 +218,7 @@ namespace BookReviews.Migrations
                             Rating = 4,
                             ReviewDate = new DateTime(2019, 10, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ReviewText = "This book is a bit surreal, but it kept me engaged and reading right to the end.",
-                            ReviewerId = "c779cc03-a04d-4ac6-8a1d-41f277e84718"
+                            ReviewerId = "D"
                         },
                         new
                         {
@@ -228,7 +228,7 @@ namespace BookReviews.Migrations
                             Rating = 4,
                             ReviewDate = new DateTime(2020, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ReviewText = "It was a little hard going at first, but then I loved it!",
-                            ReviewerId = "139e810d-9996-4103-a5e8-6ff5c49eb427"
+                            ReviewerId = "A"
                         },
                         new
                         {
@@ -238,7 +238,7 @@ namespace BookReviews.Migrations
                             Rating = 4,
                             ReviewDate = new DateTime(2020, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ReviewText = "I loved this book as a kid and I still love it!",
-                            ReviewerId = "1ab2d91e-5565-44c8-b5e5-d8ed8d3c635a"
+                            ReviewerId = "B"
                         });
                 });
 

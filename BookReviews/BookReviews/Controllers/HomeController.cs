@@ -19,6 +19,7 @@ namespace BookReviews.Controllers
         public IActionResult Index()
         {
             return View();
+
         }
 
         public IActionResult Recommended()
