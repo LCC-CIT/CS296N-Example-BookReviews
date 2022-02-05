@@ -22,7 +22,7 @@ namespace Tests
             var controller = new ReviewController(fakeRepo);
             var review = new Review()
             {
-                BookTitle = "A Book",
+                Book = new Book { Title = "A Book" },
                 Reviewer = new AppUser() { Name = "A Reviewer" }
             };
             // We only need these properties so the RedirectToAction doesn't complain
@@ -47,24 +47,24 @@ namespace Tests
             var fakeRepo = new FakeReviewRepository();
             var controller = new ReviewController(fakeRepo);
             // We don't need need to add all the properties to the models since we aren't testing that.
-            var review1 = new Review() { BookTitle = "Book 1" };
+            var review1 = new Review() { Book = new Book { Title = "Book 1" } };
             fakeRepo.AddReview(review1);
             fakeRepo.AddReview(review1);
-            var review2 = new Review() { BookTitle = "Book 2" };
+            var review2 = new Review() { Book = new Book { Title = "Book 2" } };
             fakeRepo.AddReview(review2);
             fakeRepo.AddReview(review2);
-            var review3 = new Review() { BookTitle = "Book 3" };
+            var review3 = new Review() { Book = new Book { Title = "Book 3" } };
             fakeRepo.AddReview(review3);
             fakeRepo.AddReview(review3);
             // Act
-            var viewResult = (ViewResult)controller.FilterReviews(review2.BookTitle, "");
+            var viewResult = (ViewResult)controller.FilterReviews(review2.Book.Title, "");
             // ViewResult is a the type of ActionResult that is returned by the View() method in the controller
 
             // Assert
             var reviews = (List<Review>)viewResult.ViewData.Model;
             Assert.Equal(2, reviews.Count);
-            Assert.Equal(reviews[0].BookTitle, review2.BookTitle);
-            Assert.Equal(reviews[1].BookTitle, review2.BookTitle);
+            Assert.Equal(reviews[0].Book.Title, review2.Book.Title);
+            Assert.Equal(reviews[1].Book.Title, review2.Book.Title);
         }
 
         [Fact]

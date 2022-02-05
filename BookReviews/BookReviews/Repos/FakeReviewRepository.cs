@@ -18,7 +18,7 @@ namespace BookReviews.Repos
 
         public void AddReview(Review review)
         {
-            review.ReviewID = reviews.Count;
+            review.ReviewId = reviews.Count;
             reviews.Add(review);
         }
 

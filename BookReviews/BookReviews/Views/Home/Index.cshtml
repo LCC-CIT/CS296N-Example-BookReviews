@@ -9,11 +9,11 @@
     
     <h3>Featured book</h3>
     <p>
-        <strong><em>@Model.BookTitle</em></strong><br />
-        by @Model.AuthorName<br />
+        <strong><em>@Model.Book.Title</em></strong><br />
+        by @Model.Book.Author.Name<br />
         @{int reviewCount = ViewBag.reviewCount;}
         @ViewBag.averageRating / 5 stars with @reviewCount @((reviewCount > 1) ? "reviews" : "review")<br />
-        <a asp-controller="Review" asp-action="FilterReviews" asp-route-bookTitle="@Model.BookTitle">Read all reviews of this book</a>
+        <a asp-controller="Review" asp-action="FilterReviews" asp-route-bookTitle="@Model.Book.Title">Read all reviews of this book</a>
     </p>
 
     <p class="text-center">

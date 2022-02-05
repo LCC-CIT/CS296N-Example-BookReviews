@@ -7,9 +7,9 @@ namespace BookReviews.Data
     public static class SeedData
     {
         // Create GUIDs to use for PKs in our AppUser objects
-        private static readonly string id1 = Guid.NewGuid().ToString();
-        private static readonly string id2 = Guid.NewGuid().ToString();
-        private static readonly string id3 = Guid.NewGuid().ToString();
+        private static readonly string appUserId1 = Guid.NewGuid().ToString();
+        private static readonly string appUserId2 = Guid.NewGuid().ToString();
+        private static readonly string appUserId3 = Guid.NewGuid().ToString();
         /// <summary>
         /// This is an extension method for the ModelBuilder class
         /// It is called from BookReviewContext.OnModelCreating
@@ -20,17 +20,17 @@ namespace BookReviews.Data
             // Create three AppUsers who will be reviewers
             var user1 = new AppUser()
             {
-                Id = id1,
+                Id = appUserId1,
                 Name = "Brian Bird"
             };
             var user2 = new AppUser()
             {
-                Id = id2,
+                Id = appUserId2,
                 Name = "Emma Watson"
             };
             var user3 = new AppUser
             {
-                Id = id3,
+                Id = appUserId3,
                 Name = "Daniel Radliiffe"
             };
 
@@ -39,14 +39,70 @@ namespace BookReviews.Data
                 user1, user2, user3
             );
 
+
+            // Create and add authors to the database
+            Writer author1 = new Writer()
+            {
+                WriterId = 1,
+                Name = "Samuel Shellabarger",
+                Birthdate = DateTime.Parse("5/18/1888")
+            };
+
+            Writer author2 = new Writer()
+            {
+                WriterId = 2,
+                Name = "leif Enger",
+                Birthdate = DateTime.Parse("1/1/1961")
+            };
+
+            Writer author3 = new Writer()
+            {
+                WriterId = 3,
+                Name = "Sir Walter Scott",
+                Birthdate = DateTime.Parse("8/15/1771")
+            };
+
+            modelBuilder.Entity<Writer>().HasData(author1, author2, author3);
+
+            // Create and add books to the database
+            // Since we are using shadow FK properties, we must books as anonymous objects
+            const int BOOK_ID1 = 1, BOOK_ID2 = 2, BOOK_ID3 = 3;
+
+            modelBuilder.Entity<Book>().HasData(
+            new
+            {
+                BookId = BOOK_ID1,
+                Title = "Prince of Foxes",
+                AuthorWriterId = author1.WriterId,
+                PrintDate = DateTime.Parse("1/1/1947")
+            },
+
+            new
+            {
+                BookId = BOOK_ID2,
+                Title = "Virgil Wander",
+                AuthorWriterId = author2.WriterId,
+                PrintDate = DateTime.Parse("1/1/2018")
+            },
+
+            new
+            {
+                BookId = BOOK_ID3,
+                Title = "Ivanhoe",
+                AuthorWriterId = author3.WriterId,
+                PrintDate = DateTime.Parse("1/1/1819")
+            }
+            );
+
+
             // Create and add three reviews to the database
+            // These are also created as anonymous objects because they use shadow FK properties
             modelBuilder.Entity<Review>().HasData(
-                new 
+                new
                 {
-                    ReviewID = 1,
-                    ReviewerId = id2,
-                    BookTitle = "Prince of Foxes",
-                    AuthorName = "Samuel Shellabarger",
+                    ReviewId = 1,
+                    ReviewerId = appUserId2,
+                    BookId = BOOK_ID1,
                     ReviewText = "Great book, a must read!",
                     ReviewDate = DateTime.Parse("11/1/2020"),
                     Rating = 5
@@ -54,10 +110,9 @@ namespace BookReviews.Data
                 // Another review of the same book
                 new
                 {
-                    ReviewID = 2,
-                    ReviewerId = id3,
-                    BookTitle = "Prince of Foxes",
-                    AuthorName = "Samuel Shellabarger",
+                    ReviewId = 2,
+                    ReviewerId = appUserId3,
+                    BookId = BOOK_ID1,
                     ReviewText = "I love the clever, witty dialog",
                     ReviewDate = DateTime.Parse("11/15/2020"),
                     Rating = 5
@@ -68,10 +123,9 @@ namespace BookReviews.Data
             modelBuilder.Entity<Review>().HasData(
                 new
                 {
-                    ReviewID = 3,
-                    ReviewerId = id1,
-                    BookTitle = "Virgil Wander",
-                    AuthorName = "Lief Enger",
+                    ReviewId = 3,
+                    ReviewerId = appUserId1,
+                    BookId = BOOK_ID2,
                     ReviewText = "Wonderful book, written by a distant cousin of mine.",
                     ReviewDate = DateTime.Parse("11/30/2020"),
                     Rating = 5
@@ -79,10 +133,9 @@ namespace BookReviews.Data
 
                 new
                 {
-                    ReviewID = 4,
-                    ReviewerId = id1,
-                    BookTitle = "Ivanho",
-                    AuthorName = "Sir Walter Scott",
+                    ReviewId = 4,
+                    ReviewerId = appUserId1,
+                    BookId = BOOK_ID3,
                     ReviewText = "It was a little hard going at first, but then I loved it!",
                     ReviewDate = DateTime.Parse("11/1/2020"),
                     Rating = 4

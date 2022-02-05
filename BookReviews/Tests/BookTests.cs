@@ -19,13 +19,13 @@ namespace Tests
             var fakeRepo = new FakeReviewRepository();
             var controller = new BookController(fakeRepo);
             // We don't need need to add all the properties to the models since we aren't testing that.
-            var review1 = new Review() { BookTitle = "Book 1" };
+            var review1 = new Review() { Book = new Book { Title = "Book 1" } };
             fakeRepo.AddReview(review1);
             fakeRepo.AddReview(review1);
-            var review2 = new Review() { BookTitle = "Book 2" };
+            var review2 = new Review() { Book = new Book { Title = "Book 2" } };
             fakeRepo.AddReview(review2);
             fakeRepo.AddReview(review2);
-            var review3 = new Review() { BookTitle = "Book 3" };
+            var review3 = new Review() { Book = new Book { Title = "Book 3" } };
             fakeRepo.AddReview(review3);
             fakeRepo.AddReview(review3);
             // Act
@@ -35,9 +35,9 @@ namespace Tests
             // Assert
             var titles = (List<string>)viewResult.ViewData.Model;
             Assert.Equal(3, titles.Count);
-            Assert.Equal(titles[0], review1.BookTitle);
-            Assert.Equal(titles[1], review2.BookTitle);
-            Assert.Equal(titles[2], review3.BookTitle);
+            Assert.Equal(titles[0], review1.Book.Title);
+            Assert.Equal(titles[1], review2.Book.Title);
+            Assert.Equal(titles[2], review3.Book.Title);
         }
     }
 }

@@ -29,7 +29,7 @@ namespace BookReviews.Controllers
             var review = repo.Reviews.Skip(skipCount).FirstOrDefault();
 
             // Get the number of reviews for the book and average rating
-            var reviews = repo.Reviews.Where(r => r.BookTitle == review.BookTitle).ToList();
+            var reviews = repo.Reviews.Where(r => r.Book.Title == review.Book.Title).ToList();
             ViewBag.reviewCount = reviews.Count();
             ViewBag.averageRating = reviews.Average(r => r.Rating);
 

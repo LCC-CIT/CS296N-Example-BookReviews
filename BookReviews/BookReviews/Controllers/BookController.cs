@@ -22,7 +22,7 @@ namespace BookReviews.Controllers
         public IActionResult Index()
         {
             List<string> titles = repo.Reviews
-                .Select(review => review.BookTitle)
+                .Select(review => review.Book.Title)
                 .Distinct()
                 .ToList();
 

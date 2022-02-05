@@ -31,7 +31,7 @@ namespace BookReviews.Controllers
             { 
                 repo.AddReview(model);
             }
-            return RedirectToAction("FilterReviews", new {bookTitle = model.BookTitle, reviewerName = model.Reviewer.Name});
+            return RedirectToAction("FilterReviews", new {bookTitle = model.Book.Title, reviewerName = model.Reviewer.Name});
         }
 
         // TODO: Can we eliminate this method. Can we make FilterReviews the Index method?
@@ -49,7 +49,7 @@ namespace BookReviews.Controllers
             if (bookTitle != null)
             {
                reviews = (from r in repo.Reviews
-                               where r.BookTitle == bookTitle
+                               where r.Book.Title == bookTitle
                                select r).ToList();
             }
             else if (reviewerName != null)

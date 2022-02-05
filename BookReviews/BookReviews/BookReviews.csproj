@@ -32,14 +32,11 @@
     <None Remove="Data\" />
     <None Remove="System.Data.SQLite.Core" />
     <None Remove="Microsoft.AspNetCore.Identity.EntityFrameworkCore" />
+    <None Remove="Data\BookReviews.db-shm" />
+    <None Remove="Data\BookReviews.db-wal" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Data\" />
     <Folder Include="Migrations\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Update="Data\BookReviews.db">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
 </Project>

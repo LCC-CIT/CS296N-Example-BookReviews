@@ -1,16 +1,14 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
 
 namespace BookReviews.Models
 {
     public class Review
     {
-        public int ReviewID { get; set; }
+        public int ReviewId { get; set; }
 
-        [Required]
-        public string BookTitle { get; set; }
-
-        public string AuthorName { get; set; }
+        public Book Book { get; set; }
 
         public AppUser Reviewer { get; set; }
 
@@ -24,5 +22,7 @@ namespace BookReviews.Models
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime ReviewDate { get; set; }
+
+        public ICollection<Comment> Comments { get; set; }
     }
 }

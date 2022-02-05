@@ -19,7 +19,7 @@ namespace BookReviews.Controllers
         public IActionResult Index()
         {
             List<string> names = repo.Reviews
-                .Select(review => review.AuthorName)
+                .Select(review => review.Book.Author.Name)
                 .Distinct()
                 .ToList();
 
