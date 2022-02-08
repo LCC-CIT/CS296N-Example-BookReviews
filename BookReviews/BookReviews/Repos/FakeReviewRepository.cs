@@ -23,9 +23,9 @@ namespace BookReviews.Repos
             return 1;
         }
 
-        public async Task<int> UpdateReviewAsync(Review review)
-        {
-            throw new NotImplementedException();
-        }
-    }
+		public Task<int> UpdateReviewAsync(Review review)
+		{
+			throw new NotImplementedException();
+		}
+	}
 }
