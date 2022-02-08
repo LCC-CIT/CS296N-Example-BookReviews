@@ -85,7 +85,26 @@ namespace BookReviews.Models
                     ReviewDate = DateTime.Parse("11/1/2020")
                 };
                 context.Reviews.Add(review);
+                
+                // Add two comments
 
+                var comment = new Comment
+                {
+                    CommentDate = DateTime.Parse("2/25/2021"),
+                    Commenter = danielRadcliffe,
+                    CommentText = "I never made it past the first two chapters."
+                };
+                context.Comments.Add(comment);
+                review.Comments.Add(comment);
+
+                comment = new Comment
+                {
+                    CommentDate = DateTime.Parse("3/15/2021"),
+                    Commenter = emmaWatson,
+                    CommentText = "It was worth getting past the first two chpaters."
+                };
+                context.Comments.Add(comment);
+                review.Comments.Add(comment);
 
                 context.SaveChanges(); // stores all the reviews in the DB
             }

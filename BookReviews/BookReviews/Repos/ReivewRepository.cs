@@ -1,6 +1,7 @@
 ﻿using BookReviews.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace BookReviews.Repos
 {
@@ -14,7 +15,7 @@ namespace BookReviews.Repos
             context = c;
         }
 
-        public IQueryable<Review> Reviews 
+        public  IQueryable<Review> Reviews 
         { 
             get 
             {
@@ -26,16 +27,22 @@ namespace BookReviews.Repos
             }
         }
 
-        public void AddReview(Review review)
+        public async Task<int> AddReviewAsync(Review review)
         {
-            context.Reviews.Add(review);
-            context.SaveChanges();
+            // context.Comments.Add(review.Comments);
+            await context.Reviews.AddAsync(review);
+            return await context.SaveChangesAsync(); // returns the number of entries written to the DB
         }
 
-        public void UpdateReview(Review review)
+        /// <summary>
+        /// Updates an existing review with any changes that are in the review object.
+        /// </summary>
+        /// <param name="review"></param>
+        /// <returns>A task object containing a result code </returns>
+        public async Task<int> UpdateReviewAsync(Review review)
         {
             context.Reviews.Update(review);   // Find the review by ReviewID and update it
-            context.SaveChanges();
+            return  await context.SaveChangesAsync();  // returns the number of entries written to the DB
         }
 
     }

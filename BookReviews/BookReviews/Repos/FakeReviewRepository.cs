@@ -16,13 +16,14 @@ namespace BookReviews.Repos
         }
 
 
-        public void AddReview(Review review)
+        public async Task<int> AddReviewAsync(Review review)
         {
             review.ReviewID = reviews.Count;
-            reviews.Add(review);
+            await Task<int>.Run(() => reviews.Add(review));
+            return 1;
         }
 
-        public void UpdateReview(Review review)
+        public async Task<int> UpdateReviewAsync(Review review)
         {
             throw new NotImplementedException();
         }

@@ -32,7 +32,7 @@ namespace Tests
             };
 
             // Act
-            controller.Review(review);
+            controller.Review(review).Wait();
 
             // Assert
             // Ensure that the review was added to the repository with the correct date
@@ -55,7 +55,7 @@ namespace Tests
             };
 
             // Act
-            controller.Review(review);
+            controller.Review(review).Wait();
 
             // Assert
             // Ensure that the review was not added to the repository

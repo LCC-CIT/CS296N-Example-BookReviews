@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using BookReviews.Models;
 using BookReviews.Repos;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace BookReviews.Controllers
 {
@@ -21,7 +23,7 @@ namespace BookReviews.Controllers
         }
 
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             
             return View();
@@ -29,48 +31,47 @@ namespace BookReviews.Controllers
 
         // Show the view that contains a form for entering a review
         [Authorize]
-        public IActionResult Review()
+        public async Task<IActionResult> Review()
         {
             return View();
         }
 
         [HttpPost]
-        public IActionResult Review(Review model)
+        public async Task<IActionResult> Review(Review model)
         {
-            model.Reviewer = userManager.GetUserAsync(User).Result;
+            model.Reviewer = await userManager.GetUserAsync(User);
             // TODO: get the user's real name in registration
             model.Reviewer.Name = model.Reviewer.UserName;  // temporary hack
             model.ReviewDate = DateTime.Now;
             // Store the model in the database
-            repo.AddReview(model);
+            await repo.AddReviewAsync(model);
 
             return View(model);
         }
 
-        public IActionResult Reviews()
+        public async Task<IActionResult> Reviews()
         {
             // Get all reviews in the database
-            List<Review> reviews = repo.Reviews.ToList<Review>(); // Use ToList to convert the IQueryable to a list
-            // var reviews = context.Reviews.Include(book => book.Reviewer).ToList<Review>();
+            List<Review> reviews = await repo.Reviews.ToListAsync<Review>(); // Use ToList to convert the IQueryable to a list
             return View(reviews);
         }
 
         [HttpPost]
-        public IActionResult Reviews(string bookTitle, string reviewerName)
+        public async Task<IActionResult> Reviews(string bookTitle, string reviewerName)
         {
             List<Review> reviews = null;
 
             if (bookTitle != null)
             {
-               reviews = (from r in repo.Reviews
+               reviews = await (from r in repo.Reviews
                                where r.BookTitle == bookTitle
-                               select r).ToList();
+                               select r).ToListAsync();
             }
             else if (reviewerName != null)
             {
-                reviews = (from r in repo.Reviews
+                reviews = await (from r in repo.Reviews
                            where r.Reviewer.Name == reviewerName
-                           select r).ToList();
+                           select r).ToListAsync();
             }
 
             return View(reviews);
@@ -85,21 +86,23 @@ namespace BookReviews.Controllers
         }
 
         [HttpPost]
-        public RedirectToActionResult Comment(CommentVM commentVM)
+        [Authorize]
+        public async Task<RedirectToActionResult> Comment(CommentVM commentVM)
         {
             // Comment is the domain model
             var comment = new Comment { CommentText = commentVM.CommentText };
-            comment.Commenter = userManager.GetUserAsync(User).Result;
+            comment.Commenter = await userManager.GetUserAsync(User);
             comment.CommentDate = DateTime.Now;
 
             // Retrieve the review that this comment is for
-            var review = (from r in repo.Reviews
+            var review = await (from r in repo.Reviews
                           where r.ReviewID == commentVM.ReviewID
-                          select r).First<Review>();
+                          select r).FirstAsync<Review>();
+
+            review.Comments.Add(comment);
 
             // Store the review with the comment in the database
-            review.Comments.Add(comment);
-            repo.UpdateReview(review);
+            await repo.UpdateReviewAsync(review);
 
             return RedirectToAction("Reviews");
         }
