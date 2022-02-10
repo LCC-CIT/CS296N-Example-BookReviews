@@ -59,14 +59,14 @@ namespace Tests
             var controller = new AuthorController(fakeRepo);
             // We don't need need to add all the properties to the models since we aren't testing that.
             var review1 = new Review() { AuthorName = "Author 1" };
-            fakeRepo.AddReview(review1);
-            fakeRepo.AddReview(review1);
+            fakeRepo.AddReviewAsync(review1);
+            fakeRepo.AddReviewAsync(review1);
             var review2 = new Review() { AuthorName = "Author 2" };
-            fakeRepo.AddReview(review2);
-            fakeRepo.AddReview(review2);
+            fakeRepo.AddReviewAsync(review2);
+            fakeRepo.AddReviewAsync(review2);
             var review3 = new Review() { AuthorName = "Author 3" };
-            fakeRepo.AddReview(review3);
-            fakeRepo.AddReview(review3);
+            fakeRepo.AddReviewAsync(review3);
+            fakeRepo.AddReviewAsync(review3);
             // Act
             var viewResult = (ViewResult)controller.Index();
             // ViewResult is a the type of ActionResult that is returned by the View() method in the controller
