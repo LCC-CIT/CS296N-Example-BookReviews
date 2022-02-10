@@ -31,7 +31,7 @@ namespace BookReviews.Controllers
 
         // Show the view that contains a form for entering a review
         [Authorize]
-        public async Task<IActionResult> Review()
+        public IActionResult Review()
         {
             return View();
         }
