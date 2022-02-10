@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using BookReviews.Models;
+using System.Threading.Tasks;
 using BookReviews.Repos;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace BookReviews.Controllers
 {
@@ -19,12 +19,12 @@ namespace BookReviews.Controllers
         /// <summary>
         /// List all books (without duplicates)
         /// </summary>
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            List<string> titles = repo.Reviews
+            List<string> titles = await repo.Reviews
                 .Select(review => review.BookTitle)
                 .Distinct()
-                .ToList();
+                .ToListAsync();
 
             return View(titles);
             // TODO: Upgrade to .netcore 6.0 so that the query below can be used.
