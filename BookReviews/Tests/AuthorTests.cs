@@ -2,7 +2,10 @@ using BookReviews.Controllers;
 using BookReviews.Models;
 using BookReviews.Repos;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Moq;
 using System.Collections.Generic;
+using System.Linq;
 using Xunit;
 
 namespace Tests
@@ -49,17 +52,15 @@ namespace Tests
                 "Wrong" == quiz.RightOrWrong2 && "Wrong" == quiz.RightOrWrong3);
         }
 
-        /* TODO: Fix this test. It throws this run-time exception:
-         * The source IQueryable doesn't implement IAsyncEnumerable<System.String>. Only sources that implement IAsyncEnumerable can be used for Entity Framework asynchronous operations.
 
         [Fact]
         public void IndexTest()
         {
             // Test to see if names of all authors are returned without duplicates 
 
-        // Arrange
-        var fakeRepo = new FakeReviewRepository();
-            var controller = new AuthorController(fakeRepo);
+            // Arrange
+            var fakeRepo = new FakeReviewRepository();
+            
             // We don't need need to add all the properties to the models since we aren't testing that.
             var review1 = new Review() { AuthorName = "Author 1" };
             fakeRepo.AddReviewAsync(review1);
@@ -70,9 +71,10 @@ namespace Tests
             var review3 = new Review() { AuthorName = "Author 3" };
             fakeRepo.AddReviewAsync(review3);
             fakeRepo.AddReviewAsync(review3);
+            
             // Act
-            var viewResult = (ViewResult)controller.Index().Result;
-            // ViewResult is a the type of ActionResult that is returned by the View() method in the controller
+            var controller = new AuthorController(fakeRepo);
+            var viewResult = (ViewResult)controller.Index().Result; // ViewResult is the type of ActionResult that is returned by the View() method in the controller
 
             // Assert
             var names = (List<string>)viewResult.ViewData.Model;
@@ -81,7 +83,26 @@ namespace Tests
             Assert.Equal(names[1], review2.AuthorName);
             Assert.Equal(names[2], review3.AuthorName);
         }
-    */
+
+        /*
+        public static async IAsyncEnumerable<Review> GetReviews()
+        {
+            yield return "foo";
+            yield return "bar";
+            // We don't need need to add all the properties to the models since we aren't testing that.
+            var review1 = new Review() { AuthorName = "Author 1" };
+            yield return review1;
+            yield return review1;
+            var review2 = new Review() { AuthorName = "Author 2" };
+            yield return review2;
+            yield return review2;
+            var review3 = new Review() { AuthorName = "Author 3" };
+            yield return review3;
+            yield return review3;
+
+            await Task.CompletedTask; // to make the compiler warning go away
+        }
+        */
     }
 }
 
