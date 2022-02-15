@@ -18,11 +18,15 @@ namespace BookReviews.Controllers
             repo = r;
         }
 
+        public IQueryable<string> AuthorQuery(IQueryable<Review> reviews)
+        {
+            return (IQueryable<string>)reviews.Select(review => review.AuthorName)
+                .Distinct();
+        }
+
         public async Task<IActionResult> Index()
         {
-            List<string> names = await repo.Reviews
-                .Select(review => review.AuthorName)
-                .Distinct()
+            var names = await AuthorQuery(repo.Reviews)
                 .ToListAsync();
 
             return View(names);

@@ -31,6 +31,5 @@ namespace BookReviews.Repos
             await context.Reviews.AddAsync(review);
             await context.SaveChangesAsync();
         }
-
     }
 }

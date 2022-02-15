@@ -23,6 +23,5 @@ namespace BookReviews.Repos
             review.ReviewID = reviews.Count;
             reviews.Add(review);
         }
-
     }
 }
