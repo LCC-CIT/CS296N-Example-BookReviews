@@ -3,6 +3,7 @@ using BookReviews.Models;
 using BookReviews.Repos;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Linq;
 using Xunit;
 
 namespace Tests
@@ -39,66 +40,66 @@ namespace Tests
                 repoReview.ReviewDate.Date));
         }
     */
-        /* TODO: Fix these tests. They have the same issue as the AuthorTests, IndexTest
+       
          
         [Fact]
         public void FilterByTitleTest()
         {
+            // I'm just testing the query, not the controller method, because the query does all the work.
             // Test to see if only reviews with the selected title are returned 
 
             // Arrange
-            var fakeRepo = new FakeReviewRepository();
-            var controller = new ReviewController(fakeRepo, null);
+            var reviews = new List<Review>();
             // We don't need need to add all the properties to the models since we aren't testing that.
             var review1 = new Review() { BookTitle = "Book 1" };
-            fakeRepo.AddReviewAsync(review1);
-            fakeRepo.AddReviewAsync(review1);
+            reviews.Add(review1);
+            reviews.Add(review1);
             var review2 = new Review() { BookTitle = "Book 2" };
-            fakeRepo.AddReviewAsync(review2);
-            fakeRepo.AddReviewAsync(review2);
+            reviews.Add(review2);
+            reviews.Add(review2);
             var review3 = new Review() { BookTitle = "Book 3" };
-            fakeRepo.AddReviewAsync(review3);
-            fakeRepo.AddReviewAsync(review3);
+            reviews.Add(review3);
+            reviews.Add(review3);
+
+            var controller = new ReviewController(null, null);  // I don't need a repository or UserManager
+
             // Act
-            var viewResult = (ViewResult)controller.FilterReviews(review2.BookTitle, "").Result;
-            // ViewResult is a the type of ActionResult that is returned by the View() method in the controller
+            var filteredReviews = controller.TitleQuery(reviews.AsQueryable(), review2.BookTitle).ToList<Review>();
 
             // Assert
-            var reviews = (List<Review>)viewResult.ViewData.Model;
-            Assert.Equal(2, reviews.Count);
-            Assert.Equal(reviews[0].BookTitle, review2.BookTitle);
-            Assert.Equal(reviews[1].BookTitle, review2.BookTitle);
+            Assert.Equal(2, filteredReviews.Count);
+            Assert.Equal(filteredReviews[0].BookTitle, review2.BookTitle);
+            Assert.Equal(filteredReviews[1].BookTitle, review2.BookTitle);
         }
 
-        [Fact]
-        public void FilterByReviewerTest()
-        {
+       [Fact]
+       public void FilterByReviewerTest()
+       {
             // Test to see if only reviews with the selected title are returned 
 
             // Arrange
-            var fakeRepo = new FakeReviewRepository();
-            var controller = new ReviewController(fakeRepo, null);
+            var reviews = new List<Review>();
             // We don't need need to add all the properties to the models since we aren't testing that.
             var review1 = new Review() { Reviewer = new AppUser() { Name = "Reviewer 1" } };
-            fakeRepo.AddReviewAsync(review1);
-            fakeRepo.AddReviewAsync(review1);
-            var review2 = new Review() { Reviewer = new AppUser() { Name = "Reviewer 2" } };
-            fakeRepo.AddReviewAsync(review2);
-            fakeRepo.AddReviewAsync(review2);
-            var review3 = new Review() { Reviewer = new AppUser() { Name = "Reviewer 3" } };
-            fakeRepo.AddReviewAsync(review3);
-            fakeRepo.AddReviewAsync(review3);
+            reviews.Add(review1);
+            reviews.Add(review1);
+           var review2 = new Review() { Reviewer = new AppUser() { Name = "Reviewer 2" } };
+            reviews.Add(review2);
+            reviews.Add(review2);
+           var review3 = new Review() { Reviewer = new AppUser() { Name = "Reviewer 3" } };
+            reviews.Add(review3);
+            reviews.Add(review3);
+
+            var controller = new ReviewController(null, null);  // I don't need a repository or UserManager
+
             // Act
-            var viewResult = (ViewResult)controller.FilterReviews(null, review2.Reviewer.Name).Result;
-            // ViewResult is a the type of ActionResult that is returned by the View() method in the controller
+            var filteredReviews = controller.ReviewerQuery(reviews.AsQueryable(), review2.Reviewer.Name).ToList<Review>();
 
             // Assert
-            var reviews = (List<Review>)viewResult.ViewData.Model;
-            Assert.Equal(2, reviews.Count);
-            Assert.Equal(reviews[0].Reviewer.Name, review2.Reviewer.Name);
-            Assert.Equal(reviews[1].Reviewer.Name, review2.Reviewer.Name);
-        }
-        */
+           Assert.Equal(2, filteredReviews.Count);
+           Assert.Equal(filteredReviews[0].Reviewer.Name, review2.Reviewer.Name);
+           Assert.Equal(filteredReviews[1].Reviewer.Name, review2.Reviewer.Name);
+       }
 
         // Note: The Index method is not being tested because it doesn't do any
         // processing; it just calls a method on the repository.

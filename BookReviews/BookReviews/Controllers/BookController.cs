@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BookReviews.Models;
 using BookReviews.Repos;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -16,14 +17,18 @@ namespace BookReviews.Controllers
             repo = r;
         }
 
+        public IQueryable<string> BookQuery(IQueryable<Review> reviews)
+        {
+            return (IQueryable<string>)reviews.Select(review => review.BookTitle)
+                .Distinct();
+        }
+
         /// <summary>
         /// List all books (without duplicates)
         /// </summary>
         public async Task<IActionResult> Index()
         {
-            List<string> titles = await repo.Reviews
-                .Select(review => review.BookTitle)
-                .Distinct()
+            List<string> titles = await BookQuery(repo.Reviews)
                 .ToListAsync();
 
             return View(titles);

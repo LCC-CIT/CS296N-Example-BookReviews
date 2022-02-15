@@ -3,6 +3,7 @@ using BookReviews.Models;
 using BookReviews.Repos;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Linq;
 using Xunit;
 
 namespace Tests
@@ -49,39 +50,37 @@ namespace Tests
                 "Wrong" == quiz.RightOrWrong2 && "Wrong" == quiz.RightOrWrong3);
         }
 
-        /* TODO: Fix this test. It throws this run-time exception:
-         * The source IQueryable doesn't implement IAsyncEnumerable<System.String>. Only sources that implement IAsyncEnumerable can be used for Entity Framework asynchronous operations.
-
+   
         [Fact]
-        public void IndexTest()
+        public void AuthorQueryTest()
         {
+            // I'm just testing the query, not the controller method, because the query does all the work.
             // Test to see if names of all authors are returned without duplicates 
 
-        // Arrange
-        var fakeRepo = new FakeReviewRepository();
-            var controller = new AuthorController(fakeRepo);
+            // Arrange
+            var reviews = new List<Review>();
             // We don't need need to add all the properties to the models since we aren't testing that.
             var review1 = new Review() { AuthorName = "Author 1" };
-            fakeRepo.AddReviewAsync(review1);
-            fakeRepo.AddReviewAsync(review1);
+            reviews.Add(review1);
+            reviews.Add(review1);
             var review2 = new Review() { AuthorName = "Author 2" };
-            fakeRepo.AddReviewAsync(review2);
-            fakeRepo.AddReviewAsync(review2);
+            reviews.Add(review2);
+            reviews.Add(review2);
             var review3 = new Review() { AuthorName = "Author 3" };
-            fakeRepo.AddReviewAsync(review3);
-            fakeRepo.AddReviewAsync(review3);
+            reviews.Add(review3);
+            reviews.Add(review3);
+
+            var controller = new AuthorController(null);  // I don't need a repository
+
             // Act
-            var viewResult = (ViewResult)controller.Index().Result;
-            // ViewResult is a the type of ActionResult that is returned by the View() method in the controller
+            var names = controller.AuthorQuery(reviews.AsQueryable()).ToList<string>();
 
             // Assert
-            var names = (List<string>)viewResult.ViewData.Model;
             Assert.Equal(3, names.Count);
             Assert.Equal(names[0], review1.AuthorName);
             Assert.Equal(names[1], review2.AuthorName);
             Assert.Equal(names[2], review3.AuthorName);
         }
-    */
     }
 }
 

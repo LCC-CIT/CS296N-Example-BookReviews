@@ -52,21 +52,31 @@ namespace BookReviews.Controllers
             return View(reviews);
         }
 
+        public IQueryable<Review> TitleQuery(IQueryable<Review> reviews, string bookTitle)
+        {
+            return (IQueryable<Review>)reviews
+                .Where(r => r.BookTitle == bookTitle)
+                .Select(r => r);
+        }
+
+        public IQueryable<Review> ReviewerQuery(IQueryable<Review> reviews, string reviewerName)
+        {
+            return (IQueryable<Review>)reviews
+                .Where(r => r.Reviewer.Name == reviewerName)
+                .Select(r => r);
+        }
+
         public async Task<IActionResult> FilterReviews(string bookTitle, string reviewerName)
         {
             List<Review> reviews = null;
 
             if (bookTitle != null)
             {
-               reviews = await (from r in repo.Reviews
-                               where r.BookTitle == bookTitle
-                               select r).ToListAsync();
+               reviews = await TitleQuery(repo.Reviews, bookTitle).ToListAsync();
             }
             else if (reviewerName != null)
             {
-                reviews = await (from r in repo.Reviews
-                           where r.Reviewer.Name == reviewerName
-                           select r).ToListAsync();
+                reviews = await ReviewerQuery(repo.Reviews, reviewerName).ToListAsync();
             }
             return View("Index", reviews);
         }
