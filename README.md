@@ -7,10 +7,11 @@ This version has a separate project for SQLite migrations.
 BookReviews is the startup project and contains SQL Server migrations.
 EF commands that target SQLite migrations are written like this:
 - dotnet core CLI (Run from the BookReview project folder):
-  - `dotnet ef migrations add NewMigration --project ..\SQLiteMigrations`
+  - `dotnet ef migrations add NewMigration --project ../SQLiteMigrations`
+  - `dotnet ef migrations script --project ../SQLiteMigrations`
 - package manager console:
   - `add-migration NewMigration -project SQLiteMigrations`
-  - `script-migration -project ..\SQLiteMigrations`
+  - `script-migration -project SQLiteMigrations`
 
 The SQLiteMigrations project was created following this tutorial:
 [Using a Separate Migrations Project](https://docs.microsoft.com/en-us/ef/core/managing-schemas/migrations/projects?tabs=vs)
