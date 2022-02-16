@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using BookReviews.Models;
 using BookReviews.Repos;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace BookReviews.Controllers
 {
@@ -20,10 +19,12 @@ namespace BookReviews.Controllers
 
         public async Task<IActionResult> Index()
         {
-            List<string> names = await repo.Reviews
+            List<string> names = await Task.Run(() =>
+              repo.Reviews
                 .Select(review => review.AuthorName)
                 .Distinct()
-                .ToListAsync();
+                .ToList()
+            );
 
             return View(names);
         }
