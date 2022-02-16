@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30503.244
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookReviews", "BookReviews\BookReviews.csproj", "{2C1F9BDF-74FA-4151-8D44-88EA5C5426D4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookReviews", "BookReviews\BookReviews.csproj", "{2C1F9BDF-74FA-4151-8D44-88EA5C5426D4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{D50254A2-4F69-4045-B873-6FFB327578EB}"
 EndProject
@@ -12,7 +12,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		..\README.md = ..\README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SQLiteMigrations", "SQLiteMigrations\SQLiteMigrations.csproj", "{A674D17B-10C1-4272-A753-FF897160AE8D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SQLiteMIgrations", "SQLiteMIgrations\SQLiteMIgrations.csproj", "{D54F5C1B-5934-47CB-8CD1-3E2B62CE5572}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -28,15 +28,17 @@ Global
 		{D50254A2-4F69-4045-B873-6FFB327578EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D50254A2-4F69-4045-B873-6FFB327578EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D50254A2-4F69-4045-B873-6FFB327578EB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A674D17B-10C1-4272-A753-FF897160AE8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A674D17B-10C1-4272-A753-FF897160AE8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A674D17B-10C1-4272-A753-FF897160AE8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A674D17B-10C1-4272-A753-FF897160AE8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D54F5C1B-5934-47CB-8CD1-3E2B62CE5572}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D54F5C1B-5934-47CB-8CD1-3E2B62CE5572}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D54F5C1B-5934-47CB-8CD1-3E2B62CE5572}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D54F5C1B-5934-47CB-8CD1-3E2B62CE5572}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DF919766-4CE0-4BC2-ABA8-D089A9C44CD1}
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
 	EndGlobalSection
 EndGlobal

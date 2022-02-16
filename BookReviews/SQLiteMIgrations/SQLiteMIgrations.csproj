@@ -4,17 +4,12 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+    <PropertyGroup>
+  <BaseOutputPath>..\BookReviews\bin\</BaseOutputPath>
+</PropertyGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\BookReviews\BookReviews.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <None Remove="Migrations\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Migrations\" />
-  </ItemGroup>
-  <PropertyGroup>
-  <BaseOutputPath>..\BookReviews\bin\</BaseOutputPath>
-</PropertyGroup>
 
 </Project>
