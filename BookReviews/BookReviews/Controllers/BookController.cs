@@ -3,7 +3,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using BookReviews.Repos;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace BookReviews.Controllers
 {
@@ -21,10 +20,12 @@ namespace BookReviews.Controllers
         /// </summary>
         public async Task<IActionResult> Index()
         {
-            List<string> titles = await repo.Reviews
+            List<string> titles = await Task.Run( () =>
+              repo.Reviews
                 .Select(review => review.BookTitle)
                 .Distinct()
-                .ToListAsync();
+                .ToList()
+            );
 
             return View(titles);
             // TODO: Upgrade to .netcore 6.0 so that the query below can be used.

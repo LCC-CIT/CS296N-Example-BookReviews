@@ -49,9 +49,6 @@ namespace Tests
                 "Wrong" == quiz.RightOrWrong2 && "Wrong" == quiz.RightOrWrong3);
         }
 
-        /* TODO: Fix this test. It throws this run-time exception:
-         * The source IQueryable doesn't implement IAsyncEnumerable<System.String>. Only sources that implement IAsyncEnumerable can be used for Entity Framework asynchronous operations.
-
         [Fact]
         public void IndexTest()
         {
@@ -62,14 +59,14 @@ namespace Tests
             var controller = new AuthorController(fakeRepo);
             // We don't need need to add all the properties to the models since we aren't testing that.
             var review1 = new Review() { AuthorName = "Author 1" };
-            fakeRepo.AddReviewAsync(review1);
-            fakeRepo.AddReviewAsync(review1);
+            fakeRepo.AddReviewAsync(review1).Wait();
+            fakeRepo.AddReviewAsync(review1).Wait();
             var review2 = new Review() { AuthorName = "Author 2" };
-            fakeRepo.AddReviewAsync(review2);
-            fakeRepo.AddReviewAsync(review2);
+            fakeRepo.AddReviewAsync(review2).Wait();
+            fakeRepo.AddReviewAsync(review2).Wait();
             var review3 = new Review() { AuthorName = "Author 3" };
-            fakeRepo.AddReviewAsync(review3);
-            fakeRepo.AddReviewAsync(review3);
+            fakeRepo.AddReviewAsync(review3).Wait();
+            fakeRepo.AddReviewAsync(review3).Wait();
             // Act
             var viewResult = (ViewResult)controller.Index().Result;
             // ViewResult is a the type of ActionResult that is returned by the View() method in the controller
@@ -81,7 +78,6 @@ namespace Tests
             Assert.Equal(names[1], review2.AuthorName);
             Assert.Equal(names[2], review3.AuthorName);
         }
-    */
     }
 }
 
