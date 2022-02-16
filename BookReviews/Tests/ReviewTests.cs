@@ -12,6 +12,7 @@ namespace Tests
     {
         /* This test was broken when we started using the UserManager
          * to get the logged in user to put in AppUser.UserName
+         */
         [Fact]
         public void AddReviewTest()
         {
@@ -38,7 +39,7 @@ namespace Tests
             Assert.Equal(0, System.DateTime.Now.Date.CompareTo(
                 repoReview.ReviewDate.Date));
         }
-    */
+    /*
         /* TODO: Fix these tests. They have the same issue as the AuthorTests, IndexTest
          
         [Fact]
