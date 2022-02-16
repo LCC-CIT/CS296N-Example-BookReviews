@@ -1,8 +1,6 @@
 ﻿using BookReviews.Data;
 using BookReviews.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -28,10 +26,10 @@ namespace BookReviews.Repos
             }
         }
 
-        public void AddReview(Review review)
+        public async Task AddReviewAsync(Review review)
         {
-            context.Reviews.Add(review);
-            context.SaveChanges();
+            await context.Reviews.AddAsync(review);
+            await context.SaveChangesAsync();
         }
 
     }

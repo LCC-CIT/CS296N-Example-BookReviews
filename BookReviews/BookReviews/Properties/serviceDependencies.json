@@ -3,9 +3,9 @@
     "secrets1": {
       "type": "secrets"
     },
-    "mssql2": {
+    "mssql1": {
       "type": "mssql",
-      "connectionId": "ConnectionStrings:AzureSQLConnection"
+      "connectionId": "ConnectionStrings:SQLiteConnection"
     }
   }
 }

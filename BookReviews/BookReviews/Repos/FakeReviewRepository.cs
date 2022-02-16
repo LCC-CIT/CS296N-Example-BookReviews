@@ -16,7 +16,9 @@ namespace BookReviews.Repos
         }
 
 
-        public void AddReview(Review review)
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
+        public async Task AddReviewAsync(Review review)
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
             review.ReviewID = reviews.Count;
             reviews.Add(review);

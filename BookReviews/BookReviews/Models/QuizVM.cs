@@ -1,21 +1,24 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace BookReviews.Models
 {
     public class QuizVM
     {
-        // User's answer to the first question
-        public String UserAnswer1 {get; set;}
-        // Result of checking the answer
+        // User's answers and results of checking the answers
+        [Required(ErrorMessage = "You need to answer this question")]
+        [StringLength(40, MinimumLength = 3, ErrorMessage = "You answer needs to be from 3 to 40 characters")]
+        public String UserAnswer1 { get; set; }
         public String RightOrWrong1 { get; set; }
 
-        // Second question results
+        [Required(ErrorMessage = "You need to answer this question")]
         public String UserAnswer2 { get; set; }
         public String RightOrWrong2 { get; set; }
 
-        // Thirds question results
+        [Required(ErrorMessage = "You need to answer this question")]
         public String UserAnswer3 { get; set; }
         public String RightOrWrong3 { get; set; }
+
 
         // Checks each answer to see if it's right or wrong
         // Returns "Right" or "Wrong"

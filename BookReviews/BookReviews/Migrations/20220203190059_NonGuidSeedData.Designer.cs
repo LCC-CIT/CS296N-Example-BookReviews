@@ -4,14 +4,16 @@ using BookReviews.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BookReviews.Migrations
 {
     [DbContext(typeof(BookReviewContext))]
-    partial class BookReviewContextModelSnapshot : ModelSnapshot
+    [Migration("20220203190059_NonGuidSeedData")]
+    partial class NonGuidSeedData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

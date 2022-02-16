@@ -1,4 +1,4 @@
-﻿using System;
+﻿
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -17,12 +17,14 @@ namespace BookReviews.Controllers
             repo = r;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            List<string> names = repo.Reviews
+            List<string> names = await Task.Run(() =>
+              repo.Reviews
                 .Select(review => review.AuthorName)
                 .Distinct()
-                .ToList();
+                .ToList()
+            );
 
             return View(names);
         }
@@ -36,8 +38,12 @@ namespace BookReviews.Controllers
         [HttpPost]
         public IActionResult Quiz(QuizVM quiz)
         {
-            quiz.CheckAnswers();
-            return View(quiz);
+            if (ModelState.IsValid)
+            {
+                quiz.CheckAnswers();
+                return View(quiz);
+            }
+            return RedirectToAction("Quiz");
         }
 
     }

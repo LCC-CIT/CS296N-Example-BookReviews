@@ -1,8 +1,10 @@
 using System.Runtime.InteropServices;
 using BookReviews.Data;
+using BookReviews.Models;
 using BookReviews.Repos;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -26,7 +28,7 @@ namespace BookReviews
 
             // Inject our repositories into our controllers
             services.AddTransient<IReviewRepository, ReviewRepository>(); // Generic types: Repository interface, Repository class
-            
+
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
                 // Assuming that SQL Server is installed on Windows
@@ -40,6 +42,9 @@ namespace BookReviews
                     options.UseSqlite(Configuration["ConnectionStrings:SQLiteConnection"],
                     x => x.MigrationsAssembly("SQLiteMigrations")));
             }
+            services.AddIdentity<AppUser, IdentityRole>()
+                .AddEntityFrameworkStores<BookReviewContext>()
+                .AddDefaultTokenProviders();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -60,6 +65,7 @@ namespace BookReviews
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
@@ -68,6 +74,8 @@ namespace BookReviews
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            SeedData.SeedAdminUser(app.ApplicationServices).Wait();
 
         }
     }

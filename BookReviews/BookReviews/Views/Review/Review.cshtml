@@ -2,6 +2,7 @@
 @{
     ViewData["Title"] = "Review";
 }
+
 <h1>Book Review</h1>
 <strong>Enter your Review</strong>
 <br />
@@ -17,11 +18,6 @@
         <input asp-for="AuthorName" class="form-control col-md-6" /><br />
     </div>
     <div class="row p-2">
-        <label asp-for="Reviewer.Name" class="control-label  col-md-1">Reviewer</label><br />
-        <input asp-for="Reviewer.Name" class="form-control col-md-6" />
-        <span asp-validation-for="Reviewer.Name" class="text-danger"></span><br />
-    </div>
-    <div class="row p-2">
         <label asp-for="ReviewText" class="control-label  col-md-1">Review</label><br />
         <textarea asp-for="ReviewText" placeholder="Write your review here" class="form-control col-md-6"><br />
 </textarea>
@@ -29,16 +25,13 @@
     </div>
     <div class="row p-2">
         <label asp-for="Rating" class="control-label  col-md-1">Rating</label><br />
-        <input asp-for="Rating" class="form-control col-md-6" />
+        <input asp-for="Rating" min="1" max="5" class="form-control col-md-6" />
         <span asp-validation-for="Rating" class="text-danger"></span><br />
     </div>
     <div class="row p-2">
         <button type="submit" class="form-control btn btn-success col-2">Submit</button>
     </div>
 </form>
-
-<br />
-<hr />
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
