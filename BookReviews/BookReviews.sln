@@ -10,7 +10,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		..\README.md = ..\README.md
 	EndProjectSection
 EndProject
-Project("{9344BDBB-3E7F-41FC-A0DD-8665D75EE146}") = "BookReviews", "BookReviews\BookReviews.csproj", "{B91E293C-7CBB-4F9C-A055-D124FB5A5E81}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookReviews", "BookReviews\BookReviews.csproj", "{B91E293C-7CBB-4F9C-A055-D124FB5A5E81}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SQLiteMigrations", "SQLiteMigrations\SQLiteMigrations.csproj", "{25525129-3D65-4A49-A904-0E77F26633CE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,6 +28,10 @@ Global
 		{B91E293C-7CBB-4F9C-A055-D124FB5A5E81}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B91E293C-7CBB-4F9C-A055-D124FB5A5E81}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B91E293C-7CBB-4F9C-A055-D124FB5A5E81}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25525129-3D65-4A49-A904-0E77F26633CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25525129-3D65-4A49-A904-0E77F26633CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25525129-3D65-4A49-A904-0E77F26633CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25525129-3D65-4A49-A904-0E77F26633CE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
