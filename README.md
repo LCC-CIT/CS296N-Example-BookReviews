@@ -20,7 +20,7 @@ Added a folder with JMeter tests and test results.
 
 -----
 ### SQLiteMigrations
-*This branch was merged into the A5-syncDemo branch so subsequent branches have the additional migrations project.*<br/>
+*This branch was merged into the 5-AsyncDemo branch so subsequent branches have the additional migrations project.*<br/>
 This version has a separate project for SQLite migrations.
 BookReviews is the startup project and contains SQL Server migrations.
 EF commands that target SQLite migrations are written like this:
