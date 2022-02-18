@@ -2,6 +2,7 @@
 using BookReviews.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace BookReviews.Repos
 {
@@ -25,10 +26,17 @@ namespace BookReviews.Repos
             }
         }
 
-        public void AddReview(Review review)
+        public async Task AddReviewAsync(Review review)
         {
             context.Reviews.Add(review);
-            context.SaveChanges();
+            await context.SaveChangesAsync();
+        }
+
+        public async Task<int> DeleteRviewAsync(Review review)
+        {
+            var theReview = await context.Reviews.FindAsync(review.ReviewID);
+            context.Reviews.Remove(theReview);
+            return await context.SaveChangesAsync();
         }
 
     }

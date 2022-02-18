@@ -44,7 +44,9 @@
     <_WebToolingArtifacts Remove="Properties\PublishProfiles\BookReview-W22-SQLite-Web Deploy.pubxml" />
     <_WebToolingArtifacts Remove="Properties\PublishProfiles\BookReviews-W22-SQLServer-Web Deploy.pubxml" />
   </ItemGroup>
+
   <ItemGroup>
     <Folder Include="Migrations\" />
   </ItemGroup>
+
 </Project>

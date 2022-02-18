@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using BookReviews.Models;
 using BookReviews.Repos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace BookReviews.Controllers
 {
@@ -20,50 +23,58 @@ namespace BookReviews.Controllers
         }
 
         // Show the view that has a form for entering a review
+        [Authorize]
         public IActionResult Review()
         {
             return View();
         }
 
         [HttpPost]
-        public IActionResult Review(Review model)
+        [Authorize]
+        public async Task<IActionResult> Review(Review model)
         {
             // Store the model in the database if it is valid
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 model.ReviewDate = DateTime.Today;
                 // Get the AppUser object for the current user
-                model.Reviewer = userManager.GetUserAsync(User).Result;
-                repo.AddReview(model);
+                model.Reviewer = await userManager.GetUserAsync(User);
+                await repo.AddReviewAsync(model);
             }
-            return RedirectToAction("FilterReviews", new {bookTitle = model.BookTitle, reviewerName = model.Reviewer.Name});
+            return RedirectToAction("FilterReviews", new { bookTitle = model.BookTitle, reviewerName = model.Reviewer.Name });
         }
 
         // TODO: Can we eliminate this method. Can we make FilterReviews the Index method?
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             // Get all reviews in the database
-            List<Review> reviews = repo.Reviews.ToList<Review>(); // Use ToList to convert the IQueryable to a list
+            List<Review> reviews = await repo.Reviews.ToListAsync<Review>(); // Use ToList to convert the IQueryable to a list
             return View(reviews);
         }
 
-        public IActionResult FilterReviews(string bookTitle, string reviewerName)
+        public async Task<IActionResult> FilterReviews(string bookTitle, string reviewerName)
         {
             List<Review> reviews = null;
 
-            if (bookTitle != null)
+            // We can filter by title, reviewer, or both
+            if (!string.IsNullOrEmpty(bookTitle))
             {
-               reviews = (from r in repo.Reviews
-                               where r.BookTitle == bookTitle
-                               select r).ToList();
+                await Task.Run(() =>
+                    reviews = (from r in repo.Reviews
+                                   where r.BookTitle == bookTitle
+                                   select r).ToList()
+                    );
             }
-            else if (reviewerName != null)
+            if (!string.IsNullOrEmpty(reviewerName))
             {
-                reviews = (from r in repo.Reviews
-                           where r.Reviewer.Name == reviewerName
-                           select r).ToList();
+                await Task.Run(() =>
+                    reviews = (from r in repo.Reviews
+                               where r.Reviewer.Name == reviewerName
+                               select r).ToList()
+                 );
             }
             return View("Index", reviews);
+            // TODO: Do A/B load tests to see if using .ToListAsync() gives better performance than Task.Run() and .ToList()
         }
     }
 };
