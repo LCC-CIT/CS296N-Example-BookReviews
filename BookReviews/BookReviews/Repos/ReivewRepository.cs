@@ -28,8 +28,15 @@ namespace BookReviews.Repos
 
         public async Task AddReviewAsync(Review review)
         {
-            await context.Reviews.AddAsync(review);
+            context.Reviews.Add(review);
             await context.SaveChangesAsync();
+        }
+
+        public async Task<int> DeleteRviewAsync(Review review)
+        {
+            var theReview = await context.Reviews.FindAsync(review.ReviewID);
+            context.Reviews.Remove(theReview);
+            return await context.SaveChangesAsync();
         }
 
     }
