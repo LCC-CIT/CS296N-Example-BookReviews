@@ -17,6 +17,7 @@ Added admin features and restriction of controllers and methods based on Identit
 Changed all controller methods that access the database and associated methods to async.
 ### 6-Performance
 Added a folder with JMeter tests and test results.
+
 -----
 ### SQLiteMigrations
 *This branch was merged into the AsyncDemo branch so subsequent branches have the additional migrations project.*
