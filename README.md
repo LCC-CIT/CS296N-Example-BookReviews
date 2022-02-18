@@ -2,7 +2,24 @@
 ## A Book Review web app
 This is an example web app in which the same features are implemented as those required for the CS296N lab assignments.
 
-## SQLiteMigrations branch
+## Branches
+### 0-Baseline
+Code from CS295N which we are building on in CS296N
+### 1-Validation
+Demonstrates using validation attributes to control validation in the browser, controller, and database.
+### 2-IdentityDemo
+Demonstrates adding packages and code to support ASP.NET Identity
+### 3-AuthenticationDemo
+Added regristration and login features.
+### 4-AuthorizationDemo
+Added admin features and restriction of controllers and methods based on Identity role.
+### 5-AsyncDemo
+Changed all controller methods that access the database and associated methods to async.
+### 6-Performance
+Added a folder with JMeter tests and test results.
+-----
+### SQLiteMigrations
+*This branch was merged into the AsyncDemo branch so subsequent branches have the additional migrations project.*
 This version has a separate project for SQLite migrations.
 BookReviews is the startup project and contains SQL Server migrations.
 EF commands that target SQLite migrations are written like this:
