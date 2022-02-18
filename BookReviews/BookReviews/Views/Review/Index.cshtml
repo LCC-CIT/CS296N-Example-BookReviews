@@ -7,7 +7,8 @@
 <h1 class="display-4">Reviews</h1>
 <h3>Write a Review</h3>
 <a asp-controller="Review" asp-action="Review">Enter your review</a>
-<br /><br />
+<br />
+<br />
 <h3>Filter Reviews</h3>
 
 Enter a book title:
@@ -54,4 +55,24 @@ Enter a book title:
         <strong class="m-3">Rating:</strong>
         @review.Rating / 5<br />
     </p>
+    @*
+        @if (review.Comments.Count != 0)
+            {
+                <h3>Comments</h3>
+
+                @foreach (Comment comment in review.Comments)
+                {
+                    <p>
+                        <strong class="m-3">Comment:</strong>
+                        @comment.CommentText<br />
+                        <strong class="m-3">By:</strong>
+                        @comment.Commenter.Name<br />
+                        <strong class="m-3">Date:</strong>
+                        @comment.CommentDate.Date<br />
+                    </p>
+                }
+            }
+            <a asp-action="Comment" asp-route-reviewId="@review.ReviewID" class="btn btn-secondary col-3">Add Comment</a>
+    *@
+
 }
