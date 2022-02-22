@@ -33,6 +33,8 @@ EF commands that target SQLite migrations are written like this:
   - `add-migration NewMigration -project SQLiteMigrations`
   - `script-migration -project SQLiteMigrations`
 
+**Note:** You may need to explicitly build the SQLiteMigrations project after adding a migration so that the new migration is copied to the BookReviews project (it is included in the .dll that is output to the bin folder).
+
 The SQLiteMigrations project was created following this tutorial:
 [Using a Separate Migrations Project](https://docs.microsoft.com/en-us/ef/core/managing-schemas/migrations/projects?tabs=vs)
 Note: In the BookReviews project, I did not add a reference to the SQLiteMigrations project.
