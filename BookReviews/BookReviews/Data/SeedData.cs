@@ -41,28 +41,28 @@ namespace BookReviews.Data
 
 
             // Create and add authors to the database
-            Writer author1 = new Writer()
+            Author author1 = new Author()
             {
-                WriterId = 1,
+                AuthorId = 1,
                 Name = "Samuel Shellabarger",
                 Birthdate = DateTime.Parse("5/18/1888")
             };
 
-            Writer author2 = new Writer()
+            Author author2 = new Author()
             {
-                WriterId = 2,
+                AuthorId = 2,
                 Name = "leif Enger",
                 Birthdate = DateTime.Parse("1/1/1961")
             };
 
-            Writer author3 = new Writer()
+            Author author3 = new Author()
             {
-                WriterId = 3,
+                AuthorId = 3,
                 Name = "Sir Walter Scott",
                 Birthdate = DateTime.Parse("8/15/1771")
             };
 
-            modelBuilder.Entity<Writer>().HasData(author1, author2, author3);
+            modelBuilder.Entity<Author>().HasData(author1, author2, author3);
 
             // Create and add books to the database
             // Since we are using shadow FK properties, we must books as anonymous objects
@@ -73,7 +73,7 @@ namespace BookReviews.Data
             {
                 BookId = BOOK_ID1,
                 Title = "Prince of Foxes",
-                AuthorWriterId = author1.WriterId,
+                AuthorId = author1.AuthorId,
                 PrintDate = DateTime.Parse("1/1/1947")
             },
 
@@ -81,7 +81,7 @@ namespace BookReviews.Data
             {
                 BookId = BOOK_ID2,
                 Title = "Virgil Wander",
-                AuthorWriterId = author2.WriterId,
+                AuthorId = author2.AuthorId,
                 PrintDate = DateTime.Parse("1/1/2018")
             },
 
@@ -89,7 +89,7 @@ namespace BookReviews.Data
             {
                 BookId = BOOK_ID3,
                 Title = "Ivanhoe",
-                AuthorWriterId = author3.WriterId,
+                AuthorId = author3.AuthorId,
                 PrintDate = DateTime.Parse("1/1/1819")
             }
             );

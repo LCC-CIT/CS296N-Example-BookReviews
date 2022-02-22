@@ -6,11 +6,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace BookReviews.Migrations
+namespace SQLiteMigrations.Migrations
 {
     [DbContext(typeof(BookReviewContext))]
-    [Migration("20220205045957_ComplexDomain")]
-    partial class ComplexDomain
+    [Migration("20220222160845_WriterToAuthor")]
+    partial class WriterToAuthor
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -89,39 +89,76 @@ namespace BookReviews.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "7dc3c5ff-fd2c-492d-a3d6-05a607c8eb5d",
+                            Id = "fbfc74cc-4b3e-422b-8259-e30a4d1f1772",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f53d2fad-70ca-4744-8c45-03e1ea60f2f6",
+                            ConcurrencyStamp = "71c679e5-5719-4106-bffb-bcce4e8f21c9",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             Name = "Brian Bird",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "6a0dbf53-197b-46b0-be1c-1c148cceef21",
+                            SecurityStamp = "0165cdd5-ba6f-460f-bbd6-0a266dab97f4",
                             TwoFactorEnabled = false
                         },
                         new
                         {
-                            Id = "755f75a9-ea9f-4e75-9d9a-d21b719c5afc",
+                            Id = "f7b9ba75-4edb-48fa-a9cb-8a8d4014181d",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "62cd03d7-efaf-434c-8f3e-d21b159aca8e",
+                            ConcurrencyStamp = "6578fa95-2ff9-48d2-be3f-409b899eefd4",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             Name = "Emma Watson",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "bf50f93d-17ba-4141-912d-79e3eff4f7fb",
+                            SecurityStamp = "62c4cacc-afe1-4a5b-9e9c-b383fdadcb5b",
                             TwoFactorEnabled = false
                         },
                         new
                         {
-                            Id = "b5158425-0721-4169-acf0-ef8a080c2874",
+                            Id = "3522cc34-179c-4b11-8387-b60c94deafee",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "9582f570-8f67-42b5-94e2-5528e79b8289",
+                            ConcurrencyStamp = "6c2ea034-4a57-4d9a-b11a-f3b3e71864aa",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             Name = "Daniel Radliiffe",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "db79e9af-0ba1-4557-a441-c0093c4cc5a8",
+                            SecurityStamp = "d4ef602d-1345-4236-8f22-42805ef440de",
                             TwoFactorEnabled = false
+                        });
+                });
+
+            modelBuilder.Entity("BookReviews.Models.Author", b =>
+                {
+                    b.Property<int>("AuthorId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("Birthdate")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("AuthorId");
+
+                    b.ToTable("Authors");
+
+                    b.HasData(
+                        new
+                        {
+                            AuthorId = 1,
+                            Birthdate = new DateTime(1888, 5, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Samuel Shellabarger"
+                        },
+                        new
+                        {
+                            AuthorId = 2,
+                            Birthdate = new DateTime(1961, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "leif Enger"
+                        },
+                        new
+                        {
+                            AuthorId = 3,
+                            Birthdate = new DateTime(1771, 8, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Sir Walter Scott"
                         });
                 });
 
@@ -131,7 +168,7 @@ namespace BookReviews.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("AuthorWriterId")
+                    b.Property<int?>("AuthorId")
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("PrintDate")
@@ -142,7 +179,7 @@ namespace BookReviews.Migrations
 
                     b.HasKey("BookId");
 
-                    b.HasIndex("AuthorWriterId");
+                    b.HasIndex("AuthorId");
 
                     b.ToTable("Books");
 
@@ -150,21 +187,21 @@ namespace BookReviews.Migrations
                         new
                         {
                             BookId = 1,
-                            AuthorWriterId = 1,
+                            AuthorId = 1,
                             PrintDate = new DateTime(1947, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Prince of Foxes"
                         },
                         new
                         {
                             BookId = 2,
-                            AuthorWriterId = 2,
+                            AuthorId = 2,
                             PrintDate = new DateTime(2018, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Virgil Wander"
                         },
                         new
                         {
                             BookId = 3,
-                            AuthorWriterId = 3,
+                            AuthorId = 3,
                             PrintDate = new DateTime(1819, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Ivanhoe"
                         });
@@ -236,7 +273,7 @@ namespace BookReviews.Migrations
                             Rating = 5,
                             ReviewDate = new DateTime(2020, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ReviewText = "Great book, a must read!",
-                            ReviewerId = "755f75a9-ea9f-4e75-9d9a-d21b719c5afc"
+                            ReviewerId = "f7b9ba75-4edb-48fa-a9cb-8a8d4014181d"
                         },
                         new
                         {
@@ -245,7 +282,7 @@ namespace BookReviews.Migrations
                             Rating = 5,
                             ReviewDate = new DateTime(2020, 11, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ReviewText = "I love the clever, witty dialog",
-                            ReviewerId = "b5158425-0721-4169-acf0-ef8a080c2874"
+                            ReviewerId = "3522cc34-179c-4b11-8387-b60c94deafee"
                         },
                         new
                         {
@@ -254,7 +291,7 @@ namespace BookReviews.Migrations
                             Rating = 5,
                             ReviewDate = new DateTime(2020, 11, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ReviewText = "Wonderful book, written by a distant cousin of mine.",
-                            ReviewerId = "7dc3c5ff-fd2c-492d-a3d6-05a607c8eb5d"
+                            ReviewerId = "fbfc74cc-4b3e-422b-8259-e30a4d1f1772"
                         },
                         new
                         {
@@ -263,44 +300,7 @@ namespace BookReviews.Migrations
                             Rating = 4,
                             ReviewDate = new DateTime(2020, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ReviewText = "It was a little hard going at first, but then I loved it!",
-                            ReviewerId = "7dc3c5ff-fd2c-492d-a3d6-05a607c8eb5d"
-                        });
-                });
-
-            modelBuilder.Entity("BookReviews.Models.Writer", b =>
-                {
-                    b.Property<int>("WriterId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<DateTime>("Birthdate")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("WriterId");
-
-                    b.ToTable("Writers");
-
-                    b.HasData(
-                        new
-                        {
-                            WriterId = 1,
-                            Birthdate = new DateTime(1888, 5, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Samuel Shellabarger"
-                        },
-                        new
-                        {
-                            WriterId = 2,
-                            Birthdate = new DateTime(1961, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "leif Enger"
-                        },
-                        new
-                        {
-                            WriterId = 3,
-                            Birthdate = new DateTime(1771, 8, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Sir Walter Scott"
+                            ReviewerId = "fbfc74cc-4b3e-422b-8259-e30a4d1f1772"
                         });
                 });
 
@@ -434,9 +434,9 @@ namespace BookReviews.Migrations
 
             modelBuilder.Entity("BookReviews.Models.Book", b =>
                 {
-                    b.HasOne("BookReviews.Models.Writer", "Author")
+                    b.HasOne("BookReviews.Models.Author", "Author")
                         .WithMany()
-                        .HasForeignKey("AuthorWriterId");
+                        .HasForeignKey("AuthorId");
                 });
 
             modelBuilder.Entity("BookReviews.Models.Comment", b =>

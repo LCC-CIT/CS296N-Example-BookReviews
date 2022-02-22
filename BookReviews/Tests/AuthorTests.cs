@@ -58,13 +58,13 @@ namespace Tests
             var fakeRepo = new FakeReviewRepository();
             var controller = new AuthorController(fakeRepo);
             // We don't need need to add all the properties to the models since we aren't testing that.
-            var review1 = new Review() { Book = new Book { Author = new Writer { Name = "Author 1" } } };
+            var review1 = new Review() { Book = new Book { Author = new Author { Name = "Author 1" } } };
             fakeRepo.AddReview(review1);
             fakeRepo.AddReview(review1);
-            var review2 = new Review() { Book = new Book { Author = new Writer { Name = "Author 2" } } };
+            var review2 = new Review() { Book = new Book { Author = new Author { Name = "Author 2" } } };
             fakeRepo.AddReview(review2);
             fakeRepo.AddReview(review2);
-            var review3 = new Review() { Book = new Book { Author = new Writer { Name = "Author 3" } } };
+            var review3 = new Review() { Book = new Book { Author = new Author { Name = "Author 3" } } };
             fakeRepo.AddReview(review3);
             fakeRepo.AddReview(review3);
             // Act

@@ -1,9 +1,9 @@
 ﻿using System;
 namespace BookReviews.Models
 {
-	public class Writer
+	public class Author
 	{
-        public int WriterId { get; set; }
+        public int AuthorId { get; set; }
 		public string Name { get; set; }
 		public DateTime Birthdate { get; set; }
 	}

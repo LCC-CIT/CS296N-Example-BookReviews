@@ -34,6 +34,7 @@
     <None Remove="Microsoft.AspNetCore.Identity.EntityFrameworkCore" />
     <None Remove="Data\BookReviews.db-shm" />
     <None Remove="Data\BookReviews.db-wal" />
+    <None Remove="Data\BookReviews.db" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Data\" />
