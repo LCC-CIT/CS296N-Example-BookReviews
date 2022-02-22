@@ -19,6 +19,8 @@ Changed all controller methods that access the database and associated methods t
 Added a folder with JMeter tests and test results.
 ### 7-ComplexDomain
 Added a comment class to the domain model along with associated view and controller methods.
+### 7-MoreComplexDomain
+Added a more complex domain model with Book and Author models in addition to Review, Comment and AppUser.
 
 -----
 ### SQLiteMigrations
