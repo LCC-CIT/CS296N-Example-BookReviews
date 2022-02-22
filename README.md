@@ -17,6 +17,8 @@ Added admin features and restriction of controllers and methods based on Identit
 Changed all controller methods that access the database and associated methods to async.
 ### 6-Performance
 Added a folder with JMeter tests and test results.
+### 7-ComplexDomain
+Added a comment class to the domain model along with associated view and controller methods.
 
 -----
 ### SQLiteMigrations

@@ -9,12 +9,6 @@ namespace BookReviews.Data
 {
     public static class SeedData
     {
-        // Create GUIDs to use for PKs in our AppUser objects
-        //private static readonly string id1 = Guid.NewGuid().ToString();
-        //private static readonly string id2 = Guid.NewGuid().ToString();
-        //private static readonly string id3 = Guid.NewGuid().ToString();
-        //private static readonly string id4 = Guid.NewGuid().ToString();
-
         private const string id1 = "A";
         private const string id2 = "B";
         private const string id3 = "C";
@@ -92,7 +86,7 @@ namespace BookReviews.Data
             modelBuilder.Entity<Review>().HasData(
                 new 
                 {
-                    ReviewID = 1,
+                    ReviewId = 1,
                     ReviewerId = id2,
                     BookTitle = "Prince of Foxes",
                     AuthorName = "Samuel Shellabarger",
@@ -103,7 +97,7 @@ namespace BookReviews.Data
                 // Another review of the same book
                 new
                 {
-                    ReviewID = 2,
+                    ReviewId = 2,
                     ReviewerId = id3,
                     BookTitle = "Prince of Foxes",
                     AuthorName = "Samuel Shellabarger",
@@ -117,7 +111,7 @@ namespace BookReviews.Data
             modelBuilder.Entity<Review>().HasData(
                 new
                 {
-                    ReviewID = 3,
+                    ReviewId = 3,
                     ReviewerId = id1,
                     BookTitle = "Virgil Wander",
                     AuthorName = "Lief Enger",
@@ -128,7 +122,7 @@ namespace BookReviews.Data
 
                  new
                  {
-                     ReviewID = 4,
+                     ReviewId = 4,
                      ReviewerId = id4,
                      BookTitle = "Virgil Wander",
                      AuthorName = "Lief Enger",
@@ -139,7 +133,7 @@ namespace BookReviews.Data
 
                 new
                 {
-                    ReviewID = 5,
+                    ReviewId = 5,
                     ReviewerId = id1,
                     BookTitle = "Ivanho",
                     AuthorName = "Sir Walter Scott",
@@ -150,7 +144,7 @@ namespace BookReviews.Data
 
                  new
                  {
-                     ReviewID = 6,
+                     ReviewId = 6,
                      ReviewerId = id2,
                      BookTitle = "The Lion, the Witch and the Wardrobe",
                      AuthorName = "C. S. Lewis",
