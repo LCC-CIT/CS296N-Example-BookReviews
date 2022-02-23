@@ -70,10 +70,31 @@ namespace Tests
             Assert.Equal(reviews[1].Reviewer.Name, review2.Reviewer.Name);
         }
 
-        // Note: The Index method is not being tested because it doesn't do any
-        // processing; it just calls a method on the repository.
+        [Fact]
+        public void IndexSortOrderTest()
+        {
+            // Arrange
+            var fakeRepo = new FakeReviewRepository();
+            var controller = new ReviewController(fakeRepo, null);
+            // We only need book titles in order to verify sorting
+            var review1 = new Review() {BookTitle = "Cats and Mice"};
+            fakeRepo.AddReviewAsync(review1).Wait();
+            var review2 = new Review() {BookTitle = "Frogs and Princes"};
+            fakeRepo.AddReviewAsync(review2).Wait();
+            var review3 = new Review() {BookTitle = "Bats and Birds" };
+            fakeRepo.AddReviewAsync(review3).Wait();
 
-        /* This test was broken when we started using the UserManager
+            // Act
+            var viewResult = (ViewResult)controller.Index().Result;
+
+            // Assert - verify ascending order
+            var reviews = (List<Review>)viewResult.ViewData.Model;
+            Assert.Equal(reviews[0].BookTitle, review3.BookTitle);
+            Assert.Equal(reviews[1].BookTitle, review1.BookTitle);
+            Assert.Equal(reviews[2].BookTitle, review2.BookTitle);
+        }
+
+        /* The AddReviewTest was broken when we started using the UserManager
  * to get the logged in user to put in AppUser.UserName
 [Fact]
 public void AddReviewTest()
