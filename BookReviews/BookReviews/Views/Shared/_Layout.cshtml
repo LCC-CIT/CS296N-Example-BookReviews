@@ -21,8 +21,13 @@
 				</button>
 				<div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
 					<ul class="navbar-nav flex-grow-1">
-						<li class="nav-item">
-							<a class="nav-link text-dark" asp-controller="Review" asp-action="Index">Reviews</a>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle text-dark" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Reviews</a>
+							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+								<a class="dropdown-item" asp-controller="Review" asp-action="Index">Read reviews</a>
+								<a class="dropdown-item" asp-controller="Review" asp-action="Review">Write a review</a>
+								<a class="dropdown-item" asp-controller="Manage" asp-action="Index" >Manage reviews</a>
+							</div>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link text-dark" asp-controller="Book" asp-action="Index">Books</a>
