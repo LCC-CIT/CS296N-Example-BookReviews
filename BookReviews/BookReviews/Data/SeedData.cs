@@ -155,10 +155,21 @@ namespace BookReviews.Data
                      ReviewText = "I loved this book as a kid and I still love it!",
                      ReviewDate = DateTime.Parse("11/1/2020"),
                      Rating = 4
+                 },
+
+                 new
+                 {
+                     ReviewId = 7,
+                     ReviewerId = ID4,
+                     BookTitle = "The Lion, the Witch and the Wardrobe",
+                     AuthorName = "C. S. Lewis",
+                     ReviewText = "This book inspired me to believe in things that others think are impossible.",
+                     ReviewDate = DateTime.Parse("10/12/2021"),
+                     Rating = 4
                  }
             );
 
-            // Create and add three comments to the database.
+            // Create and add comments to the database.
 
             // These must be untyped objects because they use "shadow" FK preoperties
             // which are in the tables created by EF but not in the domain model.
@@ -188,6 +199,24 @@ namespace BookReviews.Data
                     CommentText = "Wow, how are you related to Lief Enger?",
                     CommentDate = DateTime.Parse("1/15/2021"),
                     CommenterId = ID2,
+                    ReviewId = 3
+                },
+
+                 new
+                 {
+                     CommentId = 4,
+                     CommentText = "Yes, and as professor Kirk says, it's all about logic.",
+                     CommentDate = DateTime.Parse("10/15/2021"),
+                     CommenterId = ID2,
+                     ReviewId = 7
+                 },
+
+                new
+                {
+                    CommentId = 5,
+                    CommentText = "I'm not sure how we're related. Some kind of distant cousin.",
+                    CommentDate = DateTime.Parse("2/1/2021"),
+                    CommenterId = ID1,
                     ReviewId = 3
                 }
              );

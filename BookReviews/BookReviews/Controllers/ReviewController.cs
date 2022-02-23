@@ -63,22 +63,32 @@ namespace BookReviews.Controllers
             List<Review> reviews = null;
 
             // We can filter by title, reviewer, or both
-            if (!string.IsNullOrEmpty(bookTitle))
+            await Task.Run(() =>
             {
-                await Task.Run(() =>
+                if (!string.IsNullOrEmpty(bookTitle))
+                {
                     reviews = (from r in repo.Reviews
                                where r.BookTitle == bookTitle
-                               select r).ToList()
-                    );
-            }
-            if (!string.IsNullOrEmpty(reviewerName))
-            {
-                await Task.Run(() =>
-                    reviews = (from r in repo.Reviews
-                               where r.Reviewer.Name == reviewerName
-                               select r).ToList()
-                 );
-            }
+                               select r).ToList();
+                }
+                if (!string.IsNullOrEmpty(reviewerName))
+                {
+                    if (reviews != null && reviews.Count > 0)
+                    {
+                        var filteredReviews = reviews;
+                        reviews = (from r in filteredReviews
+                                   where r.Reviewer.Name == reviewerName
+                                   select r).ToList(); 
+                    }
+                    else
+                    {
+                        reviews = (from r in repo.Reviews
+                                   where r.Reviewer.Name == reviewerName
+                                   select r).ToList();
+                    }
+                }
+            } );
+
             return View("Index", reviews);
             // TODO: Do A/B load tests to see if using .ToListAsync() gives better performance than Task.Run() and .ToList()
         }
