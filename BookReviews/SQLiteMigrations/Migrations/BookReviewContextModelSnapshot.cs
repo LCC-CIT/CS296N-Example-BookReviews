@@ -89,12 +89,12 @@ namespace SQLiteMigrations.Migrations
                         {
                             Id = "A",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "c7239746-d966-466b-83e7-e528c0a6d40b",
+                            ConcurrencyStamp = "3c47172f-5431-4bfd-a53f-6b086be63a41",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             Name = "Brian Bird",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "6a8c73e9-c015-49ec-9c40-15b04bc08c6c",
+                            SecurityStamp = "31e9feb0-87b5-4924-904d-dfef3e6a70cc",
                             TwoFactorEnabled = false,
                             UserName = "BrianB"
                         },
@@ -102,12 +102,12 @@ namespace SQLiteMigrations.Migrations
                         {
                             Id = "B",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "e16143cb-3665-41a4-9104-24bbf928a445",
+                            ConcurrencyStamp = "cf43d7d5-6c95-4bc3-bb6f-a71aa2e646c9",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             Name = "Emma Watson",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "84ed8b77-0341-4742-a609-7290e07a727d",
+                            SecurityStamp = "c13d1ecf-5df9-4538-85e2-6947cd521d6e",
                             TwoFactorEnabled = false,
                             UserName = "EmmaW"
                         },
@@ -115,12 +115,12 @@ namespace SQLiteMigrations.Migrations
                         {
                             Id = "C",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "5678430b-d0c7-4c1b-a719-03f3617a8fda",
+                            ConcurrencyStamp = "cf87b593-25dd-431a-9473-a0144ae9fa74",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             Name = "Daniel Radcliffe",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "4e3b4a14-df8e-4613-9798-90ee495be749",
+                            SecurityStamp = "5888cef5-1059-473e-b381-ad61dddf9751",
                             TwoFactorEnabled = false,
                             UserName = "DanielR"
                         },
@@ -128,12 +128,12 @@ namespace SQLiteMigrations.Migrations
                         {
                             Id = "D",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b06ab997-a3b4-44f1-a182-c17de9aba781",
+                            ConcurrencyStamp = "f0d7cb8e-e0b6-4145-a53a-5b9659c889f5",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             Name = "Scarlett Johansson",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "924bba23-4a5e-401c-992b-b174659468fa",
+                            SecurityStamp = "020af787-6370-4a19-8125-6f6e14b55857",
                             TwoFactorEnabled = false,
                             UserName = "ScarlettJ"
                         });
@@ -164,6 +164,32 @@ namespace SQLiteMigrations.Migrations
                     b.HasIndex("ReviewId");
 
                     b.ToTable("Comment");
+
+                    b.HasData(
+                        new
+                        {
+                            CommentId = 1,
+                            CommentDate = new DateTime(2020, 11, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CommentText = "I loved that book as a kid too!",
+                            CommenterId = "A",
+                            ReviewId = 6
+                        },
+                        new
+                        {
+                            CommentId = 2,
+                            CommentDate = new DateTime(2020, 12, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CommentText = "I'm glad you were able to get into the book. I never could.",
+                            CommenterId = "C",
+                            ReviewId = 5
+                        },
+                        new
+                        {
+                            CommentId = 3,
+                            CommentDate = new DateTime(2021, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CommentText = "Wow, how are you related to Lief Enger?",
+                            CommenterId = "B",
+                            ReviewId = 3
+                        });
                 });
 
             modelBuilder.Entity("BookReviews.Models.Review", b =>

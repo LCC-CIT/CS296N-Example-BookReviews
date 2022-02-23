@@ -1,10 +1,9 @@
 ﻿using BookReviews.Data;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+
+// This class is no longer being used, but I kept it in the project
+// as an example of an alternative (perhaps simpler) way to seed a database.
 
 namespace BookReviews.Models
 {

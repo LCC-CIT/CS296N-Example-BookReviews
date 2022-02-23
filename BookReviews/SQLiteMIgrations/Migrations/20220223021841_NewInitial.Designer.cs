@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace SQLiteMigrations.Migrations
 {
     [DbContext(typeof(BookReviewContext))]
-    [Migration("20220216225947_SQLiteInitial")]
-    partial class SQLiteInitial
+    [Migration("20220223021841_NewInitial")]
+    partial class NewInitial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -91,12 +91,12 @@ namespace SQLiteMigrations.Migrations
                         {
                             Id = "A",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "6b051854-f5a2-44dd-bf14-0bf671f9807d",
+                            ConcurrencyStamp = "3c47172f-5431-4bfd-a53f-6b086be63a41",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             Name = "Brian Bird",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "4f3c5bce-3e35-4b6e-8e51-bb7b2873795c",
+                            SecurityStamp = "31e9feb0-87b5-4924-904d-dfef3e6a70cc",
                             TwoFactorEnabled = false,
                             UserName = "BrianB"
                         },
@@ -104,12 +104,12 @@ namespace SQLiteMigrations.Migrations
                         {
                             Id = "B",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "d0ff45a7-be3d-40a3-983e-f26a31374ff5",
+                            ConcurrencyStamp = "cf43d7d5-6c95-4bc3-bb6f-a71aa2e646c9",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             Name = "Emma Watson",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "d38d0527-75ce-427d-8403-2ba18937dff5",
+                            SecurityStamp = "c13d1ecf-5df9-4538-85e2-6947cd521d6e",
                             TwoFactorEnabled = false,
                             UserName = "EmmaW"
                         },
@@ -117,12 +117,12 @@ namespace SQLiteMigrations.Migrations
                         {
                             Id = "C",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "93b329fc-f6c7-43a5-b80e-a1dd4d7f87fc",
+                            ConcurrencyStamp = "cf87b593-25dd-431a-9473-a0144ae9fa74",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             Name = "Daniel Radcliffe",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "47246933-8061-4c5b-9b66-515c77cd4d8b",
+                            SecurityStamp = "5888cef5-1059-473e-b381-ad61dddf9751",
                             TwoFactorEnabled = false,
                             UserName = "DanielR"
                         },
@@ -130,20 +130,73 @@ namespace SQLiteMigrations.Migrations
                         {
                             Id = "D",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "eadc72ac-f150-43fa-a337-d835dd901205",
+                            ConcurrencyStamp = "f0d7cb8e-e0b6-4145-a53a-5b9659c889f5",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             Name = "Scarlett Johansson",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "7a9283fb-c40f-4ece-b9dc-6ca8ea5c8beb",
+                            SecurityStamp = "020af787-6370-4a19-8125-6f6e14b55857",
                             TwoFactorEnabled = false,
                             UserName = "ScarlettJ"
                         });
                 });
 
+            modelBuilder.Entity("BookReviews.Models.Comment", b =>
+                {
+                    b.Property<int>("CommentId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("CommentDate")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("CommentText")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("CommenterId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int?>("ReviewId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("CommentId");
+
+                    b.HasIndex("CommenterId");
+
+                    b.HasIndex("ReviewId");
+
+                    b.ToTable("Comment");
+
+                    b.HasData(
+                        new
+                        {
+                            CommentId = 1,
+                            CommentDate = new DateTime(2020, 11, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CommentText = "I loved that book as a kid too!",
+                            CommenterId = "A",
+                            ReviewId = 6
+                        },
+                        new
+                        {
+                            CommentId = 2,
+                            CommentDate = new DateTime(2020, 12, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CommentText = "I'm glad you were able to get into the book. I never could.",
+                            CommenterId = "C",
+                            ReviewId = 5
+                        },
+                        new
+                        {
+                            CommentId = 3,
+                            CommentDate = new DateTime(2021, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CommentText = "Wow, how are you related to Lief Enger?",
+                            CommenterId = "B",
+                            ReviewId = 3
+                        });
+                });
+
             modelBuilder.Entity("BookReviews.Models.Review", b =>
                 {
-                    b.Property<int>("ReviewID")
+                    b.Property<int>("ReviewId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -168,7 +221,7 @@ namespace SQLiteMigrations.Migrations
                     b.Property<string>("ReviewerId")
                         .HasColumnType("TEXT");
 
-                    b.HasKey("ReviewID");
+                    b.HasKey("ReviewId");
 
                     b.HasIndex("ReviewerId");
 
@@ -177,7 +230,7 @@ namespace SQLiteMigrations.Migrations
                     b.HasData(
                         new
                         {
-                            ReviewID = 1,
+                            ReviewId = 1,
                             AuthorName = "Samuel Shellabarger",
                             BookTitle = "Prince of Foxes",
                             Rating = 5,
@@ -187,7 +240,7 @@ namespace SQLiteMigrations.Migrations
                         },
                         new
                         {
-                            ReviewID = 2,
+                            ReviewId = 2,
                             AuthorName = "Samuel Shellabarger",
                             BookTitle = "Prince of Foxes",
                             Rating = 5,
@@ -197,7 +250,7 @@ namespace SQLiteMigrations.Migrations
                         },
                         new
                         {
-                            ReviewID = 3,
+                            ReviewId = 3,
                             AuthorName = "Lief Enger",
                             BookTitle = "Virgil Wander",
                             Rating = 5,
@@ -207,7 +260,7 @@ namespace SQLiteMigrations.Migrations
                         },
                         new
                         {
-                            ReviewID = 4,
+                            ReviewId = 4,
                             AuthorName = "Lief Enger",
                             BookTitle = "Virgil Wander",
                             Rating = 4,
@@ -217,7 +270,7 @@ namespace SQLiteMigrations.Migrations
                         },
                         new
                         {
-                            ReviewID = 5,
+                            ReviewId = 5,
                             AuthorName = "Sir Walter Scott",
                             BookTitle = "Ivanho",
                             Rating = 4,
@@ -227,7 +280,7 @@ namespace SQLiteMigrations.Migrations
                         },
                         new
                         {
-                            ReviewID = 6,
+                            ReviewId = 6,
                             AuthorName = "C. S. Lewis",
                             BookTitle = "The Lion, the Witch and the Wardrobe",
                             Rating = 4,
@@ -363,6 +416,17 @@ namespace SQLiteMigrations.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("BookReviews.Models.Comment", b =>
+                {
+                    b.HasOne("BookReviews.Models.AppUser", "Commenter")
+                        .WithMany()
+                        .HasForeignKey("CommenterId");
+
+                    b.HasOne("BookReviews.Models.Review", null)
+                        .WithMany("Comments")
+                        .HasForeignKey("ReviewId");
                 });
 
             modelBuilder.Entity("BookReviews.Models.Review", b =>
