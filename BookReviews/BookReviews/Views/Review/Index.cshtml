@@ -35,40 +35,48 @@ Enter the name of a reviewer:
 
 <h3 class="display-4">Book Reviews</h3>
 
-@foreach (Review review in Model)
-{
-    <p>
-        <strong class="m-3">Title:</strong>
-        @review.BookTitle<br />
-        <strong class="m-3">Author:</strong>
-        @review.AuthorName<br />
-        <strong class="m-3">Reviewer:</strong>
-        @review.Reviewer.Name<br />
-        <strong class="m-3">Review Date:</strong>
-        @review.ReviewDate.ToString("dddd, MMMM dd, yyyy")<br />
-        @*TODO: Figure out why the data annotations on the model don't forma the date*@
-        <strong class="m-3">Review:</strong>
-        @review.ReviewText<br />
-        <strong class="m-3">Rating:</strong>
-        @review.Rating / 5<br />
-    </p>
-
-    @if (review.Comments.Count != 0)
+@{
+    String currentTitle = "";
+    foreach (Review review in Model)
     {
-        <h3>Comments</h3>
+        <p>
+            @* Display the book title and author just once *@
+            @if (currentTitle != review.BookTitle)
+            {
+                currentTitle = review.BookTitle;
+                <h4 class="m-3">@review.BookTitle</h4>
+                <strong class="m-3">Author:</strong>
+                @review.AuthorName<br /><hr />
+            }
+            <strong class="m-3">Reviewer:</strong>
+            @review.Reviewer.Name<br />
+            <strong class="m-3">Review Date:</strong>
+            @review.ReviewDate.ToString("dddd, MMMM dd, yyyy")<br />
+            @*TODO: Figure out why the data annotations on the model don't forma the date*@
+            <strong class="m-3">Review:</strong>
+            @review.ReviewText<br />
+            <strong class="m-3">Rating:</strong>
+            @review.Rating / 5<br />
+        </p>
 
-        @foreach (Comment comment in review.Comments)
+        if (review.Comments.Count != 0)
         {
-            <p>
-                <strong class="m-3">Comment:</strong>
-                @comment.CommentText<br />
-                <strong class="m-3">By:</strong>
-                @comment.Commenter.Name<br />
-                <strong class="m-3">Date:</strong>
-                @comment.CommentDate.Date<br />
-            </p>
+            <h5>Comments</h5>
+
+            foreach (Comment comment in review.Comments)
+            {
+                <p>
+                    <strong class="m-3">Comment:</strong>
+                    @comment.CommentText<br />
+                    <strong class="m-3">By:</strong>
+                    @comment.Commenter.Name<br />
+                    <strong class="m-3">Date:</strong>
+                    @comment.CommentDate.Date.ToString("dddd, MMMM dd, yyyy")<br />
+                </p>
+            }
         }
+        <a asp-action="Comment" asp-route-reviewId="@review.ReviewId" class="btn btn-secondary col-3">Add Comment</a>
+        <hr />
+        <br />
     }
-    <a asp-action="Comment" asp-route-reviewId="@review.ReviewId" class="btn btn-secondary col-3">Add Comment</a>
-    <hr /><br />
 }

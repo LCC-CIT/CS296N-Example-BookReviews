@@ -47,8 +47,14 @@ namespace BookReviews.Controllers
         // TODO: Can we eliminate this method. Can we make FilterReviews the Index method?
         public async Task<IActionResult> Index()
         {
-            // Get all reviews in the database
-            List<Review> reviews = await repo.Reviews.ToListAsync<Review>(); // Use ToList to convert the IQueryable to a list
+            // Get all reviews in the database.
+            // Sort them by book so we can display reviews for each book together.
+            List<Review> reviews = null;
+            await Task.Run(() =>
+               reviews = repo.Reviews
+                             .OrderBy(r => r.BookTitle)
+                             .ToList<Review>() // Use ToList to convert the IQueryable to a list
+            );
             return View(reviews);
         }
 
@@ -61,8 +67,8 @@ namespace BookReviews.Controllers
             {
                 await Task.Run(() =>
                     reviews = (from r in repo.Reviews
-                                   where r.BookTitle == bookTitle
-                                   select r).ToList()
+                               where r.BookTitle == bookTitle
+                               select r).ToList()
                     );
             }
             if (!string.IsNullOrEmpty(reviewerName))
