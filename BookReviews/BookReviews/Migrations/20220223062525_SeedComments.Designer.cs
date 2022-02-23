@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BookReviews.Migrations
 {
     [DbContext(typeof(BookReviewContext))]
-    [Migration("20220222194501_NonNullableReviewId")]
-    partial class NonNullableReviewId
+    [Migration("20220223062525_SeedComments")]
+    partial class SeedComments
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -95,12 +95,12 @@ namespace BookReviews.Migrations
                         {
                             Id = "A",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "a018cbf3-ebef-407c-b5ef-7d1603bff160",
+                            ConcurrencyStamp = "8ec4f6a5-35af-49f3-bf5a-aca171599191",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             Name = "Brian Bird",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "e825f706-580f-4eec-b7dd-5519fb4d8f32",
+                            SecurityStamp = "d4b41306-2d44-4c5f-958f-772544bc47e4",
                             TwoFactorEnabled = false,
                             UserName = "BrianB"
                         },
@@ -108,12 +108,12 @@ namespace BookReviews.Migrations
                         {
                             Id = "B",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b6b17576-59b9-4b9e-9c07-97b352b5ec25",
+                            ConcurrencyStamp = "c6f95428-8820-4dc8-8200-84d3b78b8760",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             Name = "Emma Watson",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "c92fb965-77c2-41c6-9eb3-41b675f05a42",
+                            SecurityStamp = "7319ec71-85ac-4dcb-be0f-37aa0c43c023",
                             TwoFactorEnabled = false,
                             UserName = "EmmaW"
                         },
@@ -121,12 +121,12 @@ namespace BookReviews.Migrations
                         {
                             Id = "C",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "ca7ecd97-2f4e-4d4f-80fd-7e0155e52d57",
+                            ConcurrencyStamp = "056d3be5-9023-45f9-9cf4-b6a1d2e8d284",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             Name = "Daniel Radcliffe",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "4d5c4203-32c5-49a0-9b9c-ac0037d415a2",
+                            SecurityStamp = "864fe7e9-4978-432a-aaad-ee4e3f48244f",
                             TwoFactorEnabled = false,
                             UserName = "DanielR"
                         },
@@ -134,12 +134,12 @@ namespace BookReviews.Migrations
                         {
                             Id = "D",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "df5b486a-b74d-4f3a-9a5f-1e57ddf8804c",
+                            ConcurrencyStamp = "12d7eacb-f496-41f2-b039-6929cbee8bef",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             Name = "Scarlett Johansson",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "b58acb2d-a154-4138-8448-7f5822c4579e",
+                            SecurityStamp = "923256a0-eb31-4cae-9938-c0cd1eb0d46d",
                             TwoFactorEnabled = false,
                             UserName = "ScarlettJ"
                         });
@@ -171,6 +171,32 @@ namespace BookReviews.Migrations
                     b.HasIndex("ReviewId");
 
                     b.ToTable("Comment");
+
+                    b.HasData(
+                        new
+                        {
+                            CommentId = 1,
+                            CommentDate = new DateTime(2020, 11, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CommentText = "I loved that book as a kid too!",
+                            CommenterId = "A",
+                            ReviewId = 6
+                        },
+                        new
+                        {
+                            CommentId = 2,
+                            CommentDate = new DateTime(2020, 12, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CommentText = "I'm glad you were able to get into the book. I never could.",
+                            CommenterId = "C",
+                            ReviewId = 5
+                        },
+                        new
+                        {
+                            CommentId = 3,
+                            CommentDate = new DateTime(2021, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CommentText = "Wow, how are you related to Lief Enger?",
+                            CommenterId = "B",
+                            ReviewId = 3
+                        });
                 });
 
             modelBuilder.Entity("BookReviews.Models.Review", b =>
