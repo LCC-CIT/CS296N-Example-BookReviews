@@ -4,9 +4,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using BookReviews.Data;
 using BookReviews.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BookReviews.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class ManageController : Controller
     {
         private readonly BookReviewContext _context;
