@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace SQLiteMigrations.Migrations
 {
     [DbContext(typeof(BookReviewContext))]
-    [Migration("20220223021841_NewInitial")]
-    partial class NewInitial
+    [Migration("20220223034114_CommentReviewID_FK")]
+    partial class CommentReviewID_FK
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -91,12 +91,12 @@ namespace SQLiteMigrations.Migrations
                         {
                             Id = "A",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "3c47172f-5431-4bfd-a53f-6b086be63a41",
+                            ConcurrencyStamp = "e89d39bd-ded8-4c59-b1ac-52dfde668b0f",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             Name = "Brian Bird",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "31e9feb0-87b5-4924-904d-dfef3e6a70cc",
+                            SecurityStamp = "bd3039de-0abc-4427-a5db-ec9365dde7ad",
                             TwoFactorEnabled = false,
                             UserName = "BrianB"
                         },
@@ -104,12 +104,12 @@ namespace SQLiteMigrations.Migrations
                         {
                             Id = "B",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "cf43d7d5-6c95-4bc3-bb6f-a71aa2e646c9",
+                            ConcurrencyStamp = "93496e33-d552-4407-8d61-0e58bb00f624",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             Name = "Emma Watson",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "c13d1ecf-5df9-4538-85e2-6947cd521d6e",
+                            SecurityStamp = "32d0af7c-5cf0-48a6-8867-e88c0e0d6231",
                             TwoFactorEnabled = false,
                             UserName = "EmmaW"
                         },
@@ -117,12 +117,12 @@ namespace SQLiteMigrations.Migrations
                         {
                             Id = "C",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "cf87b593-25dd-431a-9473-a0144ae9fa74",
+                            ConcurrencyStamp = "a4c30095-0b87-461e-86a2-96e911f53727",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             Name = "Daniel Radcliffe",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "5888cef5-1059-473e-b381-ad61dddf9751",
+                            SecurityStamp = "44ca3a4d-c529-481f-8fde-500616ced604",
                             TwoFactorEnabled = false,
                             UserName = "DanielR"
                         },
@@ -130,12 +130,12 @@ namespace SQLiteMigrations.Migrations
                         {
                             Id = "D",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f0d7cb8e-e0b6-4145-a53a-5b9659c889f5",
+                            ConcurrencyStamp = "7983f010-03cd-4850-9fa1-6145b58f97cc",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             Name = "Scarlett Johansson",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "020af787-6370-4a19-8125-6f6e14b55857",
+                            SecurityStamp = "e1a8cf38-f838-4086-a385-599b76fbfa34",
                             TwoFactorEnabled = false,
                             UserName = "ScarlettJ"
                         });
@@ -156,7 +156,7 @@ namespace SQLiteMigrations.Migrations
                     b.Property<string>("CommenterId")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("ReviewId")
+                    b.Property<int>("ReviewId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("CommentId");
@@ -426,7 +426,9 @@ namespace SQLiteMigrations.Migrations
 
                     b.HasOne("BookReviews.Models.Review", null)
                         .WithMany("Comments")
-                        .HasForeignKey("ReviewId");
+                        .HasForeignKey("ReviewId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("BookReviews.Models.Review", b =>

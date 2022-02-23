@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SQLiteMigrations.Migrations
 {
-    public partial class NewInitial : Migration
+    public partial class CommentReviewID_FK : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -186,7 +186,7 @@ namespace SQLiteMigrations.Migrations
                     CommentText = table.Column<string>(nullable: true),
                     CommentDate = table.Column<DateTime>(nullable: false),
                     CommenterId = table.Column<string>(nullable: true),
-                    ReviewId = table.Column<int>(nullable: true)
+                    ReviewId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -202,28 +202,28 @@ namespace SQLiteMigrations.Migrations
                         column: x => x.ReviewId,
                         principalTable: "Reviews",
                         principalColumn: "ReviewId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "Name", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "A", 0, "3c47172f-5431-4bfd-a53f-6b086be63a41", null, false, false, null, "Brian Bird", null, null, null, null, false, "31e9feb0-87b5-4924-904d-dfef3e6a70cc", false, "BrianB" });
+                values: new object[] { "A", 0, "e89d39bd-ded8-4c59-b1ac-52dfde668b0f", null, false, false, null, "Brian Bird", null, null, null, null, false, "bd3039de-0abc-4427-a5db-ec9365dde7ad", false, "BrianB" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "Name", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "B", 0, "cf43d7d5-6c95-4bc3-bb6f-a71aa2e646c9", null, false, false, null, "Emma Watson", null, null, null, null, false, "c13d1ecf-5df9-4538-85e2-6947cd521d6e", false, "EmmaW" });
+                values: new object[] { "B", 0, "93496e33-d552-4407-8d61-0e58bb00f624", null, false, false, null, "Emma Watson", null, null, null, null, false, "32d0af7c-5cf0-48a6-8867-e88c0e0d6231", false, "EmmaW" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "Name", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "C", 0, "cf87b593-25dd-431a-9473-a0144ae9fa74", null, false, false, null, "Daniel Radcliffe", null, null, null, null, false, "5888cef5-1059-473e-b381-ad61dddf9751", false, "DanielR" });
+                values: new object[] { "C", 0, "a4c30095-0b87-461e-86a2-96e911f53727", null, false, false, null, "Daniel Radcliffe", null, null, null, null, false, "44ca3a4d-c529-481f-8fde-500616ced604", false, "DanielR" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "Name", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "D", 0, "f0d7cb8e-e0b6-4145-a53a-5b9659c889f5", null, false, false, null, "Scarlett Johansson", null, null, null, null, false, "020af787-6370-4a19-8125-6f6e14b55857", false, "ScarlettJ" });
+                values: new object[] { "D", 0, "7983f010-03cd-4850-9fa1-6145b58f97cc", null, false, false, null, "Scarlett Johansson", null, null, null, null, false, "e1a8cf38-f838-4086-a385-599b76fbfa34", false, "ScarlettJ" });
 
             migrationBuilder.InsertData(
                 table: "Reviews",
