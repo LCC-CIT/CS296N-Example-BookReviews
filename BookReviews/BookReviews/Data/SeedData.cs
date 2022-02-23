@@ -119,7 +119,7 @@ namespace BookReviews.Data
                     ReviewerId = ID1,
                     BookTitle = "Virgil Wander",
                     AuthorName = "Lief Enger",
-                    ReviewText = "Wonderful book, written by a distant cousin of mine.",
+                    ReviewText = "Wonderful book, written by a distant relative of mine.",
                     ReviewDate = DateTime.Parse("11/30/2020"),
                     Rating = 5
                 },
@@ -214,7 +214,7 @@ namespace BookReviews.Data
                 new
                 {
                     CommentId = 5,
-                    CommentText = "I'm not sure how we're related. Some kind of distant cousin.",
+                    CommentText = "I'm not sure how we're related. Some kind of distant cousin on my Mom's side.",
                     CommentDate = DateTime.Parse("2/1/2021"),
                     CommenterId = ID1,
                     ReviewId = 3
