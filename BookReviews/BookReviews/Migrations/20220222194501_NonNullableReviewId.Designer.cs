@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BookReviews.Migrations
 {
     [DbContext(typeof(BookReviewContext))]
-    [Migration("20220203190059_NonGuidSeedData")]
-    partial class NonGuidSeedData
+    [Migration("20220222194501_NonNullableReviewId")]
+    partial class NonNullableReviewId
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -95,12 +95,12 @@ namespace BookReviews.Migrations
                         {
                             Id = "A",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "71d45ef7-9956-4f5e-a052-20dd4a16e4ec",
+                            ConcurrencyStamp = "a018cbf3-ebef-407c-b5ef-7d1603bff160",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             Name = "Brian Bird",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "6ce577d3-9fa2-4f1b-8412-07730d734c7a",
+                            SecurityStamp = "e825f706-580f-4eec-b7dd-5519fb4d8f32",
                             TwoFactorEnabled = false,
                             UserName = "BrianB"
                         },
@@ -108,12 +108,12 @@ namespace BookReviews.Migrations
                         {
                             Id = "B",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "4342932a-9292-450c-be72-498d72c778ee",
+                            ConcurrencyStamp = "b6b17576-59b9-4b9e-9c07-97b352b5ec25",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             Name = "Emma Watson",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "981d2d4d-341f-458c-b62d-f7209c48ecb1",
+                            SecurityStamp = "c92fb965-77c2-41c6-9eb3-41b675f05a42",
                             TwoFactorEnabled = false,
                             UserName = "EmmaW"
                         },
@@ -121,12 +121,12 @@ namespace BookReviews.Migrations
                         {
                             Id = "C",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f22d57f1-c230-4d8d-8289-f4bd7235ef04",
+                            ConcurrencyStamp = "ca7ecd97-2f4e-4d4f-80fd-7e0155e52d57",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             Name = "Daniel Radcliffe",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "85cbc349-86ff-4091-a31f-db3e1bdddb40",
+                            SecurityStamp = "4d5c4203-32c5-49a0-9b9c-ac0037d415a2",
                             TwoFactorEnabled = false,
                             UserName = "DanielR"
                         },
@@ -134,20 +134,48 @@ namespace BookReviews.Migrations
                         {
                             Id = "D",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "618b5d67-7228-4317-9cfd-37c4ae8bdb02",
+                            ConcurrencyStamp = "df5b486a-b74d-4f3a-9a5f-1e57ddf8804c",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             Name = "Scarlett Johansson",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "883dba97-8b4a-4849-803a-0645731f1eef",
+                            SecurityStamp = "b58acb2d-a154-4138-8448-7f5822c4579e",
                             TwoFactorEnabled = false,
                             UserName = "ScarlettJ"
                         });
                 });
 
+            modelBuilder.Entity("BookReviews.Models.Comment", b =>
+                {
+                    b.Property<int>("CommentId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CommentDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CommentText")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CommenterId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("ReviewId")
+                        .HasColumnType("int");
+
+                    b.HasKey("CommentId");
+
+                    b.HasIndex("CommenterId");
+
+                    b.HasIndex("ReviewId");
+
+                    b.ToTable("Comment");
+                });
+
             modelBuilder.Entity("BookReviews.Models.Review", b =>
                 {
-                    b.Property<int>("ReviewID")
+                    b.Property<int>("ReviewId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -173,7 +201,7 @@ namespace BookReviews.Migrations
                     b.Property<string>("ReviewerId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.HasKey("ReviewID");
+                    b.HasKey("ReviewId");
 
                     b.HasIndex("ReviewerId");
 
@@ -182,7 +210,7 @@ namespace BookReviews.Migrations
                     b.HasData(
                         new
                         {
-                            ReviewID = 1,
+                            ReviewId = 1,
                             AuthorName = "Samuel Shellabarger",
                             BookTitle = "Prince of Foxes",
                             Rating = 5,
@@ -192,7 +220,7 @@ namespace BookReviews.Migrations
                         },
                         new
                         {
-                            ReviewID = 2,
+                            ReviewId = 2,
                             AuthorName = "Samuel Shellabarger",
                             BookTitle = "Prince of Foxes",
                             Rating = 5,
@@ -202,7 +230,7 @@ namespace BookReviews.Migrations
                         },
                         new
                         {
-                            ReviewID = 3,
+                            ReviewId = 3,
                             AuthorName = "Lief Enger",
                             BookTitle = "Virgil Wander",
                             Rating = 5,
@@ -212,7 +240,7 @@ namespace BookReviews.Migrations
                         },
                         new
                         {
-                            ReviewID = 4,
+                            ReviewId = 4,
                             AuthorName = "Lief Enger",
                             BookTitle = "Virgil Wander",
                             Rating = 4,
@@ -222,7 +250,7 @@ namespace BookReviews.Migrations
                         },
                         new
                         {
-                            ReviewID = 5,
+                            ReviewId = 5,
                             AuthorName = "Sir Walter Scott",
                             BookTitle = "Ivanho",
                             Rating = 4,
@@ -232,7 +260,7 @@ namespace BookReviews.Migrations
                         },
                         new
                         {
-                            ReviewID = 6,
+                            ReviewId = 6,
                             AuthorName = "C. S. Lewis",
                             BookTitle = "The Lion, the Witch and the Wardrobe",
                             Rating = 4,
@@ -371,6 +399,19 @@ namespace BookReviews.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("BookReviews.Models.Comment", b =>
+                {
+                    b.HasOne("BookReviews.Models.AppUser", "Commenter")
+                        .WithMany()
+                        .HasForeignKey("CommenterId");
+
+                    b.HasOne("BookReviews.Models.Review", null)
+                        .WithMany("Comments")
+                        .HasForeignKey("ReviewId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("BookReviews.Models.Review", b =>
