@@ -26,22 +26,20 @@ namespace BookReviews
         {
             services.AddControllersWithViews();
 
-            // Inject our repository into our controllers
+            // Inject our repositories into our controllers
             services.AddTransient<IReviewRepository, ReviewRepository>(); // Generic types: Repository interface, Repository class
             
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
                 // Assuming that SQL Server is installed on Windows
                 services.AddDbContext<BookReviewContext>(options =>
-                         options.UseLazyLoadingProxies()
-                                .UseSqlServer(Configuration["ConnectionStrings:SQLServerConnection"]));
+                   options.UseSqlServer(Configuration["ConnectionStrings:SQLServerConnection"]));
             }
             else 
             {
                 // Assuming SQLite is installed on all other operating systems
                 services.AddDbContext<BookReviewContext>(options =>
-                    options.UseLazyLoadingProxies()
-                           .UseSqlite(Configuration["ConnectionStrings:SQLiteConnection"],
+                    options.UseSqlite(Configuration["ConnectionStrings:SQLiteConnection"],
                     x => x.MigrationsAssembly("SQLiteMigrations")));
             }
             services.AddIdentity<AppUser, IdentityRole>()
