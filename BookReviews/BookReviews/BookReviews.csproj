@@ -26,6 +26,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.22" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="3.1.22" />
   </ItemGroup>
 
   <ItemGroup>
@@ -35,6 +36,7 @@
     <None Remove="Data\BookReviews.db-shm" />
     <None Remove="Data\BookReviews.db-wal" />
     <None Remove="Data\BookReviews.db" />
+    <None Remove="Microsoft.EntityFrameworkCore.Proxies" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Data\" />
