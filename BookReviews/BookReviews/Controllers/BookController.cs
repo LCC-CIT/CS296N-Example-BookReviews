@@ -28,6 +28,7 @@ namespace BookReviews.Controllers
             );
 
             return View(titles);
+
             // TODO: Upgrade to .netcore 6.0 so that the query below can be used.
             //       I think the query below will operate more efficiently in the database
             /* Note: .GroupBy is not supported by EF Core 3.1 so this doesn't work:
