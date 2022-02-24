@@ -10,5 +10,6 @@ namespace BookReviews.Repos
     {
         IQueryable<Review> Reviews { get; }  // Read (or retrieve) reviews
         Task AddReviewAsync(Review review);  // Create a review
+        Task UpdateReviewAsync(Review review);  // Modify a review
     }
 }

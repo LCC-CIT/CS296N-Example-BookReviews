@@ -76,5 +76,34 @@ namespace BookReviews.Controllers
             return View("Index", reviews);
             // TODO: Do A/B load tests to see if using .ToListAsync() gives better performance than Task.Run() and .ToList()
         }
+
+        [Authorize]
+        public IActionResult Comment(int reviewId)
+        {
+            var commentVM = new CommentVM { ReviewId = reviewId };
+            return View(commentVM);
+        }
+
+        [HttpPost]
+        public RedirectToActionResult Comment(CommentVM commentVM)
+        {
+            // Comment is the domain model
+            var comment = new Comment { CommentText = commentVM.CommentText };
+            comment.Commenter = userManager.GetUserAsync(User).Result;
+            comment.CommentDate = DateTime.Now;
+
+            // Retrieve the review that this comment is for
+            var review = (from r in repo.Reviews
+                          where r.ReviewId == commentVM.ReviewId
+                          select r).First<Review>();
+
+            // Store the review with the comment in the database
+            review.Comments.Add(comment);
+            repo.UpdateReviewAsync(review);
+
+            return RedirectToAction("FilterReviews", new { bookTitle = review.BookTitle, reviewerName = review.Reviewer.Name });
+        }
+
+
     }
 };

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BookReviews.Migrations
 {
-    public partial class NonGuidSeedData : Migration
+    public partial class NewInitial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -157,7 +157,7 @@ namespace BookReviews.Migrations
                 name: "Reviews",
                 columns: table => new
                 {
-                    ReviewID = table.Column<int>(nullable: false)
+                    ReviewId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     BookTitle = table.Column<string>(nullable: false),
                     AuthorName = table.Column<string>(nullable: true),
@@ -168,7 +168,7 @@ namespace BookReviews.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Reviews", x => x.ReviewID);
+                    table.PrimaryKey("PK_Reviews", x => x.ReviewId);
                     table.ForeignKey(
                         name: "FK_Reviews_AspNetUsers_ReviewerId",
                         column: x => x.ReviewerId,
@@ -177,20 +177,48 @@ namespace BookReviews.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Comment",
+                columns: table => new
+                {
+                    CommentId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CommentText = table.Column<string>(nullable: true),
+                    CommentDate = table.Column<DateTime>(nullable: false),
+                    CommenterId = table.Column<string>(nullable: true),
+                    ReviewId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Comment", x => x.CommentId);
+                    table.ForeignKey(
+                        name: "FK_Comment_AspNetUsers_CommenterId",
+                        column: x => x.CommenterId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Comment_Reviews_ReviewId",
+                        column: x => x.ReviewId,
+                        principalTable: "Reviews",
+                        principalColumn: "ReviewId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "Name", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "A", 0, "71d45ef7-9956-4f5e-a052-20dd4a16e4ec", null, false, false, null, "Brian Bird", null, null, null, null, false, "6ce577d3-9fa2-4f1b-8412-07730d734c7a", false, "BrianB" },
-                    { "B", 0, "4342932a-9292-450c-be72-498d72c778ee", null, false, false, null, "Emma Watson", null, null, null, null, false, "981d2d4d-341f-458c-b62d-f7209c48ecb1", false, "EmmaW" },
-                    { "C", 0, "f22d57f1-c230-4d8d-8289-f4bd7235ef04", null, false, false, null, "Daniel Radcliffe", null, null, null, null, false, "85cbc349-86ff-4091-a31f-db3e1bdddb40", false, "DanielR" },
-                    { "D", 0, "618b5d67-7228-4317-9cfd-37c4ae8bdb02", null, false, false, null, "Scarlett Johansson", null, null, null, null, false, "883dba97-8b4a-4849-803a-0645731f1eef", false, "ScarlettJ" }
+                    { "A", 0, "2a0562d6-3f43-4ac7-a7e3-e913b6160849", null, false, false, null, "Brian Bird", null, null, null, null, false, "557391e7-5462-4153-ac7b-726f702ac8cb", false, "BrianB" },
+                    { "B", 0, "471a5054-4ea1-41e6-b820-2c7f5463b9df", null, false, false, null, "Emma Watson", null, null, null, null, false, "6a4d1dc3-c91d-4f31-ac97-b5f933301483", false, "EmmaW" },
+                    { "C", 0, "43ca2382-db24-4a27-8895-e46728f93fee", null, false, false, null, "Daniel Radcliffe", null, null, null, null, false, "26b61c0d-3ba8-4130-b69d-5bf934835ac7", false, "DanielR" },
+                    { "D", 0, "19c804b8-5f25-435a-a8c0-6b11faf3e891", null, false, false, null, "Scarlett Johansson", null, null, null, null, false, "9a78c760-dfe4-485d-bfc1-5d1b628bee6b", false, "ScarlettJ" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Reviews",
-                columns: new[] { "ReviewID", "AuthorName", "BookTitle", "Rating", "ReviewDate", "ReviewText", "ReviewerId" },
+                columns: new[] { "ReviewId", "AuthorName", "BookTitle", "Rating", "ReviewDate", "ReviewText", "ReviewerId" },
                 values: new object[,]
                 {
                     { 3, "Lief Enger", "Virgil Wander", 5, new DateTime(2020, 11, 30, 0, 0, 0, 0, DateTimeKind.Unspecified), "Wonderful book, written by a distant cousin of mine.", "A" },
@@ -198,7 +226,20 @@ namespace BookReviews.Migrations
                     { 1, "Samuel Shellabarger", "Prince of Foxes", 5, new DateTime(2020, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Great book, a must read!", "B" },
                     { 6, "C. S. Lewis", "The Lion, the Witch and the Wardrobe", 4, new DateTime(2020, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "I loved this book as a kid and I still love it!", "B" },
                     { 2, "Samuel Shellabarger", "Prince of Foxes", 5, new DateTime(2020, 11, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), "I love the clever, witty dialog", "C" },
-                    { 4, "Lief Enger", "Virgil Wander", 4, new DateTime(2019, 10, 3, 0, 0, 0, 0, DateTimeKind.Unspecified), "This book is a bit surreal, but it kept me engaged and reading right to the end.", "D" }
+                    { 4, "Lief Enger", "Virgil Wander", 4, new DateTime(2019, 10, 3, 0, 0, 0, 0, DateTimeKind.Unspecified), "This book is a bit surreal, but it kept me engaged and reading right to the end.", "D" },
+                    { 7, "C. S. Lewis", "The Lion, the Witch and the Wardrobe", 4, new DateTime(2021, 10, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), "This book inspired me to believe in things that others think are impossible.", "D" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Comment",
+                columns: new[] { "CommentId", "CommentDate", "CommentText", "CommenterId", "ReviewId" },
+                values: new object[,]
+                {
+                    { 3, new DateTime(2021, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), "Wow, how are you related to Lief Enger?", "B", 3 },
+                    { 5, new DateTime(2021, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "I'm not sure how we're related. Some kind of distant cousin on my Mom's side.", "A", 3 },
+                    { 2, new DateTime(2020, 12, 3, 0, 0, 0, 0, DateTimeKind.Unspecified), "I'm glad you were able to get into the book. I never could.", "C", 5 },
+                    { 1, new DateTime(2020, 11, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "I loved that book as a kid too!", "A", 6 },
+                    { 4, new DateTime(2021, 10, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), "Yes, and as professor Kirk says, it's all about logic.", "B", 7 }
                 });
 
             migrationBuilder.CreateIndex(
@@ -241,6 +282,16 @@ namespace BookReviews.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Comment_CommenterId",
+                table: "Comment",
+                column: "CommenterId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Comment_ReviewId",
+                table: "Comment",
+                column: "ReviewId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Reviews_ReviewerId",
                 table: "Reviews",
                 column: "ReviewerId");
@@ -264,10 +315,13 @@ namespace BookReviews.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Reviews");
+                name: "Comment");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
+
+            migrationBuilder.DropTable(
+                name: "Reviews");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");

@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BookReviews.Migrations
 {
     [DbContext(typeof(BookReviewContext))]
-    [Migration("20220203190059_NonGuidSeedData")]
-    partial class NonGuidSeedData
+    [Migration("20220224190712_NewInitial")]
+    partial class NewInitial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -95,12 +95,12 @@ namespace BookReviews.Migrations
                         {
                             Id = "A",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "71d45ef7-9956-4f5e-a052-20dd4a16e4ec",
+                            ConcurrencyStamp = "2a0562d6-3f43-4ac7-a7e3-e913b6160849",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             Name = "Brian Bird",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "6ce577d3-9fa2-4f1b-8412-07730d734c7a",
+                            SecurityStamp = "557391e7-5462-4153-ac7b-726f702ac8cb",
                             TwoFactorEnabled = false,
                             UserName = "BrianB"
                         },
@@ -108,12 +108,12 @@ namespace BookReviews.Migrations
                         {
                             Id = "B",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "4342932a-9292-450c-be72-498d72c778ee",
+                            ConcurrencyStamp = "471a5054-4ea1-41e6-b820-2c7f5463b9df",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             Name = "Emma Watson",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "981d2d4d-341f-458c-b62d-f7209c48ecb1",
+                            SecurityStamp = "6a4d1dc3-c91d-4f31-ac97-b5f933301483",
                             TwoFactorEnabled = false,
                             UserName = "EmmaW"
                         },
@@ -121,12 +121,12 @@ namespace BookReviews.Migrations
                         {
                             Id = "C",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f22d57f1-c230-4d8d-8289-f4bd7235ef04",
+                            ConcurrencyStamp = "43ca2382-db24-4a27-8895-e46728f93fee",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             Name = "Daniel Radcliffe",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "85cbc349-86ff-4091-a31f-db3e1bdddb40",
+                            SecurityStamp = "26b61c0d-3ba8-4130-b69d-5bf934835ac7",
                             TwoFactorEnabled = false,
                             UserName = "DanielR"
                         },
@@ -134,20 +134,90 @@ namespace BookReviews.Migrations
                         {
                             Id = "D",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "618b5d67-7228-4317-9cfd-37c4ae8bdb02",
+                            ConcurrencyStamp = "19c804b8-5f25-435a-a8c0-6b11faf3e891",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             Name = "Scarlett Johansson",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "883dba97-8b4a-4849-803a-0645731f1eef",
+                            SecurityStamp = "9a78c760-dfe4-485d-bfc1-5d1b628bee6b",
                             TwoFactorEnabled = false,
                             UserName = "ScarlettJ"
                         });
                 });
 
+            modelBuilder.Entity("BookReviews.Models.Comment", b =>
+                {
+                    b.Property<int>("CommentId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CommentDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CommentText")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CommenterId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("ReviewId")
+                        .HasColumnType("int");
+
+                    b.HasKey("CommentId");
+
+                    b.HasIndex("CommenterId");
+
+                    b.HasIndex("ReviewId");
+
+                    b.ToTable("Comment");
+
+                    b.HasData(
+                        new
+                        {
+                            CommentId = 1,
+                            CommentDate = new DateTime(2020, 11, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CommentText = "I loved that book as a kid too!",
+                            CommenterId = "A",
+                            ReviewId = 6
+                        },
+                        new
+                        {
+                            CommentId = 2,
+                            CommentDate = new DateTime(2020, 12, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CommentText = "I'm glad you were able to get into the book. I never could.",
+                            CommenterId = "C",
+                            ReviewId = 5
+                        },
+                        new
+                        {
+                            CommentId = 3,
+                            CommentDate = new DateTime(2021, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CommentText = "Wow, how are you related to Lief Enger?",
+                            CommenterId = "B",
+                            ReviewId = 3
+                        },
+                        new
+                        {
+                            CommentId = 4,
+                            CommentDate = new DateTime(2021, 10, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CommentText = "Yes, and as professor Kirk says, it's all about logic.",
+                            CommenterId = "B",
+                            ReviewId = 7
+                        },
+                        new
+                        {
+                            CommentId = 5,
+                            CommentDate = new DateTime(2021, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CommentText = "I'm not sure how we're related. Some kind of distant cousin on my Mom's side.",
+                            CommenterId = "A",
+                            ReviewId = 3
+                        });
+                });
+
             modelBuilder.Entity("BookReviews.Models.Review", b =>
                 {
-                    b.Property<int>("ReviewID")
+                    b.Property<int>("ReviewId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -173,7 +243,7 @@ namespace BookReviews.Migrations
                     b.Property<string>("ReviewerId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.HasKey("ReviewID");
+                    b.HasKey("ReviewId");
 
                     b.HasIndex("ReviewerId");
 
@@ -182,7 +252,7 @@ namespace BookReviews.Migrations
                     b.HasData(
                         new
                         {
-                            ReviewID = 1,
+                            ReviewId = 1,
                             AuthorName = "Samuel Shellabarger",
                             BookTitle = "Prince of Foxes",
                             Rating = 5,
@@ -192,7 +262,7 @@ namespace BookReviews.Migrations
                         },
                         new
                         {
-                            ReviewID = 2,
+                            ReviewId = 2,
                             AuthorName = "Samuel Shellabarger",
                             BookTitle = "Prince of Foxes",
                             Rating = 5,
@@ -202,7 +272,7 @@ namespace BookReviews.Migrations
                         },
                         new
                         {
-                            ReviewID = 3,
+                            ReviewId = 3,
                             AuthorName = "Lief Enger",
                             BookTitle = "Virgil Wander",
                             Rating = 5,
@@ -212,7 +282,7 @@ namespace BookReviews.Migrations
                         },
                         new
                         {
-                            ReviewID = 4,
+                            ReviewId = 4,
                             AuthorName = "Lief Enger",
                             BookTitle = "Virgil Wander",
                             Rating = 4,
@@ -222,7 +292,7 @@ namespace BookReviews.Migrations
                         },
                         new
                         {
-                            ReviewID = 5,
+                            ReviewId = 5,
                             AuthorName = "Sir Walter Scott",
                             BookTitle = "Ivanho",
                             Rating = 4,
@@ -232,13 +302,23 @@ namespace BookReviews.Migrations
                         },
                         new
                         {
-                            ReviewID = 6,
+                            ReviewId = 6,
                             AuthorName = "C. S. Lewis",
                             BookTitle = "The Lion, the Witch and the Wardrobe",
                             Rating = 4,
                             ReviewDate = new DateTime(2020, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ReviewText = "I loved this book as a kid and I still love it!",
                             ReviewerId = "B"
+                        },
+                        new
+                        {
+                            ReviewId = 7,
+                            AuthorName = "C. S. Lewis",
+                            BookTitle = "The Lion, the Witch and the Wardrobe",
+                            Rating = 4,
+                            ReviewDate = new DateTime(2021, 10, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ReviewText = "This book inspired me to believe in things that others think are impossible.",
+                            ReviewerId = "D"
                         });
                 });
 
@@ -371,6 +451,19 @@ namespace BookReviews.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("BookReviews.Models.Comment", b =>
+                {
+                    b.HasOne("BookReviews.Models.AppUser", "Commenter")
+                        .WithMany()
+                        .HasForeignKey("CommenterId");
+
+                    b.HasOne("BookReviews.Models.Review", null)
+                        .WithMany("Comments")
+                        .HasForeignKey("ReviewId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("BookReviews.Models.Review", b =>
