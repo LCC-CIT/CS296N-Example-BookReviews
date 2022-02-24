@@ -13,7 +13,7 @@ namespace BookReviews.Models
 
         public string AuthorName { get; set; }
 
-        public AppUser Reviewer { get; set; }
+        public virtual AppUser Reviewer { get; set; }
 
         [StringLength(500, MinimumLength = 10)]
         [Required]
@@ -26,6 +26,6 @@ namespace BookReviews.Models
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime ReviewDate { get; set; }
 
-        public ICollection<Comment> Comments { get; set; }
+        public virtual ICollection<Comment> Comments { get; set; }  // virtual enables lazy loading
     }
 }
