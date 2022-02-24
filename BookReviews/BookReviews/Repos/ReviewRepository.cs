@@ -40,7 +40,7 @@ namespace BookReviews.Repos
             await context.SaveChangesAsync();
         }
 
-        public async Task<int> DeleteRviewAsync(Review review)
+        public async Task<int> DeleteReviewAsync(Review review)
         {
             var theReview = await context.Reviews.FindAsync(review.ReviewId);
             context.Reviews.Remove(theReview);

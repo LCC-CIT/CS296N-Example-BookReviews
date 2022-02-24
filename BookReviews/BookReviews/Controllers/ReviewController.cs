@@ -7,6 +7,7 @@ using BookReviews.Repos;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace BookReviews.Controllers
 {
@@ -101,7 +102,7 @@ namespace BookReviews.Controllers
         }
 
         [HttpPost]
-        public RedirectToActionResult Comment(CommentVM commentVM)
+        public async Task<RedirectToActionResult> Comment(CommentVM commentVM)
         {
             // Comment is the domain model
             var comment = new Comment { CommentText = commentVM.CommentText };
@@ -109,13 +110,13 @@ namespace BookReviews.Controllers
             comment.CommentDate = DateTime.Now;
 
             // Retrieve the review that this comment is for
-            var review = (from r in repo.Reviews
+            var review = (from r in repo.Reviews.Include(r => r.Comments)
                           where r.ReviewId == commentVM.ReviewId
                           select r).First<Review>();
 
             // Store the review with the comment in the database
             review.Comments.Add(comment);
-            repo.UpdateReviewAsync(review);
+            await repo.UpdateReviewAsync(review);
 
             return RedirectToAction("FilterReviews", new { bookTitle = review.BookTitle, reviewerName = review.Reviewer.Name });
         }
