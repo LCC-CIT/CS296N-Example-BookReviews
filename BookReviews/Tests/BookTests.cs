@@ -13,23 +13,24 @@ namespace Tests
         [Fact]
         public void IndexTest()
         {
-            /* Test to see if titles of all books are returned without duplicates */
+            // Test to see if titles of all books are returned without duplicates
 
             // Arrange
             var fakeRepo = new FakeReviewRepository();
             var controller = new BookController(fakeRepo);
             // We don't need need to add all the properties to the models since we aren't testing that.
             var review1 = new Review() { BookTitle = "Book 1" };
-            fakeRepo.AddReview(review1);
-            fakeRepo.AddReview(review1);
+            fakeRepo.AddReviewAsync(review1).Wait();
+            fakeRepo.AddReviewAsync(review1).Wait();
             var review2 = new Review() { BookTitle = "Book 2" };
-            fakeRepo.AddReview(review2);
-            fakeRepo.AddReview(review2);
+            fakeRepo.AddReviewAsync(review2).Wait();
+            fakeRepo.AddReviewAsync(review2).Wait();
             var review3 = new Review() { BookTitle = "Book 3" };
-            fakeRepo.AddReview(review3);
-            fakeRepo.AddReview(review3);
+            fakeRepo.AddReviewAsync(review3).Wait();
+            fakeRepo.AddReviewAsync(review3).Wait();
+
             // Act
-            var viewResult = (ViewResult)controller.Index();
+            var viewResult = (ViewResult)controller.Index().Result;
             // ViewResult is a the type of ActionResult that is returned by the View() method in the controller
 
             // Assert

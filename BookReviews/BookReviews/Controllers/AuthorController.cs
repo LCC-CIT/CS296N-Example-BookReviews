@@ -1,6 +1,7 @@
 ﻿
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using BookReviews.Models;
 using BookReviews.Repos;
 using Microsoft.AspNetCore.Mvc;
@@ -16,12 +17,14 @@ namespace BookReviews.Controllers
             repo = r;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            List<string> names = repo.Reviews
+            List<string> names = await Task.Run(() =>
+              repo.Reviews
                 .Select(review => review.AuthorName)
                 .Distinct()
-                .ToList();
+                .ToList()
+            );
 
             return View(names);
         }

@@ -27,11 +27,12 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.22" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.22" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.22">
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.21" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.21">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
   </ItemGroup>
 
   <ItemGroup>
@@ -44,7 +45,9 @@
     <_WebToolingArtifacts Remove="Properties\PublishProfiles\BookReview-W22-SQLite-Web Deploy.pubxml" />
     <_WebToolingArtifacts Remove="Properties\PublishProfiles\BookReviews-W22-SQLServer-Web Deploy.pubxml" />
   </ItemGroup>
+
   <ItemGroup>
     <Folder Include="Migrations\" />
   </ItemGroup>
+
 </Project>
