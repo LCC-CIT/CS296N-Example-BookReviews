@@ -24,7 +24,8 @@ namespace BookReviews.Repos
                 // and include the Reivewer object in each Review.
                 return context.Reviews
                     .Include(review => review.Reviewer)
-                    .Include(review => review.Comments);
+                    .Include(review => review.Comments)
+                    .ThenInclude(comment => comment.Commenter);
             }
         }
 
@@ -34,7 +35,7 @@ namespace BookReviews.Repos
             await context.SaveChangesAsync();
         }
 
-        public async Task<int> DeleteRviewAsync(Review review)
+        public async Task<int> DeleteReviewAsync(Review review)
         {
             var theReview = await context.Reviews.FindAsync(review.ReviewId);
             context.Reviews.Remove(theReview);
