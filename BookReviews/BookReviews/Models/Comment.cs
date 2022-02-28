@@ -7,7 +7,7 @@ namespace BookReviews.Models
         public String CommentText { get; set; }
         public DateTime CommentDate { get; set; }
         public AppUser Commenter { get; set; }
-        public int ReviewId { get; set; }  // FK to cause cascade delete
+        public Review CommentedReview { get; set; }  // FK to cause cascade delete
     }
 }
 

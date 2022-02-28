@@ -16,6 +16,14 @@ namespace BookReviews.Data
             // We must call the base class method because it builds the Identity tables
             base.OnModelCreating(modelBuilder);
             modelBuilder.Seed();  // This extension method will seed the database
+
+            modelBuilder.Entity<Review>()
+                .HasMany(b => b.Comments)
+                .WithOne(c => c.CommentedReview)
+                .OnDelete(DeleteBehavior.ClientCascade); // delete dependent rows
+
+
+
         }
     }
 }
