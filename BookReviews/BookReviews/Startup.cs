@@ -29,12 +29,15 @@ namespace BookReviews
             // Inject our repositories into our controllers
             services.AddTransient<IReviewRepository, ReviewRepository>(); // Generic types: Repository interface, Repository class
             
+            /* I'm using SQL Server on Linux for the demo of this branch
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            */
             {
                 // Assuming that SQL Server is installed on Windows
                 services.AddDbContext<BookReviewContext>(options =>
                    options.UseSqlServer(Configuration["ConnectionStrings:SQLServerConnection"]));
             }
+            /*
             else 
             {
                 // Assuming SQLite is installed on all other operating systems
@@ -42,6 +45,8 @@ namespace BookReviews
                     options.UseSqlite(Configuration["ConnectionStrings:SQLiteConnection"],
                     x => x.MigrationsAssembly("SQLiteMigrations")));
             }
+            */
+
             services.AddIdentity<AppUser, IdentityRole>()
                 .AddEntityFrameworkStores<BookReviewContext>()
                 .AddDefaultTokenProviders();
