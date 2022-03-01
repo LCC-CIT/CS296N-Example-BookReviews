@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BookReviews.Migrations
 {
-    public partial class SeedComments : Migration
+    public partial class SQLiteMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -52,7 +52,7 @@ namespace BookReviews.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("Sqlite:Autoincrement", true),
                     RoleId = table.Column<string>(nullable: false),
                     ClaimType = table.Column<string>(nullable: true),
                     ClaimValue = table.Column<string>(nullable: true)
@@ -73,7 +73,7 @@ namespace BookReviews.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("Sqlite:Autoincrement", true),
                     UserId = table.Column<string>(nullable: false),
                     ClaimType = table.Column<string>(nullable: true),
                     ClaimValue = table.Column<string>(nullable: true)
@@ -158,7 +158,7 @@ namespace BookReviews.Migrations
                 columns: table => new
                 {
                     ReviewId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("Sqlite:Autoincrement", true),
                     BookTitle = table.Column<string>(nullable: false),
                     AuthorName = table.Column<string>(nullable: true),
                     ReviewerId = table.Column<string>(nullable: true),
@@ -182,7 +182,7 @@ namespace BookReviews.Migrations
                 columns: table => new
                 {
                     CommentId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("Sqlite:Autoincrement", true),
                     CommentText = table.Column<string>(nullable: true),
                     CommentDate = table.Column<DateTime>(nullable: false),
                     CommenterId = table.Column<string>(nullable: true),
@@ -208,31 +208,67 @@ namespace BookReviews.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "Name", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[,]
-                {
-                    { "A", 0, "8ec4f6a5-35af-49f3-bf5a-aca171599191", null, false, false, null, "Brian Bird", null, null, null, null, false, "d4b41306-2d44-4c5f-958f-772544bc47e4", false, "BrianB" },
-                    { "B", 0, "c6f95428-8820-4dc8-8200-84d3b78b8760", null, false, false, null, "Emma Watson", null, null, null, null, false, "7319ec71-85ac-4dcb-be0f-37aa0c43c023", false, "EmmaW" },
-                    { "C", 0, "056d3be5-9023-45f9-9cf4-b6a1d2e8d284", null, false, false, null, "Daniel Radcliffe", null, null, null, null, false, "864fe7e9-4978-432a-aaad-ee4e3f48244f", false, "DanielR" },
-                    { "D", 0, "12d7eacb-f496-41f2-b039-6929cbee8bef", null, false, false, null, "Scarlett Johansson", null, null, null, null, false, "923256a0-eb31-4cae-9938-c0cd1eb0d46d", false, "ScarlettJ" }
-                });
+                values: new object[] { "A", 0, "df074766-610b-4726-bb5f-6ca97fa4696a", null, false, false, null, "Brian Bird", null, null, null, null, false, "344262b4-0cef-4a96-861f-6c03a3e44df0", false, "BrianB" });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUsers",
+                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "Name", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+                values: new object[] { "B", 0, "ff10b1d6-6545-4eba-87fc-ea8797da2425", null, false, false, null, "Emma Watson", null, null, null, null, false, "1538bc90-8c08-46c7-87a8-f0465ca1cea4", false, "EmmaW" });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUsers",
+                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "Name", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+                values: new object[] { "C", 0, "a38f2986-aec7-48a9-bdac-d17f29354dd1", null, false, false, null, "Daniel Radcliffe", null, null, null, null, false, "9ea9be93-3602-46bb-badb-4db1aab49f78", false, "DanielR" });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUsers",
+                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "Name", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+                values: new object[] { "D", 0, "d0573189-fd89-4273-9443-ecb85a583c67", null, false, false, null, "Scarlett Johansson", null, null, null, null, false, "22ac2793-df78-47ac-8604-cb4ced512076", false, "ScarlettJ" });
 
             migrationBuilder.InsertData(
                 table: "Reviews",
                 columns: new[] { "ReviewId", "AuthorName", "BookTitle", "Rating", "ReviewDate", "ReviewText", "ReviewerId" },
-                values: new object[,]
-                {
-                    { 3, "Lief Enger", "Virgil Wander", 5, new DateTime(2020, 11, 30, 0, 0, 0, 0, DateTimeKind.Unspecified), "Wonderful book, written by a distant cousin of mine.", "A" },
-                    { 5, "Sir Walter Scott", "Ivanho", 4, new DateTime(2020, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "It was a little hard going at first, but then I loved it!", "A" },
-                    { 1, "Samuel Shellabarger", "Prince of Foxes", 5, new DateTime(2020, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Great book, a must read!", "B" },
-                    { 6, "C. S. Lewis", "The Lion, the Witch and the Wardrobe", 4, new DateTime(2020, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "I loved this book as a kid and I still love it!", "B" },
-                    { 2, "Samuel Shellabarger", "Prince of Foxes", 5, new DateTime(2020, 11, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), "I love the clever, witty dialog", "C" },
-                    { 4, "Lief Enger", "Virgil Wander", 4, new DateTime(2019, 10, 3, 0, 0, 0, 0, DateTimeKind.Unspecified), "This book is a bit surreal, but it kept me engaged and reading right to the end.", "D" }
-                });
+                values: new object[] { 3, "Lief Enger", "Virgil Wander", 5, new DateTime(2020, 11, 30, 0, 0, 0, 0, DateTimeKind.Unspecified), "Wonderful book, written by a distant relative of mine.", "A" });
+
+            migrationBuilder.InsertData(
+                table: "Reviews",
+                columns: new[] { "ReviewId", "AuthorName", "BookTitle", "Rating", "ReviewDate", "ReviewText", "ReviewerId" },
+                values: new object[] { 5, "Sir Walter Scott", "Ivanho", 4, new DateTime(2020, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "It was a little hard going at first, but then I loved it!", "A" });
+
+            migrationBuilder.InsertData(
+                table: "Reviews",
+                columns: new[] { "ReviewId", "AuthorName", "BookTitle", "Rating", "ReviewDate", "ReviewText", "ReviewerId" },
+                values: new object[] { 1, "Samuel Shellabarger", "Prince of Foxes", 5, new DateTime(2020, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Great book, a must read!", "B" });
+
+            migrationBuilder.InsertData(
+                table: "Reviews",
+                columns: new[] { "ReviewId", "AuthorName", "BookTitle", "Rating", "ReviewDate", "ReviewText", "ReviewerId" },
+                values: new object[] { 6, "C. S. Lewis", "The Lion, the Witch and the Wardrobe", 4, new DateTime(2020, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "I loved this book as a kid and I still love it!", "B" });
+
+            migrationBuilder.InsertData(
+                table: "Reviews",
+                columns: new[] { "ReviewId", "AuthorName", "BookTitle", "Rating", "ReviewDate", "ReviewText", "ReviewerId" },
+                values: new object[] { 2, "Samuel Shellabarger", "Prince of Foxes", 5, new DateTime(2020, 11, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), "I love the clever, witty dialog", "C" });
+
+            migrationBuilder.InsertData(
+                table: "Reviews",
+                columns: new[] { "ReviewId", "AuthorName", "BookTitle", "Rating", "ReviewDate", "ReviewText", "ReviewerId" },
+                values: new object[] { 4, "Lief Enger", "Virgil Wander", 4, new DateTime(2019, 10, 3, 0, 0, 0, 0, DateTimeKind.Unspecified), "This book is a bit surreal, but it kept me engaged and reading right to the end.", "D" });
+
+            migrationBuilder.InsertData(
+                table: "Reviews",
+                columns: new[] { "ReviewId", "AuthorName", "BookTitle", "Rating", "ReviewDate", "ReviewText", "ReviewerId" },
+                values: new object[] { 7, "C. S. Lewis", "The Lion, the Witch and the Wardrobe", 4, new DateTime(2021, 10, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), "This book inspired me to believe in things that others think are impossible.", "D" });
 
             migrationBuilder.InsertData(
                 table: "Comment",
                 columns: new[] { "CommentId", "CommentDate", "CommentText", "CommenterId", "ReviewId" },
                 values: new object[] { 3, new DateTime(2021, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), "Wow, how are you related to Lief Enger?", "B", 3 });
+
+            migrationBuilder.InsertData(
+                table: "Comment",
+                columns: new[] { "CommentId", "CommentDate", "CommentText", "CommenterId", "ReviewId" },
+                values: new object[] { 5, new DateTime(2021, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "I'm not sure how we're related. Some kind of distant cousin on my Mom's side.", "A", 3 });
 
             migrationBuilder.InsertData(
                 table: "Comment",
@@ -244,6 +280,11 @@ namespace BookReviews.Migrations
                 columns: new[] { "CommentId", "CommentDate", "CommentText", "CommenterId", "ReviewId" },
                 values: new object[] { 1, new DateTime(2020, 11, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "I loved that book as a kid too!", "A", 6 });
 
+            migrationBuilder.InsertData(
+                table: "Comment",
+                columns: new[] { "CommentId", "CommentDate", "CommentText", "CommenterId", "ReviewId" },
+                values: new object[] { 4, new DateTime(2021, 10, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), "Yes, and as professor Kirk says, it's all about logic.", "B", 7 });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -253,8 +294,7 @@ namespace BookReviews.Migrations
                 name: "RoleNameIndex",
                 table: "AspNetRoles",
                 column: "NormalizedName",
-                unique: true,
-                filter: "[NormalizedName] IS NOT NULL");
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetUserClaims_UserId",
@@ -280,8 +320,7 @@ namespace BookReviews.Migrations
                 name: "UserNameIndex",
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
-                unique: true,
-                filter: "[NormalizedUserName] IS NOT NULL");
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Comment_CommenterId",
