@@ -21,8 +21,13 @@ Added a folder with JMeter tests and test results.
 Added a comment class to the domain model along with associated view and controller methods.
 ### 7-MoreComplexDomain
 Added a more complex domain model with Book and Author models in addition to Review, Comment and AppUser.
+### 7-ModelBuilderCascadeDelete
+Used the model builder, in the BookReviewContext class, to define cascade
+delete of comments with a review. This is an alternative to putting a non-nullable
+ReviewId FK in the Comment model. THIS ISN'T WORKING YET&mdash;seed data doesn't add comments.
 
 -----
+
 ### SQLiteMigrations
 *This branch was merged into the 5-AsyncDemo branch so subsequent branches have the additional migrations project.*<br/>
 This version has a separate project for SQLite migrations.
