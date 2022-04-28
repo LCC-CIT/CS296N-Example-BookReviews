@@ -1,0 +1,11 @@
+name: Continuous Integration
+
+on:
+	push:
+		branches:
+			- main
+
+jobs:
+	build:
+		runs-on: ubuntu-latest
+		
