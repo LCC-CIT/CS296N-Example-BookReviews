@@ -3,6 +3,7 @@
 This is an example web app in which the same features are implemented as those required for the CS296N lab assignments.
 
 ## Branches
+
 ### 0-Baseline
 Code from CS295N which we are building on in CS296N
 ### 1-Validation
