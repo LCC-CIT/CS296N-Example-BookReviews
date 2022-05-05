@@ -23,6 +23,10 @@ Added a Comment class to the domain model along with associated view and control
 Added a more complex domain model with Book and Author models in addition to Review, Comment and AppUser.
 
 -----
+### GitHub Actions
+Added ci-actions.yaml which builds the project when code is pushed to the test branch.
+
+-----
 ### SQLiteMigrations
 *This branch was merged into the 5-AsyncDemo branch so subsequent branches have the additional migrations project.*<br/>
 This version has a separate project for SQLite migrations.
