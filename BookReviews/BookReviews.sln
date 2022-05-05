@@ -12,7 +12,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		..\README.md = ..\README.md
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SQLiteMigrations", "SQLiteMIgrations\SQLiteMigrations.csproj", "{D54F5C1B-5934-47CB-8CD1-3E2B62CE5572}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SQLiteMigrations", "SQLiteMigrations\SQLiteMigrations.csproj", "{D54F5C1B-5934-47CB-8CD1-3E2B62CE5572}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
