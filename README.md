@@ -23,7 +23,9 @@ Added a Comment class to the domain model along with associated view and control
 Added a more complex domain model with Book and Author models in addition to Review, Comment and AppUser.
 
 -----
+
 ### GitHub Actions
+
 Added ci-actions.yaml which builds the project when code is pushed to the test branch.
 
 -----
