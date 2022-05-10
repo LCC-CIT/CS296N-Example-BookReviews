@@ -23,7 +23,7 @@ jobs:
       run: dotnet build BookReviews/BookReviews.sln -c Release --no-restore
 
     - name: Run Unit Tests
-      run: dotnet test -c Release --no-build
+      run: dotnet test BookReviews/BookReviews.sln -c Release --no-build
       
 
 
