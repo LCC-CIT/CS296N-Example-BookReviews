@@ -2,7 +2,7 @@ name: Continuous Integration
 
 on:
   push:
-    branches: test
+    branches: Test
 
 jobs:
   build:
@@ -17,10 +17,10 @@ jobs:
       uses: xt0rted/setup-dotnet@v1.3.0
 
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore BookReviews/BookReviews.sln
 
     - name: Build app
-      run: dotnet build -c Release --no-restore
+      run: dotnet build BookReviews/BookReviews.sln -c Release --no-restore
 
     - name: Run Unit Tests
       run: dotnet test -c Release --no-build

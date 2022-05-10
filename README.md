@@ -3,6 +3,7 @@
 This is an example web app in which the same features are implemented as those required for the CS296N lab assignments.
 
 ## Branches
+
 ### 0-Baseline
 Code from CS295N which we are building on in CS296N
 ### 1-Validation
@@ -23,7 +24,9 @@ Added a Comment class to the domain model along with associated view and control
 Added a more complex domain model with Book and Author models in addition to Review, Comment and AppUser.
 
 -----
+
 ### GitHub Actions
+
 Added ci-actions.yaml which builds the project when code is pushed to the test branch.
 
 -----
