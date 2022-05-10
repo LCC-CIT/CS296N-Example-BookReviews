@@ -2,7 +2,8 @@ name: Continuous Integration
 
 on:
   push:
-    branches: Test
+    branches: 
+    - Test
 
 jobs:
   build:
@@ -10,12 +11,11 @@ jobs:
     steps:
     - name: Check out code
       uses: actions/checkout@v3
-      with:
-        dotnet-version: '5.0.x'
     
-    - name: Setup .NET 5
+    - name: Setup .NET Core 3.1
       uses: xt0rted/setup-dotnet@v1.3.0
-
+      with:
+        dotnet-version: '3.1.x'
     - name: Restore dependencies
       run: dotnet restore BookReviews/BookReviews.sln
 
