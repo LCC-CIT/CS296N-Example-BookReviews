@@ -2,8 +2,7 @@ name: Continuous Integration
 
 on:
   push:
-    branches:
-      - test
+    branches: test
 
 jobs:
   build:
@@ -22,6 +21,10 @@ jobs:
 
     - name: Build app
       run: dotnet build -c Release --no-restore
+
+    - name: Run Unit Tests
+      run: dotnet test -c Release --no-build
+      
 
 
 
