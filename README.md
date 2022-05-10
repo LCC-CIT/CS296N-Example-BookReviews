@@ -22,6 +22,8 @@ Added a folder with JMeter tests and test results.
 Added a Comment class to the domain model along with associated view and controller methods.
 ### 7-MoreComplexDomain
 Added a more complex domain model with Book and Author models in addition to Review, Comment and AppUser.
+### 9-Docker
+Added a dockerfile and support for deploying to a Docker container.
 
 -----
 
