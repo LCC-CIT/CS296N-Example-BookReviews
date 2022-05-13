@@ -11,6 +11,8 @@ namespace Tests
     // Tests for the BookController
     public class BookTests
     {
+        
+        // GitHub Actions doesn't like this test
         [Fact]
         public void IndexTest()
         {
