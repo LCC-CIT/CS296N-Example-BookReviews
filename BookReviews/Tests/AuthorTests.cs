@@ -3,6 +3,7 @@ using BookReviews.Models;
 using BookReviews.Repos;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace Tests
@@ -50,7 +51,7 @@ namespace Tests
         }
 
         [Fact]
-        public void IndexTest()
+        public async Task IndexTest()
         {
             // Test to see if names of all authors are returned without duplicates 
 
@@ -59,14 +60,14 @@ namespace Tests
             var controller = new AuthorController(fakeRepo);
             // We don't need need to add all the properties to the models since we aren't testing that.
             var review1 = new Review() { AuthorName = "Author 1" };
-            fakeRepo.AddReviewAsync(review1).Wait();
-            fakeRepo.AddReviewAsync(review1).Wait();
+            await fakeRepo.AddReviewAsync(review1);
+            await fakeRepo.AddReviewAsync(review1);
             var review2 = new Review() { AuthorName = "Author 2" };
-            fakeRepo.AddReviewAsync(review2).Wait();
-            fakeRepo.AddReviewAsync(review2).Wait();
+            await fakeRepo.AddReviewAsync(review2);
+            await fakeRepo.AddReviewAsync(review2);
             var review3 = new Review() { AuthorName = "Author 3" };
-            fakeRepo.AddReviewAsync(review3).Wait();
-            fakeRepo.AddReviewAsync(review3).Wait();
+            await fakeRepo.AddReviewAsync(review3);
+            await fakeRepo.AddReviewAsync(review3);
             // Act
             var viewResult = (ViewResult)controller.Index().Result;
             // ViewResult is a the type of ActionResult that is returned by the View() method in the controller
