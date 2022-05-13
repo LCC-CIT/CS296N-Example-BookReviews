@@ -3,6 +3,7 @@ using BookReviews.Models;
 using BookReviews.Repos;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace Tests
@@ -14,7 +15,7 @@ namespace Tests
         
         // GitHub Actions doesn't like this test
         [Fact]
-        public void IndexTest()
+        public async Task IndexTest()
         {
             // Test to see if titles of all books are returned without duplicates
 
@@ -23,14 +24,14 @@ namespace Tests
             var controller = new BookController(fakeRepo);
             // We don't need need to add all the properties to the models since we aren't testing that.
             var review1 = new Review() { BookTitle = "Book 1" };
-            fakeRepo.AddReviewAsync(review1).Wait();
-            fakeRepo.AddReviewAsync(review1).Wait();
+            await fakeRepo.AddReviewAsync(review1);
+            await fakeRepo.AddReviewAsync(review1);
             var review2 = new Review() { BookTitle = "Book 2" };
-            fakeRepo.AddReviewAsync(review2).Wait();
-            fakeRepo.AddReviewAsync(review2).Wait();
+            await fakeRepo.AddReviewAsync(review2);
+            await fakeRepo.AddReviewAsync(review2);
             var review3 = new Review() { BookTitle = "Book 3" };
-            fakeRepo.AddReviewAsync(review3).Wait();
-            fakeRepo.AddReviewAsync(review3).Wait();
+            await fakeRepo.AddReviewAsync(review3);
+            await fakeRepo.AddReviewAsync(review3);
 
             // Act
             var viewResult = (ViewResult)controller.Index().Result;
