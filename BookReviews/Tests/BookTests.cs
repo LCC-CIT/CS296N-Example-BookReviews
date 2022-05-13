@@ -7,7 +7,7 @@ using Xunit;
 
 namespace Tests
 {
-    /*
+    
     // Tests for the BookController
     public class BookTests
     {
@@ -42,5 +42,5 @@ namespace Tests
             Assert.Equal(titles[2], review3.BookTitle);
         }
     }
-    */
+    
 }
