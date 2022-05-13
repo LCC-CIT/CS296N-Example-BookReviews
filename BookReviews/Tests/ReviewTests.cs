@@ -11,7 +11,7 @@ namespace Tests
     // Tests for the ReviewController
     public class ReviewTests
     {
-        /*
+        
         [Fact]
         public void FilterByTitleTest()
         {
@@ -95,7 +95,7 @@ namespace Tests
             Assert.Equal(reviews[1].BookTitle, review1.BookTitle);
             Assert.Equal(reviews[2].BookTitle, review2.BookTitle);
         }
-    */
+    
         /* The AddReviewTest was broken when we started using the UserManager
  * to get the logged in user to put in AppUser.UserName
 [Fact]
