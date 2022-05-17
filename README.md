@@ -1,6 +1,7 @@
 # CS296N Example
 ## A Book Review web app
 This is an example web app in which the same features are implemented as those required for the CS296N lab assignments.
+
 ![Unit Tests](https://github.com/LCC-CIT/CS296N-Example-BookReviews/actions/workflows/ci-actions.yml/badge.svg)
 ## Branches
 ### 0-Baseline
