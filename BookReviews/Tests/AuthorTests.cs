@@ -8,7 +8,7 @@ using Xunit;
 
 namespace Tests
 {
-    public class AuthorQuizTests
+    public class AuthorTests
     {
         [Fact]
         // Test when the user gives all the right answers
@@ -49,11 +49,7 @@ namespace Tests
             Assert.True("Wrong" == quiz.RightOrWrong1 &&
                 "Wrong" == quiz.RightOrWrong2 && "Wrong" == quiz.RightOrWrong3);
         }
-    }
 
-    [Collection("AddReviewAsync Tests")]
-    public class AuthorTests
-    {
         [Fact]
         public async Task IndexTest()
         {

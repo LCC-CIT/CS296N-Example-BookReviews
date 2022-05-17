@@ -10,11 +10,8 @@ namespace Tests
 {
 
     // Tests for the BookController
-    [Collection("AddReviewAsync Tests")]
     public class BookTests
     {
-        
-        // GitHub Actions doesn't like this test
         [Fact]
         public async Task IndexTest()
         {

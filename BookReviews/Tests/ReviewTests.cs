@@ -9,7 +9,6 @@ namespace Tests
 {
     
     // Tests for the ReviewController
-    [Collection("AddReviewAsync Tests")]
     public class ReviewTests
     {
         

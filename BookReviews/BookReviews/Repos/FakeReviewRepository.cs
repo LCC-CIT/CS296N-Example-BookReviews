@@ -9,7 +9,8 @@ namespace BookReviews.Repos
 {
     public class FakeReviewRepository : IReviewRepository
     {
-        readonly ConcurrentBag<Review> reviews = new();
+        private readonly ConcurrentBag<Review> reviews = new ConcurrentBag<Review>();
+       // readonly ConcurrentBag<Review> reviews = reviews1;
 
         public IQueryable<Review> Reviews 
         { 
