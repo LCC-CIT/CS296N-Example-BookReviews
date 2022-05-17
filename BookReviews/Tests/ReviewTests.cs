@@ -9,6 +9,7 @@ namespace Tests
 {
     
     // Tests for the ReviewController
+    [Collection("All Tests")]
     public class ReviewTests
     {
         
