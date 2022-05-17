@@ -10,7 +10,7 @@ namespace Tests
 {
 
     // Tests for the BookController
-    [Collection("All Tests")]
+    [Collection("AddReviewAsync Tests")]
     public class BookTests
     {
         

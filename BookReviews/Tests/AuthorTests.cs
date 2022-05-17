@@ -8,8 +8,7 @@ using Xunit;
 
 namespace Tests
 {
-    [Collection("All Tests")]
-    public class AuthorTests
+    public class AuthorQuizTests
     {
         [Fact]
         // Test when the user gives all the right answers
@@ -50,14 +49,18 @@ namespace Tests
             Assert.True("Wrong" == quiz.RightOrWrong1 &&
                 "Wrong" == quiz.RightOrWrong2 && "Wrong" == quiz.RightOrWrong3);
         }
+    }
 
+    [Collection("AddReviewAsync Tests")]
+    public class AuthorTests
+    {
         [Fact]
         public async Task IndexTest()
         {
             // Test to see if names of all authors are returned without duplicates 
 
-        // Arrange
-        var fakeRepo = new FakeReviewRepository();
+            // Arrange
+            var fakeRepo = new FakeReviewRepository();
             var controller = new AuthorController(fakeRepo);
             // We don't need need to add all the properties to the models since we aren't testing that.
             var review1 = new Review() { AuthorName = "Author 1" };
