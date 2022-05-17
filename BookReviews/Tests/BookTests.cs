@@ -10,6 +10,7 @@ namespace Tests
 {
 
     // Tests for the BookController
+    [Collection("All Tests")]
     public class BookTests
     {
         [Fact]

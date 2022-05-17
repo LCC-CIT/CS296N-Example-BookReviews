@@ -8,6 +8,7 @@ using Xunit;
 
 namespace Tests
 {
+    [Collection("All Tests")]
     public class AuthorTests
     {
         [Fact]
