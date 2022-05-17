@@ -40,9 +40,9 @@ namespace Tests
             // Assert
             var titles = (List<string>)viewResult.ViewData.Model;
             Assert.Equal(3, titles.Count);
-            Assert.Equal(titles[0], review1.BookTitle);
-            Assert.Equal(titles[1], review2.BookTitle);
-            Assert.Equal(titles[2], review3.BookTitle);
+            Assert.Contains<string>(review1.BookTitle, titles);
+            Assert.Contains<string>(review2.BookTitle, titles);
+            Assert.Contains<string>(review3.BookTitle, titles);
         }
     }
     

@@ -75,9 +75,9 @@ namespace Tests
             // Assert
             var names = (List<string>)viewResult.ViewData.Model;
             Assert.Equal(3, names.Count);
-            Assert.Equal(names[0], review1.AuthorName);
-            Assert.Equal(names[1], review2.AuthorName);
-            Assert.Equal(names[2], review3.AuthorName);
+            Assert.Contains<string>(review1.AuthorName, names);
+            Assert.Contains<string>(review2.AuthorName, names);
+            Assert.Contains<string>(review3.AuthorName, names);
         }
     }
 }
