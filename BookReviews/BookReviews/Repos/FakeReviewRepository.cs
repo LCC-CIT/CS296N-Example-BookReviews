@@ -20,8 +20,11 @@ namespace BookReviews.Repos
         public async Task AddReviewAsync(Review review)
 #pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
-            review.ReviewId = reviews.Count;
-            reviews.Add(review);
+            await Task.Run(() =>
+            {
+                review.ReviewId = reviews.Count;
+                reviews.Add(review);
+            });
         }
 
         public Task UpdateReviewAsync(Review review)
