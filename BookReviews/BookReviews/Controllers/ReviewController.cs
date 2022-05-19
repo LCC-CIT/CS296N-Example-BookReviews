@@ -58,6 +58,7 @@ namespace BookReviews.Controllers
             return View(reviews);
         }
 
+        // This is used by other controller methods
         public async Task<IActionResult> FilterReviews(string bookTitle, string reviewerName)
         {
             List<Review> reviews = null;
