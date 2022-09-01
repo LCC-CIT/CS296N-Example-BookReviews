@@ -39,8 +39,9 @@ namespace BookReviews
             {
                 // Assuming SQLite is installed on all other operating systems
                 services.AddDbContext<BookReviewContext>(options =>
-                    options.UseSqlite(Configuration["ConnectionStrings:SQLiteConnection"],
-                    x => x.MigrationsAssembly("SQLiteMigrations")));
+                    options.UseSqlite(Configuration["ConnectionStrings:SQLiteConnection"]));
+                    // Use the line below if there is a separate migrations project for sqite
+                    // x => x.MigrationsAssembly("SQLiteMigrations"))) ;
             }
             services.AddIdentity<AppUser, IdentityRole>()
                 .AddEntityFrameworkStores<BookReviewContext>()
