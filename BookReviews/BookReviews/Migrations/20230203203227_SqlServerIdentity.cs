@@ -3,38 +3,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BookReviews.Migrations
 {
-    public partial class Identity : Migration
+    public partial class SqlServerIdentity : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
-                name: "FK_Reviews_Users_ReviewerUserID",
-                table: "Reviews");
-
-            migrationBuilder.DropTable(
-                name: "Users");
-
-            migrationBuilder.DropIndex(
-                name: "IX_Reviews_ReviewerUserID",
-                table: "Reviews");
-
-            migrationBuilder.DropColumn(
-                name: "ReviewerUserID",
-                table: "Reviews");
-
-            migrationBuilder.AlterColumn<string>(
-                name: "BookTitle",
-                table: "Reviews",
-                nullable: false,
-                oldClrType: typeof(string),
-                oldType: "nvarchar(100)",
-                oldMaxLength: 100);
-
-            migrationBuilder.AddColumn<string>(
-                name: "ReviewerId",
-                table: "Reviews",
-                nullable: true);
-
             migrationBuilder.CreateTable(
                 name: "AspNetRoles",
                 columns: table => new
@@ -69,7 +41,6 @@ namespace BookReviews.Migrations
                     LockoutEnabled = table.Column<bool>(nullable: false),
                     AccessFailedCount = table.Column<int>(nullable: false),
                     Discriminator = table.Column<string>(nullable: false),
-                    UserID = table.Column<int>(nullable: true),
                     Name = table.Column<string>(maxLength: 60, nullable: true)
                 },
                 constraints: table =>
@@ -183,10 +154,28 @@ namespace BookReviews.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateIndex(
-                name: "IX_Reviews_ReviewerId",
-                table: "Reviews",
-                column: "ReviewerId");
+            migrationBuilder.CreateTable(
+                name: "Reviews",
+                columns: table => new
+                {
+                    ReviewID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    BookTitle = table.Column<string>(nullable: false),
+                    AuthorName = table.Column<string>(maxLength: 100, nullable: false),
+                    ReviewerId = table.Column<string>(nullable: true),
+                    ReviewText = table.Column<string>(nullable: false),
+                    ReviewDate = table.Column<DateTime>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Reviews", x => x.ReviewID);
+                    table.ForeignKey(
+                        name: "FK_Reviews_AspNetUsers_ReviewerId",
+                        column: x => x.ReviewerId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -227,21 +216,14 @@ namespace BookReviews.Migrations
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
 
-            migrationBuilder.AddForeignKey(
-                name: "FK_Reviews_AspNetUsers_ReviewerId",
+            migrationBuilder.CreateIndex(
+                name: "IX_Reviews_ReviewerId",
                 table: "Reviews",
-                column: "ReviewerId",
-                principalTable: "AspNetUsers",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Restrict);
+                column: "ReviewerId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
-                name: "FK_Reviews_AspNetUsers_ReviewerId",
-                table: "Reviews");
-
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
 
@@ -258,58 +240,13 @@ namespace BookReviews.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "Reviews");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
-
-            migrationBuilder.DropIndex(
-                name: "IX_Reviews_ReviewerId",
-                table: "Reviews");
-
-            migrationBuilder.DropColumn(
-                name: "ReviewerId",
-                table: "Reviews");
-
-            migrationBuilder.AlterColumn<string>(
-                name: "BookTitle",
-                table: "Reviews",
-                type: "nvarchar(100)",
-                maxLength: 100,
-                nullable: false,
-                oldClrType: typeof(string));
-
-            migrationBuilder.AddColumn<int>(
-                name: "ReviewerUserID",
-                table: "Reviews",
-                type: "int",
-                nullable: true);
-
-            migrationBuilder.CreateTable(
-                name: "Users",
-                columns: table => new
-                {
-                    UserID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Users", x => x.UserID);
-                });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Reviews_ReviewerUserID",
-                table: "Reviews",
-                column: "ReviewerUserID");
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_Reviews_Users_ReviewerUserID",
-                table: "Reviews",
-                column: "ReviewerUserID",
-                principalTable: "Users",
-                principalColumn: "UserID",
-                onDelete: ReferentialAction.Restrict);
         }
     }
 }

@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BookReviews.Migrations
 {
     [DbContext(typeof(BookReviewContext))]
-    [Migration("20210114174329_Identity")]
-    partial class Identity
+    [Migration("20230203203227_SqlServerIdentity")]
+    partial class SqlServerIdentity
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -264,9 +264,6 @@ namespace BookReviews.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(60)")
                         .HasMaxLength(60);
-
-                    b.Property<int>("UserID")
-                        .HasColumnType("int");
 
                     b.HasDiscriminator().HasValue("AppUser");
                 });
