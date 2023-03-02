@@ -10,6 +10,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A36651A0-A59C-4F1E-B44C-BE29AEDA6837}"
 	ProjectSection(SolutionItems) = preProject
 		..\README.md = ..\README.md
+		Docs\BookReviewsComplexDomainModel.uxf = Docs\BookReviewsComplexDomainModel.uxf
+		Docs\BookReviewsComplexDomainModel.pdf = Docs\BookReviewsComplexDomainModel.pdf
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SQLiteMigrations", "SQLiteMIgrations\SQLiteMigrations.csproj", "{D54F5C1B-5934-47CB-8CD1-3E2B62CE5572}"
