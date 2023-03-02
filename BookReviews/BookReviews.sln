@@ -8,6 +8,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A36651A0-A59C-4F1E-B44C-BE29AEDA6837}"
 	ProjectSection(SolutionItems) = preProject
 		..\README.md = ..\README.md
+		Docs\BookReviewsMoreComplexDomainModel.uxf = Docs\BookReviewsMoreComplexDomainModel.uxf
+		Docs\BookReviewsMoreComplexDomainModel.pdf = Docs\BookReviewsMoreComplexDomainModel.pdf
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookReviews", "BookReviews\BookReviews.csproj", "{B91E293C-7CBB-4F9C-A055-D124FB5A5E81}"
