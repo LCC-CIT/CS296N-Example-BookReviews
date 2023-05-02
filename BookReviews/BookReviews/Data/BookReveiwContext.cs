@@ -9,7 +9,11 @@ namespace BookReviews.Data
         public BookReviewContext(
             DbContextOptions<BookReviewContext> options) : base(options) { }
 
-        public DbSet<Review> Reviews { get; set; }
+        // TODO: Determine root entities and remove some DbSets
+        public DbSet<Review> Reviews { get; set; }  // Currently the root entity
+        public DbSet<Book> Books { get; set; }      // This should be the root entity
+        public DbSet<Author> Authors { get; set; }  // This should be a root entity too
+        public DbSet<Comment> Comments { get; set; }  
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

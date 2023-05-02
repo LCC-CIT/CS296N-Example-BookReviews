@@ -5,6 +5,7 @@
 
 <div>
     <h1 class="display-4">Author Quiz</h1>
+
     <form method="post" class="container">
         <label asp-for="UserAnswer1" class="control-label">Who wrote Les Misérables?</label>
         <input asp-for="UserAnswer1" type="text" class="form-control pb-1" />
@@ -12,7 +13,6 @@
         <p>@Model?.RightOrWrong1</p>
         <br />
         <label asp-for="UserAnswer2">What year was Charles Dickens born?</label>
-        @*<input asp-for="UserAnswer2" type="number" class="form-control pb-1" />*@
         <select asp-for="UserAnswer2" class="form-control pb-1">
             <option value="">Select a year...</option>
             <option value="1945">1945</option>

@@ -3,7 +3,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BookReviews.Migrations
 {
+<<<<<<<< HEAD:BookReviews/BookReviews/Migrations/20220223062525_SeedComments.cs
     public partial class SeedComments : Migration
+========
+    public partial class ComplexDomain : Migration
+>>>>>>>> 7-MoreComplexDomain:BookReviews/BookReviews/Migrations/20220205045957_ComplexDomain.cs
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -48,11 +52,25 @@ namespace BookReviews.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Writers",
+                columns: table => new
+                {
+                    WriterId = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(nullable: true),
+                    Birthdate = table.Column<DateTime>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Writers", x => x.WriterId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("Sqlite:Autoincrement", true),
                     RoleId = table.Column<string>(nullable: false),
                     ClaimType = table.Column<string>(nullable: true),
                     ClaimValue = table.Column<string>(nullable: true)
@@ -73,7 +91,7 @@ namespace BookReviews.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("Sqlite:Autoincrement", true),
                     UserId = table.Column<string>(nullable: false),
                     ClaimType = table.Column<string>(nullable: true),
                     ClaimValue = table.Column<string>(nullable: true)
@@ -154,13 +172,39 @@ namespace BookReviews.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Books",
+                columns: table => new
+                {
+                    BookId = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Title = table.Column<string>(nullable: true),
+                    PrintDate = table.Column<DateTime>(nullable: false),
+                    AuthorWriterId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Books", x => x.BookId);
+                    table.ForeignKey(
+                        name: "FK_Books_Writers_AuthorWriterId",
+                        column: x => x.AuthorWriterId,
+                        principalTable: "Writers",
+                        principalColumn: "WriterId",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Reviews",
                 columns: table => new
                 {
                     ReviewId = table.Column<int>(nullable: false)
+<<<<<<<< HEAD:BookReviews/BookReviews/Migrations/20220223062525_SeedComments.cs
                         .Annotation("SqlServer:Identity", "1, 1"),
                     BookTitle = table.Column<string>(nullable: false),
                     AuthorName = table.Column<string>(nullable: true),
+========
+                        .Annotation("Sqlite:Autoincrement", true),
+                    BookId = table.Column<int>(nullable: true),
+>>>>>>>> 7-MoreComplexDomain:BookReviews/BookReviews/Migrations/20220205045957_ComplexDomain.cs
                     ReviewerId = table.Column<string>(nullable: true),
                     ReviewText = table.Column<string>(maxLength: 500, nullable: false),
                     Rating = table.Column<int>(nullable: false),
@@ -169,6 +213,15 @@ namespace BookReviews.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Reviews", x => x.ReviewId);
+<<<<<<<< HEAD:BookReviews/BookReviews/Migrations/20220223062525_SeedComments.cs
+========
+                    table.ForeignKey(
+                        name: "FK_Reviews_Books_BookId",
+                        column: x => x.BookId,
+                        principalTable: "Books",
+                        principalColumn: "BookId",
+                        onDelete: ReferentialAction.Restrict);
+>>>>>>>> 7-MoreComplexDomain:BookReviews/BookReviews/Migrations/20220205045957_ComplexDomain.cs
                     table.ForeignKey(
                         name: "FK_Reviews_AspNetUsers_ReviewerId",
                         column: x => x.ReviewerId,
@@ -178,6 +231,7 @@ namespace BookReviews.Migrations
                 });
 
             migrationBuilder.CreateTable(
+<<<<<<<< HEAD:BookReviews/BookReviews/Migrations/20220223062525_SeedComments.cs
                 name: "Comment",
                 columns: table => new
                 {
@@ -193,21 +247,47 @@ namespace BookReviews.Migrations
                     table.PrimaryKey("PK_Comment", x => x.CommentId);
                     table.ForeignKey(
                         name: "FK_Comment_AspNetUsers_CommenterId",
+========
+                name: "Comments",
+                columns: table => new
+                {
+                    CommentId = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    CommentText = table.Column<string>(nullable: true),
+                    CommentDate = table.Column<DateTime>(nullable: false),
+                    CommenterId = table.Column<string>(nullable: true),
+                    ReviewId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Comments", x => x.CommentId);
+                    table.ForeignKey(
+                        name: "FK_Comments_AspNetUsers_CommenterId",
+>>>>>>>> 7-MoreComplexDomain:BookReviews/BookReviews/Migrations/20220205045957_ComplexDomain.cs
                         column: x => x.CommenterId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
+<<<<<<<< HEAD:BookReviews/BookReviews/Migrations/20220223062525_SeedComments.cs
                         name: "FK_Comment_Reviews_ReviewId",
                         column: x => x.ReviewId,
                         principalTable: "Reviews",
                         principalColumn: "ReviewId",
                         onDelete: ReferentialAction.Cascade);
+========
+                        name: "FK_Comments_Reviews_ReviewId",
+                        column: x => x.ReviewId,
+                        principalTable: "Reviews",
+                        principalColumn: "ReviewId",
+                        onDelete: ReferentialAction.Restrict);
+>>>>>>>> 7-MoreComplexDomain:BookReviews/BookReviews/Migrations/20220205045957_ComplexDomain.cs
                 });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "Name", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+<<<<<<<< HEAD:BookReviews/BookReviews/Migrations/20220223062525_SeedComments.cs
                 values: new object[,]
                 {
                     { "A", 0, "8ec4f6a5-35af-49f3-bf5a-aca171599191", null, false, false, null, "Brian Bird", null, null, null, null, false, "d4b41306-2d44-4c5f-958f-772544bc47e4", false, "BrianB" },
@@ -228,6 +308,69 @@ namespace BookReviews.Migrations
                     { 2, "Samuel Shellabarger", "Prince of Foxes", 5, new DateTime(2020, 11, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), "I love the clever, witty dialog", "C" },
                     { 4, "Lief Enger", "Virgil Wander", 4, new DateTime(2019, 10, 3, 0, 0, 0, 0, DateTimeKind.Unspecified), "This book is a bit surreal, but it kept me engaged and reading right to the end.", "D" }
                 });
+========
+                values: new object[] { "7dc3c5ff-fd2c-492d-a3d6-05a607c8eb5d", 0, "f53d2fad-70ca-4744-8c45-03e1ea60f2f6", null, false, false, null, "Brian Bird", null, null, null, null, false, "6a0dbf53-197b-46b0-be1c-1c148cceef21", false, null });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUsers",
+                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "Name", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+                values: new object[] { "755f75a9-ea9f-4e75-9d9a-d21b719c5afc", 0, "62cd03d7-efaf-434c-8f3e-d21b159aca8e", null, false, false, null, "Emma Watson", null, null, null, null, false, "bf50f93d-17ba-4141-912d-79e3eff4f7fb", false, null });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUsers",
+                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "Name", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+                values: new object[] { "b5158425-0721-4169-acf0-ef8a080c2874", 0, "9582f570-8f67-42b5-94e2-5528e79b8289", null, false, false, null, "Daniel Radliiffe", null, null, null, null, false, "db79e9af-0ba1-4557-a441-c0093c4cc5a8", false, null });
+
+            migrationBuilder.InsertData(
+                table: "Writers",
+                columns: new[] { "WriterId", "Birthdate", "Name" },
+                values: new object[] { 1, new DateTime(1888, 5, 18, 0, 0, 0, 0, DateTimeKind.Unspecified), "Samuel Shellabarger" });
+
+            migrationBuilder.InsertData(
+                table: "Writers",
+                columns: new[] { "WriterId", "Birthdate", "Name" },
+                values: new object[] { 2, new DateTime(1961, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "leif Enger" });
+
+            migrationBuilder.InsertData(
+                table: "Writers",
+                columns: new[] { "WriterId", "Birthdate", "Name" },
+                values: new object[] { 3, new DateTime(1771, 8, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), "Sir Walter Scott" });
+
+            migrationBuilder.InsertData(
+                table: "Books",
+                columns: new[] { "BookId", "AuthorWriterId", "PrintDate", "Title" },
+                values: new object[] { 1, 1, new DateTime(1947, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Prince of Foxes" });
+
+            migrationBuilder.InsertData(
+                table: "Books",
+                columns: new[] { "BookId", "AuthorWriterId", "PrintDate", "Title" },
+                values: new object[] { 2, 2, new DateTime(2018, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Virgil Wander" });
+
+            migrationBuilder.InsertData(
+                table: "Books",
+                columns: new[] { "BookId", "AuthorWriterId", "PrintDate", "Title" },
+                values: new object[] { 3, 3, new DateTime(1819, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Ivanhoe" });
+
+            migrationBuilder.InsertData(
+                table: "Reviews",
+                columns: new[] { "ReviewId", "BookId", "Rating", "ReviewDate", "ReviewText", "ReviewerId" },
+                values: new object[] { 1, 1, 5, new DateTime(2020, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Great book, a must read!", "755f75a9-ea9f-4e75-9d9a-d21b719c5afc" });
+
+            migrationBuilder.InsertData(
+                table: "Reviews",
+                columns: new[] { "ReviewId", "BookId", "Rating", "ReviewDate", "ReviewText", "ReviewerId" },
+                values: new object[] { 2, 1, 5, new DateTime(2020, 11, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), "I love the clever, witty dialog", "b5158425-0721-4169-acf0-ef8a080c2874" });
+
+            migrationBuilder.InsertData(
+                table: "Reviews",
+                columns: new[] { "ReviewId", "BookId", "Rating", "ReviewDate", "ReviewText", "ReviewerId" },
+                values: new object[] { 3, 2, 5, new DateTime(2020, 11, 30, 0, 0, 0, 0, DateTimeKind.Unspecified), "Wonderful book, written by a distant cousin of mine.", "7dc3c5ff-fd2c-492d-a3d6-05a607c8eb5d" });
+
+            migrationBuilder.InsertData(
+                table: "Reviews",
+                columns: new[] { "ReviewId", "BookId", "Rating", "ReviewDate", "ReviewText", "ReviewerId" },
+                values: new object[] { 4, 3, 4, new DateTime(2020, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "It was a little hard going at first, but then I loved it!", "7dc3c5ff-fd2c-492d-a3d6-05a607c8eb5d" });
+>>>>>>>> 7-MoreComplexDomain:BookReviews/BookReviews/Migrations/20220205045957_ComplexDomain.cs
 
             migrationBuilder.InsertData(
                 table: "Comment",
@@ -253,8 +396,7 @@ namespace BookReviews.Migrations
                 name: "RoleNameIndex",
                 table: "AspNetRoles",
                 column: "NormalizedName",
-                unique: true,
-                filter: "[NormalizedName] IS NOT NULL");
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetUserClaims_UserId",
@@ -280,8 +422,27 @@ namespace BookReviews.Migrations
                 name: "UserNameIndex",
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
-                unique: true,
-                filter: "[NormalizedUserName] IS NOT NULL");
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Books_AuthorWriterId",
+                table: "Books",
+                column: "AuthorWriterId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Comments_CommenterId",
+                table: "Comments",
+                column: "CommenterId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Comments_ReviewId",
+                table: "Comments",
+                column: "ReviewId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Reviews_BookId",
+                table: "Reviews",
+                column: "BookId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Comment_CommenterId",
@@ -317,7 +478,11 @@ namespace BookReviews.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+<<<<<<<< HEAD:BookReviews/BookReviews/Migrations/20220223062525_SeedComments.cs
                 name: "Comment");
+========
+                name: "Comments");
+>>>>>>>> 7-MoreComplexDomain:BookReviews/BookReviews/Migrations/20220205045957_ComplexDomain.cs
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
@@ -326,7 +491,16 @@ namespace BookReviews.Migrations
                 name: "Reviews");
 
             migrationBuilder.DropTable(
+<<<<<<<< HEAD:BookReviews/BookReviews/Migrations/20220223062525_SeedComments.cs
+========
+                name: "Books");
+
+            migrationBuilder.DropTable(
+>>>>>>>> 7-MoreComplexDomain:BookReviews/BookReviews/Migrations/20220205045957_ComplexDomain.cs
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Writers");
         }
     }
 }

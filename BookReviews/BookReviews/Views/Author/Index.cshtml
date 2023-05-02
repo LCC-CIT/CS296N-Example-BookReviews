@@ -4,13 +4,14 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">List of Authors</h1>
-</div>
-<p><a asp-action="Quiz">Take a quiz about authors</a></p>
-<p>These are all the authors whose books reviewed on this site:</p>
+    <h1 class="display-4">Authors</h1>
+    <h3>Quiz</h3>
+    <p><a asp-action="Quiz">Take a quiz about authors</a></p>
+    <h3>Authors whose books reviewed on this site</h3>
 
-@foreach (string name in Model)
-{
-    <span class="m-3">@name</span>
-    <br />
-}
+    @foreach (string name in Model)
+    {
+        <span class="m-3">@name</span>
+        <br />
+    }
+</div>

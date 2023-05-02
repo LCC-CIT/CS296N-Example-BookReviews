@@ -1,7 +1,6 @@
 ﻿
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using BookReviews.Models;
 using BookReviews.Repos;
 using Microsoft.AspNetCore.Mvc;
@@ -17,14 +16,12 @@ namespace BookReviews.Controllers
             repo = r;
         }
 
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            List<string> names = await Task.Run(() =>
-              repo.Reviews
-                .Select(review => review.AuthorName)
+            List<string> names = repo.Reviews
+                .Select(review => review.Book.Author.Name)
                 .Distinct()
-                .ToList()
-            );
+                .ToList();
 
             return View(names);
         }
@@ -41,9 +38,8 @@ namespace BookReviews.Controllers
             if (ModelState.IsValid)
             {
                 quiz.CheckAnswers();
-                return View(quiz);
             }
-            return RedirectToAction("Quiz");
+            return View(quiz);
         }
 
     }
