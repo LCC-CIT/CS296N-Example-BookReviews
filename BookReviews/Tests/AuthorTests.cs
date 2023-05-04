@@ -60,6 +60,7 @@ namespace Tests
             var fakeRepo = new FakeReviewRepository();
             var controller = new AuthorController(fakeRepo);
             // We don't need need to add all the properties to the models since we aren't testing that.
+<<<<<<< HEAD
             var review1 = new Review() { AuthorName = "Author 1" };
             await fakeRepo.AddReviewAsync(review1);
             await fakeRepo.AddReviewAsync(review1);
@@ -69,6 +70,17 @@ namespace Tests
             var review3 = new Review() { AuthorName = "Author 3" };
             await fakeRepo.AddReviewAsync(review3);
             await fakeRepo.AddReviewAsync(review3);
+=======
+            var review1 = new Review() { Book = new Book { Author = new Author { Name = "Author 1" } } };
+            fakeRepo.AddReview(review1);
+            fakeRepo.AddReview(review1);
+            var review2 = new Review() { Book = new Book { Author = new Author { Name = "Author 2" } } };
+            fakeRepo.AddReview(review2);
+            fakeRepo.AddReview(review2);
+            var review3 = new Review() { Book = new Book { Author = new Author { Name = "Author 3" } } };
+            fakeRepo.AddReview(review3);
+            fakeRepo.AddReview(review3);
+>>>>>>> 7-MoreComplexDomain
             // Act
             var viewResult = (ViewResult)controller.Index().Result;
             // ViewResult is a the type of ActionResult that is returned by the View() method in the controller
@@ -76,9 +88,15 @@ namespace Tests
             // Assert
             var names = (List<string>)viewResult.ViewData.Model;
             Assert.Equal(3, names.Count);
+<<<<<<< HEAD
             Assert.Contains<string>(review1.AuthorName, names);
             Assert.Contains<string>(review2.AuthorName, names);
             Assert.Contains<string>(review3.AuthorName, names);
+=======
+            Assert.Equal(names[0], review1.Book.Author.Name);
+            Assert.Equal(names[1], review2.Book.Author.Name);
+            Assert.Equal(names[2], review3.Book.Author.Name);
+>>>>>>> 7-MoreComplexDomain
         }
     }
 }

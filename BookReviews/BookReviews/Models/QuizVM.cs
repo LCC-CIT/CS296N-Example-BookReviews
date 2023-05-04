@@ -8,7 +8,11 @@ namespace BookReviews.Models
         // User's answers and results of checking the answers
         [Required(ErrorMessage = "You need to answer this question")]
         [StringLength(40, MinimumLength = 3, ErrorMessage = "You answer needs to be from 3 to 40 characters")]
+<<<<<<< HEAD
         public String UserAnswer1 { get; set; }
+=======
+        public String UserAnswer1 {get; set;}
+>>>>>>> 7-MoreComplexDomain
         public String RightOrWrong1 { get; set; }
 
         [Required(ErrorMessage = "You need to answer this question")]

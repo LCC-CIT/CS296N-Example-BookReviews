@@ -276,5 +276,10 @@ __pycache__/
 
 # SQLite files
 *.db
+<<<<<<< HEAD
 *-shm
 *-wal
+=======
+*.db-wal
+*.db-shm
+>>>>>>> 7-MoreComplexDomain

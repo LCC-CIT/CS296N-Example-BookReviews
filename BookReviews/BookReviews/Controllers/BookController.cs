@@ -20,9 +20,14 @@ namespace BookReviews.Controllers
         /// </summary>
         public async Task<IActionResult> Index()
         {
+<<<<<<< HEAD
             List<string> titles = await Task.Run( () =>
               repo.Reviews
                 .Select(review => review.BookTitle)
+=======
+            List<string> titles = repo.Reviews
+                .Select(review => review.Book.Title)
+>>>>>>> 7-MoreComplexDomain
                 .Distinct()
                 .ToList()
             );

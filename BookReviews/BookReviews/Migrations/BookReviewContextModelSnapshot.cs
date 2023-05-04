@@ -3,7 +3,6 @@ using System;
 using BookReviews.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BookReviews.Migrations
@@ -15,65 +14,63 @@ namespace BookReviews.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.22")
-                .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                .HasAnnotation("ProductVersion", "3.1.22");
 
             modelBuilder.Entity("BookReviews.Models.AppUser", b =>
                 {
                     b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("AccessFailedCount")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Email")
-                        .HasColumnType("nvarchar(256)")
+                        .HasColumnType("TEXT")
                         .HasMaxLength(256);
 
                     b.Property<bool>("EmailConfirmed")
-                        .HasColumnType("bit");
+                        .HasColumnType("INTEGER");
 
                     b.Property<bool>("LockoutEnabled")
-                        .HasColumnType("bit");
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTimeOffset?>("LockoutEnd")
-                        .HasColumnType("datetimeoffset");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(60)")
+                        .HasColumnType("TEXT")
                         .HasMaxLength(60);
 
                     b.Property<string>("NormalizedEmail")
-                        .HasColumnType("nvarchar(256)")
+                        .HasColumnType("TEXT")
                         .HasMaxLength(256);
 
                     b.Property<string>("NormalizedUserName")
-                        .HasColumnType("nvarchar(256)")
+                        .HasColumnType("TEXT")
                         .HasMaxLength(256);
 
                     b.Property<string>("PasswordHash")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("PhoneNumber")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<bool>("PhoneNumberConfirmed")
-                        .HasColumnType("bit");
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("SecurityStamp")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<bool>("TwoFactorEnabled")
-                        .HasColumnType("bit");
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("UserName")
-                        .HasColumnType("nvarchar(256)")
+                        .HasColumnType("TEXT")
                         .HasMaxLength(256);
 
                     b.HasKey("Id");
@@ -83,21 +80,27 @@ namespace BookReviews.Migrations
 
                     b.HasIndex("NormalizedUserName")
                         .IsUnique()
-                        .HasName("UserNameIndex")
-                        .HasFilter("[NormalizedUserName] IS NOT NULL");
+                        .HasName("UserNameIndex");
 
                     b.ToTable("AspNetUsers");
 
                     b.HasData(
                         new
                         {
+<<<<<<< HEAD
                             Id = "A",
                             AccessFailedCount = 0,
                             ConcurrencyStamp = "6a31de41-be09-47e8-ba25-a336b253b10f",
+=======
+                            Id = "7dc3c5ff-fd2c-492d-a3d6-05a607c8eb5d",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "f53d2fad-70ca-4744-8c45-03e1ea60f2f6",
+>>>>>>> 7-MoreComplexDomain
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             Name = "Brian Bird",
                             PhoneNumberConfirmed = false,
+<<<<<<< HEAD
                             SecurityStamp = "72451096-df6e-4b46-a1a1-ac8a50da7743",
                             TwoFactorEnabled = false,
                             UserName = "BrianB"
@@ -107,10 +110,21 @@ namespace BookReviews.Migrations
                             Id = "B",
                             AccessFailedCount = 0,
                             ConcurrencyStamp = "7a224645-0faa-4186-9447-e3cbe3f6137f",
+=======
+                            SecurityStamp = "6a0dbf53-197b-46b0-be1c-1c148cceef21",
+                            TwoFactorEnabled = false
+                        },
+                        new
+                        {
+                            Id = "755f75a9-ea9f-4e75-9d9a-d21b719c5afc",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "62cd03d7-efaf-434c-8f3e-d21b159aca8e",
+>>>>>>> 7-MoreComplexDomain
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             Name = "Emma Watson",
                             PhoneNumberConfirmed = false,
+<<<<<<< HEAD
                             SecurityStamp = "2e6b6d76-b097-443a-884c-61992b25838b",
                             TwoFactorEnabled = false,
                             UserName = "EmmaW"
@@ -120,10 +134,21 @@ namespace BookReviews.Migrations
                             Id = "C",
                             AccessFailedCount = 0,
                             ConcurrencyStamp = "c7390f05-b62a-4ab5-b448-9b758635b1e8",
+=======
+                            SecurityStamp = "bf50f93d-17ba-4141-912d-79e3eff4f7fb",
+                            TwoFactorEnabled = false
+                        },
+                        new
+                        {
+                            Id = "b5158425-0721-4169-acf0-ef8a080c2874",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "9582f570-8f67-42b5-94e2-5528e79b8289",
+>>>>>>> 7-MoreComplexDomain
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             Name = "Daniel Radcliffe",
                             PhoneNumberConfirmed = false,
+<<<<<<< HEAD
                             SecurityStamp = "7c2ba419-d85f-471e-a1ba-203ba694ada2",
                             TwoFactorEnabled = false,
                             UserName = "DanielR"
@@ -210,38 +235,114 @@ namespace BookReviews.Migrations
                             CommentText = "I'm not sure how we're related. Some kind of distant cousin on my Mom's side.",
                             CommenterId = "A",
                             ReviewId = 3
+=======
+                            SecurityStamp = "db79e9af-0ba1-4557-a441-c0093c4cc5a8",
+                            TwoFactorEnabled = false
+>>>>>>> 7-MoreComplexDomain
                         });
+                });
+
+            modelBuilder.Entity("BookReviews.Models.Book", b =>
+                {
+                    b.Property<int>("BookId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("AuthorWriterId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("PrintDate")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("BookId");
+
+                    b.HasIndex("AuthorWriterId");
+
+                    b.ToTable("Books");
+
+                    b.HasData(
+                        new
+                        {
+                            BookId = 1,
+                            AuthorWriterId = 1,
+                            PrintDate = new DateTime(1947, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Title = "Prince of Foxes"
+                        },
+                        new
+                        {
+                            BookId = 2,
+                            AuthorWriterId = 2,
+                            PrintDate = new DateTime(2018, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Title = "Virgil Wander"
+                        },
+                        new
+                        {
+                            BookId = 3,
+                            AuthorWriterId = 3,
+                            PrintDate = new DateTime(1819, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Title = "Ivanhoe"
+                        });
+                });
+
+            modelBuilder.Entity("BookReviews.Models.Comment", b =>
+                {
+                    b.Property<int>("CommentId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("CommentDate")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("CommentText")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("CommenterId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int?>("ReviewId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("CommentId");
+
+                    b.HasIndex("CommenterId");
+
+                    b.HasIndex("ReviewId");
+
+                    b.ToTable("Comments");
                 });
 
             modelBuilder.Entity("BookReviews.Models.Review", b =>
                 {
                     b.Property<int>("ReviewId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("INTEGER");
 
-                    b.Property<string>("AuthorName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("BookTitle")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("BookId")
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("Rating")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("ReviewDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("ReviewText")
                         .IsRequired()
-                        .HasColumnType("nvarchar(500)")
+                        .HasColumnType("TEXT")
                         .HasMaxLength(500);
 
                     b.Property<string>("ReviewerId")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("ReviewId");
+<<<<<<< HEAD
+=======
+
+                    b.HasIndex("BookId");
+>>>>>>> 7-MoreComplexDomain
 
                     b.HasIndex("ReviewerId");
 
@@ -251,36 +352,61 @@ namespace BookReviews.Migrations
                         new
                         {
                             ReviewId = 1,
+<<<<<<< HEAD
                             AuthorName = "Samuel Shellabarger",
                             BookTitle = "Prince of Foxes",
                             Rating = 5,
                             ReviewDate = new DateTime(2020, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ReviewText = "Great book, a must read!",
                             ReviewerId = "B"
+=======
+                            BookId = 1,
+                            Rating = 5,
+                            ReviewDate = new DateTime(2020, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ReviewText = "Great book, a must read!",
+                            ReviewerId = "755f75a9-ea9f-4e75-9d9a-d21b719c5afc"
+>>>>>>> 7-MoreComplexDomain
                         },
                         new
                         {
                             ReviewId = 2,
+<<<<<<< HEAD
                             AuthorName = "Samuel Shellabarger",
                             BookTitle = "Prince of Foxes",
                             Rating = 5,
                             ReviewDate = new DateTime(2020, 11, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ReviewText = "I love the clever, witty dialog",
                             ReviewerId = "C"
+=======
+                            BookId = 1,
+                            Rating = 5,
+                            ReviewDate = new DateTime(2020, 11, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ReviewText = "I love the clever, witty dialog",
+                            ReviewerId = "b5158425-0721-4169-acf0-ef8a080c2874"
+>>>>>>> 7-MoreComplexDomain
                         },
                         new
                         {
                             ReviewId = 3,
+<<<<<<< HEAD
                             AuthorName = "Lief Enger",
                             BookTitle = "Virgil Wander",
                             Rating = 5,
                             ReviewDate = new DateTime(2020, 11, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ReviewText = "Wonderful book, written by a distant relative of mine.",
                             ReviewerId = "A"
+=======
+                            BookId = 2,
+                            Rating = 5,
+                            ReviewDate = new DateTime(2020, 11, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ReviewText = "Wonderful book, written by a distant cousin of mine.",
+                            ReviewerId = "7dc3c5ff-fd2c-492d-a3d6-05a607c8eb5d"
+>>>>>>> 7-MoreComplexDomain
                         },
                         new
                         {
                             ReviewId = 4,
+<<<<<<< HEAD
                             AuthorName = "Lief Enger",
                             BookTitle = "Virgil Wander",
                             Rating = 4,
@@ -317,32 +443,75 @@ namespace BookReviews.Migrations
                             ReviewDate = new DateTime(2021, 10, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ReviewText = "This book inspired me to believe in things that others think are impossible.",
                             ReviewerId = "D"
+=======
+                            BookId = 3,
+                            Rating = 4,
+                            ReviewDate = new DateTime(2020, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ReviewText = "It was a little hard going at first, but then I loved it!",
+                            ReviewerId = "7dc3c5ff-fd2c-492d-a3d6-05a607c8eb5d"
+                        });
+                });
+
+            modelBuilder.Entity("BookReviews.Models.Writer", b =>
+                {
+                    b.Property<int>("WriterId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("Birthdate")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("WriterId");
+
+                    b.ToTable("Writers");
+
+                    b.HasData(
+                        new
+                        {
+                            WriterId = 1,
+                            Birthdate = new DateTime(1888, 5, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Samuel Shellabarger"
+                        },
+                        new
+                        {
+                            WriterId = 2,
+                            Birthdate = new DateTime(1961, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "leif Enger"
+                        },
+                        new
+                        {
+                            WriterId = 3,
+                            Birthdate = new DateTime(1771, 8, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Sir Walter Scott"
+>>>>>>> 7-MoreComplexDomain
                         });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(256)")
+                        .HasColumnType("TEXT")
                         .HasMaxLength(256);
 
                     b.Property<string>("NormalizedName")
-                        .HasColumnType("nvarchar(256)")
+                        .HasColumnType("TEXT")
                         .HasMaxLength(256);
 
                     b.HasKey("Id");
 
                     b.HasIndex("NormalizedName")
                         .IsUnique()
-                        .HasName("RoleNameIndex")
-                        .HasFilter("[NormalizedName] IS NOT NULL");
+                        .HasName("RoleNameIndex");
 
                     b.ToTable("AspNetRoles");
                 });
@@ -351,18 +520,17 @@ namespace BookReviews.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("ClaimType")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("ClaimValue")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("RoleId")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
@@ -375,18 +543,17 @@ namespace BookReviews.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("ClaimType")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("ClaimValue")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("UserId")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
@@ -398,17 +565,17 @@ namespace BookReviews.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("ProviderKey")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("ProviderDisplayName")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("UserId")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("LoginProvider", "ProviderKey");
 
@@ -420,10 +587,10 @@ namespace BookReviews.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
                 {
                     b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("RoleId")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("UserId", "RoleId");
 
@@ -435,22 +602,32 @@ namespace BookReviews.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
                     b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Value")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
                 });
 
+<<<<<<< HEAD
+=======
+            modelBuilder.Entity("BookReviews.Models.Book", b =>
+                {
+                    b.HasOne("BookReviews.Models.Writer", "Author")
+                        .WithMany()
+                        .HasForeignKey("AuthorWriterId");
+                });
+
+>>>>>>> 7-MoreComplexDomain
             modelBuilder.Entity("BookReviews.Models.Comment", b =>
                 {
                     b.HasOne("BookReviews.Models.AppUser", "Commenter")
@@ -459,13 +636,21 @@ namespace BookReviews.Migrations
 
                     b.HasOne("BookReviews.Models.Review", null)
                         .WithMany("Comments")
+<<<<<<< HEAD
                         .HasForeignKey("ReviewId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+=======
+                        .HasForeignKey("ReviewId");
+>>>>>>> 7-MoreComplexDomain
                 });
 
             modelBuilder.Entity("BookReviews.Models.Review", b =>
                 {
+                    b.HasOne("BookReviews.Models.Book", "Book")
+                        .WithMany()
+                        .HasForeignKey("BookId");
+
                     b.HasOne("BookReviews.Models.AppUser", "Reviewer")
                         .WithMany()
                         .HasForeignKey("ReviewerId");

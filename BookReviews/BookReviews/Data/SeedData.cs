@@ -9,6 +9,7 @@ namespace BookReviews.Data
 {
     public static class SeedData
     {
+<<<<<<< HEAD
         private const string ID1 = "A";
         private const string ID2 = "B";
         private const string ID3 = "C";
@@ -44,6 +45,12 @@ namespace BookReviews.Data
             }
         }
 
+=======
+        // Create GUIDs to use for PKs in our AppUser objects
+        private static readonly string appUserId1 = Guid.NewGuid().ToString();
+        private static readonly string appUserId2 = Guid.NewGuid().ToString();
+        private static readonly string appUserId3 = Guid.NewGuid().ToString();
+>>>>>>> 7-MoreComplexDomain
         /// <summary>
         /// This is an extension method for the ModelBuilder class
         /// It is called from BookReviewContext.OnModelCreating
@@ -54,6 +61,7 @@ namespace BookReviews.Data
             // Create four AppUsers who will be reviewers
             var user1 = new AppUser()
             {
+<<<<<<< HEAD
                 Id = ID1,
                 Name = "Brian Bird",
                 UserName = "BrianB"
@@ -75,6 +83,20 @@ namespace BookReviews.Data
                 Id = ID4,
                 Name = "Scarlett Johansson",
                 UserName = "ScarlettJ"
+=======
+                Id = appUserId1,
+                Name = "Brian Bird"
+            };
+            var user2 = new AppUser()
+            {
+                Id = appUserId2,
+                Name = "Emma Watson"
+            };
+            var user3 = new AppUser
+            {
+                Id = appUserId3,
+                Name = "Daniel Radliiffe"
+>>>>>>> 7-MoreComplexDomain
             };
 
             // Add the three AppUsers to the database
@@ -82,18 +104,84 @@ namespace BookReviews.Data
                 user1, user2, user3, user4
             );
 
+<<<<<<< HEAD
             // Create and add three reviews to the database.
 
             // These must be untyped objects because they use "shadow" FK preoperties
             // which are in the tables created by EF but not in the domain model.
 
+=======
+
+            // Create and add authors to the database
+            Author author1 = new Author()
+            {
+                AuthorId = 1,
+                Name = "Samuel Shellabarger",
+                Birthdate = DateTime.Parse("5/18/1888")
+            };
+
+            Author author2 = new Author()
+            {
+                AuthorId = 2,
+                Name = "leif Enger",
+                Birthdate = DateTime.Parse("1/1/1961")
+            };
+
+            Author author3 = new Author()
+            {
+                AuthorId = 3,
+                Name = "Sir Walter Scott",
+                Birthdate = DateTime.Parse("8/15/1771")
+            };
+
+            modelBuilder.Entity<Author>().HasData(author1, author2, author3);
+
+            // Create and add books to the database
+            // Since we are using shadow FK properties, we must books as anonymous objects
+            const int BOOK_ID1 = 1, BOOK_ID2 = 2, BOOK_ID3 = 3;
+
+            modelBuilder.Entity<Book>().HasData(
+            new
+            {
+                BookId = BOOK_ID1,
+                Title = "Prince of Foxes",
+                AuthorId = author1.AuthorId,
+                PrintDate = DateTime.Parse("1/1/1947")
+            },
+
+            new
+            {
+                BookId = BOOK_ID2,
+                Title = "Virgil Wander",
+                AuthorId = author2.AuthorId,
+                PrintDate = DateTime.Parse("1/1/2018")
+            },
+
+            new
+            {
+                BookId = BOOK_ID3,
+                Title = "Ivanhoe",
+                AuthorId = author3.AuthorId,
+                PrintDate = DateTime.Parse("1/1/1819")
+            }
+            );
+
+
+            // Create and add three reviews to the database
+            // These are also created as anonymous objects because they use shadow FK properties
+>>>>>>> 7-MoreComplexDomain
             modelBuilder.Entity<Review>().HasData(
                 new
                 {
                     ReviewId = 1,
+<<<<<<< HEAD
                     ReviewerId = ID2,   // "shadow" FK
                     BookTitle = "Prince of Foxes",
                     AuthorName = "Samuel Shellabarger",
+=======
+                    ReviewerId = appUserId2,
+                    BookId = BOOK_ID1,
+>>>>>>> 7-MoreComplexDomain
                     ReviewText = "Great book, a must read!",
                     ReviewDate = DateTime.Parse("11/1/2020"),
                     Rating = 5
@@ -102,9 +190,14 @@ namespace BookReviews.Data
                 new
                 {
                     ReviewId = 2,
+<<<<<<< HEAD
                     ReviewerId = ID3,
                     BookTitle = "Prince of Foxes",
                     AuthorName = "Samuel Shellabarger",
+=======
+                    ReviewerId = appUserId3,
+                    BookId = BOOK_ID1,
+>>>>>>> 7-MoreComplexDomain
                     ReviewText = "I love the clever, witty dialog",
                     ReviewDate = DateTime.Parse("11/15/2020"),
                     Rating = 5
@@ -116,10 +209,16 @@ namespace BookReviews.Data
                 new
                 {
                     ReviewId = 3,
+<<<<<<< HEAD
                     ReviewerId = ID1,
                     BookTitle = "Virgil Wander",
                     AuthorName = "Lief Enger",
                     ReviewText = "Wonderful book, written by a distant relative of mine.",
+=======
+                    ReviewerId = appUserId1,
+                    BookId = BOOK_ID2,
+                    ReviewText = "Wonderful book, written by a distant cousin of mine.",
+>>>>>>> 7-MoreComplexDomain
                     ReviewDate = DateTime.Parse("11/30/2020"),
                     Rating = 5
                 },
@@ -137,10 +236,16 @@ namespace BookReviews.Data
 
                 new
                 {
+<<<<<<< HEAD
                     ReviewId = 5,
                     ReviewerId = ID1,
                     BookTitle = "Ivanho",
                     AuthorName = "Sir Walter Scott",
+=======
+                    ReviewId = 4,
+                    ReviewerId = appUserId1,
+                    BookId = BOOK_ID3,
+>>>>>>> 7-MoreComplexDomain
                     ReviewText = "It was a little hard going at first, but then I loved it!",
                     ReviewDate = DateTime.Parse("11/1/2020"),
                     Rating = 4

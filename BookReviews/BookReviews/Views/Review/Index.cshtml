@@ -4,13 +4,36 @@
     ViewData["Title"] = "Book Reviews";
 }
 
+<<<<<<< HEAD
 <h3 class="display-4">Filter Reviews</h3>
 Enter a book title and/or name of a reviewer:
+=======
+<h1 class="display-4">Reviews</h1>
+<h3>Write a Review</h3>
+<a asp-controller="Review" asp-action="Review">Enter your review</a>
+<br />
+<br />
+<h3>Filter Reviews</h3>
+
+Enter a book title:
+>>>>>>> 7-MoreComplexDomain
 <form method="get" asp-controller="Review" asp-action="FilterReviews" class="container">
     <div class="row p-2">
         <label for="BookTitle" class="control-label col-md-1">Title</label>
         <input name="bookTitle" class="form-control col-md-6" />
+<<<<<<< HEAD
     </div><div class="row p-2">
+=======
+    </div>
+    <div class="row p-2">
+        <button type="submit" class="form-control btn btn-success col-2">Submit</button>
+    </div>
+</form>
+<br />
+    Enter the name of a reviewer:
+<form method="get" asp-controller="Review" asp-action="FilterReviews" class="container">
+    <div class="row p-2">
+>>>>>>> 7-MoreComplexDomain
         <label for="ReviewerName" class="control-label col-md-1">Name</label>
         <input name="reviewerName" class="form-control col-md-6" />
     </div>
@@ -20,9 +43,11 @@ Enter a book title and/or name of a reviewer:
         <!-- TODO: Make the Reset button the same width as the submit button -->
     </div>
 </form>
+<br />
 
-<h3 class="display-4">Book Reviews</h3>
+<h3>Book Reviews</h3>
 
+<<<<<<< HEAD
 @{
     String currentTitle = "";
 
@@ -72,3 +97,43 @@ Enter a book title and/or name of a reviewer:
         }
     }
 }
+=======
+@foreach (Review review in Model)
+{
+    <p>
+        <strong class="m-3">Title:</strong>
+        @review.Book.Title<br />
+        <strong class="m-3">Author:</strong>
+        @review.Book.Author.Name<br />
+        <strong class="m-3">Reviewer:</strong>
+        @review.Reviewer.Name<br />
+        <strong class="m-3">Review Date:</strong>
+        @review.ReviewDate.ToString("dddd, MMMM dd, yyyy")<br />
+        @*TODO: Figure out why the data annotations on the model don't forma the date*@
+        <strong class="m-3">Review:</strong>
+        @review.ReviewText<br />
+        <strong class="m-3">Rating:</strong>
+        @review.Rating / 5<br />
+    </p>
+    @*
+        @if (review.Comments.Count != 0)
+            {
+                <h3>Comments</h3>
+
+                @foreach (Comment comment in review.Comments)
+                {
+                    <p>
+                        <strong class="m-3">Comment:</strong>
+                        @comment.CommentText<br />
+                        <strong class="m-3">By:</strong>
+                        @comment.Commenter.Name<br />
+                        <strong class="m-3">Date:</strong>
+                        @comment.CommentDate.Date<br />
+                    </p>
+                }
+            }
+            <a asp-action="Comment" asp-route-reviewId="@review.ReviewID" class="btn btn-secondary col-3">Add Comment</a>
+    *@
+
+}
+>>>>>>> 7-MoreComplexDomain

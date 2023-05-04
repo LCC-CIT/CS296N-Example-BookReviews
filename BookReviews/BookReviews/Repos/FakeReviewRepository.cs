@@ -18,11 +18,16 @@ namespace BookReviews.Repos
 
         public async Task AddReviewAsync(Review review)
         {
+<<<<<<< HEAD
             await Task.Run(() =>
             {
                 review.ReviewId = reviews.Count;
                 reviews.Add(review);
             });
+=======
+            review.ReviewId = reviews.Count;
+            reviews.Add(review);
+>>>>>>> 7-MoreComplexDomain
         }
 
         public Task UpdateReviewAsync(Review review)

@@ -1,10 +1,25 @@
-﻿@{
+﻿@model Review
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center jumbotron">
-    <h1 class="display-4">Book Reviews</h1>
-    <p>Welcome to Eugene's most awesome book review site!</p>
-    <a asp-controller="Review" asp-action="Index">View all reviews</a><br />
-    <a asp-controller="Review" asp-action="Review">Write a review</a>
+    <h1 class="display-4">Brian's Book Reviews</h1>
+    <p><strong>Share your book review with the world!</strong></p>
+    
+    <h3>Featured book</h3>
+    <p>
+        <strong><em>@Model.Book.Title</em></strong><br />
+        by @Model.Book.Author.Name<br />
+        @{int reviewCount = ViewBag.reviewCount;}
+        @ViewBag.averageRating / 5 stars with @reviewCount @((reviewCount > 1) ? "reviews" : "review")<br />
+        <a asp-controller="Review" asp-action="FilterReviews" asp-route-bookTitle="@Model.Book.Title">Read all reviews of this book</a>
+    </p>
+
+    <p class="text-center">
+        <hr /><br />
+        <a asp-controller="Review" asp-action="Index">View all reviews</a>
+        &nbsp;&nbsp;&vert;&nbsp;&nbsp;
+        <a asp-controller="Review" asp-action="Review">Write a review</a>
+    </p>
 </div>

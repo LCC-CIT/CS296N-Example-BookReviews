@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
 
 namespace BookReviews.Models
 {
@@ -8,10 +9,7 @@ namespace BookReviews.Models
     {
         public int ReviewId { get; set; }
 
-        [Required]
-        public string BookTitle { get; set; }
-
-        public string AuthorName { get; set; }
+        public Book Book { get; set; }
 
         public AppUser Reviewer { get; set; }
 

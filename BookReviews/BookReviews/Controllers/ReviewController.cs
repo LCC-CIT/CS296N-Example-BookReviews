@@ -41,7 +41,11 @@ namespace BookReviews.Controllers
                 model.Reviewer = await userManager.GetUserAsync(User);
                 await repo.AddReviewAsync(model);
             }
+<<<<<<< HEAD
             return RedirectToAction("FilterReviews", new { bookTitle = model.BookTitle, reviewerName = model.Reviewer.Name });
+=======
+            return RedirectToAction("FilterReviews", new {bookTitle = model.Book.Title, reviewerName = model.Reviewer.Name});
+>>>>>>> 7-MoreComplexDomain
         }
 
         // TODO: Can we eliminate this method. Can we make FilterReviews the Index method?
@@ -66,10 +70,15 @@ namespace BookReviews.Controllers
             // We can filter by title, reviewer, or both
             await Task.Run(() =>
             {
+<<<<<<< HEAD
                 if (!string.IsNullOrEmpty(bookTitle))
                 {
                     reviews = (from r in repo.Reviews
                                where r.BookTitle == bookTitle
+=======
+               reviews = (from r in repo.Reviews
+                               where r.Book.Title == bookTitle
+>>>>>>> 7-MoreComplexDomain
                                select r).ToList();
                 }
                 if (!string.IsNullOrEmpty(reviewerName))

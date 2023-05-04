@@ -12,7 +12,37 @@ namespace Tests
     [Collection("All Tests")]
     public class ReviewTests
     {
+<<<<<<< HEAD
         
+=======
+        [Fact]
+        public void AddReviewTest()
+        {
+            /* The only processing the Review method does
+                is add a date to the model, so that's all we're testing */
+
+            // Arrange
+            var fakeRepo = new FakeReviewRepository();
+            var controller = new ReviewController(fakeRepo);
+            var review = new Review()
+            {
+                Book = new Book { Title = "A Book" },
+                Reviewer = new AppUser() { Name = "A Reviewer" }
+            };
+            // We only need these properties so the RedirectToAction doesn't complain
+            // We aren't testing any model proeprties
+
+            // Act
+            controller.Review(review);
+
+            // Assert
+
+            var repoReview = fakeRepo.Reviews.ToList()[0];
+            Assert.Equal(0, System.DateTime.Now.Date.CompareTo(
+                repoReview.ReviewDate.Date));
+        }
+
+>>>>>>> 7-MoreComplexDomain
         [Fact]
         public void FilterByTitleTest()
         {
@@ -22,6 +52,7 @@ namespace Tests
             var fakeRepo = new FakeReviewRepository();
             var controller = new ReviewController(fakeRepo, null);  // No UserManager needed
             // We don't need need to add all the properties to the models since we aren't testing that.
+<<<<<<< HEAD
             var review1 = new Review() { BookTitle = "Book 1" };
             fakeRepo.AddReviewAsync(review1).Wait();
             fakeRepo.AddReviewAsync(review1).Wait();
@@ -35,13 +66,26 @@ namespace Tests
 
             // Act
             var viewResult = (ViewResult)controller.FilterReviews(review2.BookTitle, "").Result;
+=======
+            var review1 = new Review() { Book = new Book { Title = "Book 1" } };
+            fakeRepo.AddReview(review1);
+            fakeRepo.AddReview(review1);
+            var review2 = new Review() { Book = new Book { Title = "Book 2" } };
+            fakeRepo.AddReview(review2);
+            fakeRepo.AddReview(review2);
+            var review3 = new Review() { Book = new Book { Title = "Book 3" } };
+            fakeRepo.AddReview(review3);
+            fakeRepo.AddReview(review3);
+            // Act
+            var viewResult = (ViewResult)controller.FilterReviews(review2.Book.Title, "");
+>>>>>>> 7-MoreComplexDomain
             // ViewResult is a the type of ActionResult that is returned by the View() method in the controller
 
             // Assert
             var reviews = (List<Review>)viewResult.ViewData.Model;
             Assert.Equal(2, reviews.Count);
-            Assert.Equal(reviews[0].BookTitle, review2.BookTitle);
-            Assert.Equal(reviews[1].BookTitle, review2.BookTitle);
+            Assert.Equal(reviews[0].Book.Title, review2.Book.Title);
+            Assert.Equal(reviews[1].Book.Title, review2.Book.Title);
         }
 
         [Fact]

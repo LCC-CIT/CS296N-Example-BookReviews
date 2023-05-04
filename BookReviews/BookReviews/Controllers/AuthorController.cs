@@ -19,9 +19,14 @@ namespace BookReviews.Controllers
 
         public async Task<IActionResult> Index()
         {
+<<<<<<< HEAD
             List<string> names = await Task.Run(() =>
               repo.Reviews
                 .Select(review => review.AuthorName)
+=======
+            List<string> names = repo.Reviews
+                .Select(review => review.Book.Author.Name)
+>>>>>>> 7-MoreComplexDomain
                 .Distinct()
                 .ToList()
             );
@@ -41,9 +46,14 @@ namespace BookReviews.Controllers
             if (ModelState.IsValid)
             {
                 quiz.CheckAnswers();
+<<<<<<< HEAD
                 return View(quiz);
             }
             return RedirectToAction("Quiz");
+=======
+            }
+            return View(quiz);
+>>>>>>> 7-MoreComplexDomain
         }
 
     }
