@@ -4,11 +4,8 @@
       "type": "secrets"
     },
     "mssql1": {
-<<<<<<< HEAD
-=======
       "ignored": "true",
       "suggestion": "true",
->>>>>>> 7-MoreComplexDomain
       "type": "mssql",
       "connectionId": "ConnectionStrings:SQLiteConnection"
     }

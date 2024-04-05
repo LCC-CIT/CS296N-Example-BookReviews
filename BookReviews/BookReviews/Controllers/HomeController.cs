@@ -1,4 +1,6 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using BookReviews.Models;
@@ -20,10 +22,6 @@ namespace BookReviews.Controllers
 
         public IActionResult Index()
         {
-<<<<<<< HEAD
-            return View();
-
-=======
             // Get a random book to display on the home page
             int reviewCount = repo.Reviews.Count();
             var random = new Random();
@@ -36,7 +34,6 @@ namespace BookReviews.Controllers
             ViewBag.averageRating = reviews.Average(r => r.Rating);
 
             return View(review);
->>>>>>> 7-MoreComplexDomain
         }
 
         /*

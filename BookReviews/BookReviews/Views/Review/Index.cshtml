@@ -4,10 +4,6 @@
     ViewData["Title"] = "Book Reviews";
 }
 
-<<<<<<< HEAD
-<h3 class="display-4">Filter Reviews</h3>
-Enter a book title and/or name of a reviewer:
-=======
 <h1 class="display-4">Reviews</h1>
 <h3>Write a Review</h3>
 <a asp-controller="Review" asp-action="Review">Enter your review</a>
@@ -16,14 +12,10 @@ Enter a book title and/or name of a reviewer:
 <h3>Filter Reviews</h3>
 
 Enter a book title:
->>>>>>> 7-MoreComplexDomain
 <form method="get" asp-controller="Review" asp-action="FilterReviews" class="container">
     <div class="row p-2">
         <label for="BookTitle" class="control-label col-md-1">Title</label>
         <input name="bookTitle" class="form-control col-md-6" />
-<<<<<<< HEAD
-    </div><div class="row p-2">
-=======
     </div>
     <div class="row p-2">
         <button type="submit" class="form-control btn btn-success col-2">Submit</button>
@@ -33,13 +25,12 @@ Enter a book title:
     Enter the name of a reviewer:
 <form method="get" asp-controller="Review" asp-action="FilterReviews" class="container">
     <div class="row p-2">
->>>>>>> 7-MoreComplexDomain
         <label for="ReviewerName" class="control-label col-md-1">Name</label>
         <input name="reviewerName" class="form-control col-md-6" />
     </div>
     <div class="row p-2">
         <button type="submit" class="form-control btn btn-success col-2">Submit</button>
-        <a asp-controller="Review" asp-action="Index" class="btn-xs btn-secondary col-3 pl-2">Clear filters</a>
+        <a asp-controller="Review" asp-action="Index" class="btn btn-secondary col-3 pl-2">Clear filters</a>
         <!-- TODO: Make the Reset button the same width as the submit button -->
     </div>
 </form>
@@ -47,57 +38,6 @@ Enter a book title:
 
 <h3>Book Reviews</h3>
 
-<<<<<<< HEAD
-@{
-    String currentTitle = "";
-
-    foreach (Review review in Model)
-    {
-        <p>
-            @* Display the book title and author just once *@
-            @if (currentTitle != review.BookTitle)
-            {
-                currentTitle = review.BookTitle;
-                <hr />
-                <div class="m-3">
-                    <h4>@review.BookTitle</h4>
-                    by @review.AuthorName
-                </div><hr />
-            }
-            <h5 class="m-3">Review</h5>
-        <p class="m-3"> @review.ReviewText</p>
-        <strong class="m-3">Reviewer:</strong>
-        @review.Reviewer.Name
-        <br />
-        <strong class="m-3">Review Date:</strong>
-        @*TODO: Figure out why the data annotations on the model don't forma the date*@
-        @review.ReviewDate.ToString("dddd, MMMM dd, yyyy")
-        <br />
-        <strong class="m-3">Rating:</strong>
-        @review.Rating / 5
-        </p>
-        <a asp-action="Comment" asp-route-reviewId="@review.ReviewId" class="btn-sm btn-secondary col-3 m-3">Add Comment</a>
-
-        if (review.Comments.Count != 0)
-        {
-            <h5 class="m-3">Comment@(review.Comments.Count > 1 ? "s" : "")</h5>
-
-            foreach (Comment comment in review.Comments)
-            {
-                <p>
-                <p class="m-3">@comment.CommentText</p>
-                <strong class="m-3">By:</strong>
-                @comment.Commenter.Name
-                <br />
-                <strong class="m-3">Date:</strong>
-                @comment.CommentDate.Date.ToString("dddd, MMMM dd, yyyy")
-                <br />
-                </p>
-            }
-        }
-    }
-}
-=======
 @foreach (Review review in Model)
 {
     <p>
@@ -136,4 +76,3 @@ Enter a book title:
     *@
 
 }
->>>>>>> 7-MoreComplexDomain

@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+using BookReviews.Models;
 using BookReviews.Repos;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,19 +19,12 @@ namespace BookReviews.Controllers
         /// <summary>
         /// List all books (without duplicates)
         /// </summary>
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-<<<<<<< HEAD
-            List<string> titles = await Task.Run( () =>
-              repo.Reviews
-                .Select(review => review.BookTitle)
-=======
             List<string> titles = repo.Reviews
                 .Select(review => review.Book.Title)
->>>>>>> 7-MoreComplexDomain
                 .Distinct()
-                .ToList()
-            );
+                .ToList();
 
             return View(titles);
             // TODO: Upgrade to .netcore 6.0 so that the query below can be used.

@@ -10,15 +10,6 @@
     <Compile Remove="Migrations\20220119201157_SQLite.Designer.cs" />
     <Compile Remove="Migrations\20220119203817_SQLServer.cs" />
     <Compile Remove="Migrations\20220119203817_SQLServer.Designer.cs" />
-<<<<<<< HEAD
-    <Compile Remove="Migrations\20220121002458_Identity.cs" />
-    <Compile Remove="Migrations\20220121002458_Identity.Designer.cs" />
-    <Compile Remove="Migrations\20220121030627_Identity.cs" />
-    <Compile Remove="Migrations\20220121030627_Identity.Designer.cs" />
-    <Compile Remove="Migrations\20220128032649_NewInitial.cs" />
-    <Compile Remove="Migrations\20220128032649_NewInitial.Designer.cs" />
-=======
->>>>>>> 7-MoreComplexDomain
   </ItemGroup>
 
   <ItemGroup>
@@ -29,17 +20,13 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.22" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.21" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.21">
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.22" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.22">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-<<<<<<< HEAD
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
-=======
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.22" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="3.1.22" />
->>>>>>> 7-MoreComplexDomain
   </ItemGroup>
 
   <ItemGroup>
@@ -51,10 +38,8 @@
     <None Remove="Data\BookReviews.db" />
     <None Remove="Microsoft.EntityFrameworkCore.Proxies" />
   </ItemGroup>
-
   <ItemGroup>
     <Folder Include="Data\" />
     <Folder Include="Migrations\" />
   </ItemGroup>
-
 </Project>
