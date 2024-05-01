@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
+// Pre-built controller
 namespace BookReviews.Controllers
 {
     public class AboutController : Controller
