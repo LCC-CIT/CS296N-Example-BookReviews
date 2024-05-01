@@ -42,6 +42,7 @@ namespace Tests
             Assert.Equal(2, reviews.Count);
             Assert.Equal(reviews[0].BookTitle, review2.BookTitle);
             Assert.Equal(reviews[1].BookTitle, review2.BookTitle);
+            Assert.Equal("A", "B");  // should fail
         }
 
         [Fact]
