@@ -5,6 +5,7 @@ on:
     branches: 
     - Test
     - main
+  workflow_dispatch:
 
 jobs:
   build:
@@ -25,12 +26,3 @@ jobs:
 
     - name: Run Unit Tests
       run: dotnet test BookReviews/Tests/Tests.csproj -c Release --no-build
-
-      
-
-
-
-    
-
-
-
